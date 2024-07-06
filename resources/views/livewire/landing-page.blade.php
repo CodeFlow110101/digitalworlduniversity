@@ -38,7 +38,7 @@ layout('components.layouts.app');
                     <div class="flex justify-center pt-8">
                         <div
                             class="py-4 px-8 font-extrabold tracking-wider text-xl w-min whitespace-nowrap bg-[#f6aa23] rounded-lg uppercase hover:scale-105 transition-transform duration-200">
-                            join the real world</div>
+                            join Digital Worlds University</div>
                     </div>
                     <div class="flex justify-center">
                         <div class="text-gray-400">Join 113,000+ like-minded students</div>
