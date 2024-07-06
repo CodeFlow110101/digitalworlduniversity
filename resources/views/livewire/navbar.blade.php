@@ -8,7 +8,7 @@ use function Livewire\Volt\{state};
 
 <div class="flex justify-center py-8">
     <div x-data="{ showDropdown: false }" class="w-4/5 flex justify-between relative">
-        <div class="text-white font-bold text-xl">The Real World</div>
+        <div class="text-white font-bold text-xl">Digital Worlds University</div>
         <div class="flex justify-between gap-5">
             <div class="text-white hover:text-[#f6a145] cursor-pointer text-lg">Features</div>
             <div class="text-white hover:text-[#f6a145] cursor-pointer text-lg">Interviews</div>
