@@ -10,14 +10,14 @@ use function Livewire\Volt\{state};
     <div x-data="{ showDropdown: false }" class="w-4/5 flex justify-between relative">
         <div class="text-white font-bold text-xl">Digital Worlds University</div>
         <div class="flex justify-between gap-5">
-            <div class="text-white hover:text-[#f6a145] cursor-pointer text-lg">Features</div>
-            <div class="text-white hover:text-[#f6a145] cursor-pointer text-lg">Interviews</div>
-            <div class="text-white hover:text-[#f6a145] cursor-pointer text-lg">Explorer</div>
+            <div class="text-white hover:text-[#f6aa23] cursor-pointer text-lg">Features</div>
+            <div class="text-white hover:text-[#f6aa23] cursor-pointer text-lg">Interviews</div>
+            <div class="text-white hover:text-[#f6aa23] cursor-pointer text-lg">Explorer</div>
             <div @mouseenter="showDropdown = true" @mouseleave="showDropdown = false" class="text-white cursor-pointer">
                 <div class="flex justify-between items-center gap-2">
                     <div class="text-lg">Courses</div>
                     <div>
-                        <svg :class="showDropdown ? 'rotate-180' : rotate - 0"
+                        <svg :class="showDropdown ? 'rotate-180' : 'rotate - 0'"
                             class="w-3 h-3 transition-transform duration-300 text-gray-800 dark:text-white"
                             aria-hidden="true" xmlns="http://www.w3.org/2000/svg" width="24" height="24"
                             fill="none" viewBox="0 0 24 24">
@@ -31,14 +31,14 @@ use function Livewire\Volt\{state};
         <div>
             <div class="flex justify-between gap-2">
                 <button
-                    class="py-1.5 px-4 tracking-wider border border-[#f6a145] rounded-lg text-[#f6a145] hover:text-[#050e14] transition-colors duration-500 hover:bg-[#f6a145]">Log
+                    class="py-1.5 px-4 tracking-wider border border-[#f6aa23] rounded-lg text-[#f6aa23] hover:text-[#050e14] transition-colors duration-500 hover:bg-[#f6aa23]">Log
                     in</button>
                 <button
-                    class="py-1.5 px-4 tracking-wider border border-[#f6a145] transition-opacity duration-300 hover:opacity-80 rounded-lg text-[#050e14] transition-colors duration-500 bg-[#f6a145]">Join
+                    class="py-1.5 px-4 tracking-wider border border-[#f6aa23] transition-opacity duration-300 hover:opacity-80 rounded-lg text-[#050e14] transition-colors duration-500 bg-[#f6aa23]">Join
                     Now</button>
             </div>
         </div>
-        <div :class="showDropdown ? 'opacity-100' : 'opacity-0 pointer-events-none'"
+        <div x-cloak :class="showDropdown ? 'opacity-100' : 'opacity-0 pointer-events-none'"
             class="absolute transition-opacity duration-500 top-6 w-full flex justify-center">
             <div @mouseenter="showDropdown = true" @mouseleave="showDropdown = false"
                 class="p-1 pt-12 w-1/2 flex justify-center text-white rounded-lg bg-[#050e14]">

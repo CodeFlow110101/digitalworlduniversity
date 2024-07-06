@@ -43,6 +43,39 @@ layout('components.layouts.app');
                     <div class="flex justify-center">
                         <div class="text-gray-400">Join 113,000+ like-minded students</div>
                     </div>
+                    <div class="flex justify-center">
+                        <div class="text-gray-400 uppercase tracking-widest text-2xl">Introducing</div>
+                    </div>
+                    <div class="flex justify-center">
+                        <div class="text-white uppercase text-5xl">A massive upgrade</div>
+                    </div>
+                    <div class="flex justify-center">
+                        <div class="text-gray-400 text-2xl">The modern education system is designed to make
+                            you poor
+                        </div>
+                    </div>
+                    <div class="flex justify-center">
+                        <div class="grid grid-cols-1 gap-1">
+                            <div class="text-white text-2xl flex justify-between gap-1">
+                                <div class="font-bold">Imagine you could get access to multi-millionaire mentors</div>
+                                <div>who will give you</div>
+                            </div>
+                            <div class="text-gray-400 text-2xl text-center">step-by-step path to reach your goals as
+                                fast as
+                                possible…
+                            </div>
+                        </div>
+                    </div>
+                    <div class="flex justify-center">
+                        <div class="grid grid-cols-1 gap-1">
+                            <div class="text-white text-2xl flex justify-between gap-1">
+                                <div>That's</div>
+                                <div class="font-bold">exactly</div>
+                                <div>what you can find</div>
+                                <div class="font-bold">inside digital worlds university</div>
+                            </div>
+                        </div>
+                    </div>
                 </div>
             </div>
 </div>
