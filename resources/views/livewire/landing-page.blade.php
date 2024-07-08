@@ -89,7 +89,7 @@ use function Livewire\Volt\{state, layout};
             <div class="w-min h-auto">
                 <div class="h-4 w-4 rounded-full bg-gray-100"></div>
                 <div class="my-2 flex h-full justify-center">
-                    <div class="h-max h-auto w-0.5 bg-gray-800 rounded"></div>
+                    <div class="h-auto w-0.5 bg-gray-800 rounded"></div>
                 </div>
             </div>
 
@@ -151,7 +151,7 @@ use function Livewire\Volt\{state, layout};
             <div class="w-min h-auto">
                 <div class="h-4 w-4 rounded-full bg-gray-100"></div>
                 <div class="my-2 flex h-full justify-center">
-                    <div class="h-max h-auto w-0.5 bg-gray-800 rounded"></div>
+                    <div class="h-auto w-0.5 bg-gray-800 rounded"></div>
                 </div>
             </div>
 
@@ -208,7 +208,7 @@ use function Livewire\Volt\{state, layout};
             <div class="w-min h-auto">
                 <div class="h-4 w-4 rounded-full bg-gray-100"></div>
                 <div class="my-2 flex h-full justify-center">
-                    <div class="h-max h-auto w-0.5 bg-gray-800 rounded"></div>
+                    <div class="h-auto w-0.5 bg-gray-800 rounded"></div>
                 </div>
             </div>
 
