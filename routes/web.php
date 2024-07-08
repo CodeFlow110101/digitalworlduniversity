@@ -4,6 +4,7 @@ use Illuminate\Support\Facades\Route;
 use Livewire\Volt\Volt;
 
 
-Volt::route('/', 'landing-page');
+Volt::route('/', 'main-landing-page');
+Volt::route('/sign-up', 'main-landing-page');
 
 

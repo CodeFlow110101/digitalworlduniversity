@@ -29,14 +29,14 @@ use function Livewire\Volt\{state};
             </div>
         </div>
         <div>
-            <div class="flex justify-between gap-2">
+            <a href="/sign-up" wire:navigate class="flex justify-between gap-2">
                 <button
                     class="py-1.5 px-4 tracking-wider border border-[#f6aa23] rounded-lg text-[#f6aa23] hover:text-[#050e14] transition-colors duration-500 hover:bg-[#f6aa23]">Log
                     in</button>
                 <button
                     class="py-1.5 px-4 tracking-wider border border-[#f6aa23] transition-opacity duration-300 hover:opacity-80 rounded-lg text-[#050e14] transition-colors duration-500 bg-[#f6aa23]">Join
                     Now</button>
-            </div>
+            </a>
         </div>
         <div x-cloak :class="showDropdown ? 'opacity-100' : 'opacity-0 pointer-events-none'"
             class="absolute transition-opacity duration-500 top-6 w-full flex justify-center">
