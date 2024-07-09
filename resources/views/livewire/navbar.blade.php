@@ -2,7 +2,9 @@
 
 use function Livewire\Volt\{state};
 
-//
+$redirectTo = function ($path) {
+    $this->redirectRoute($path, navigate: true);
+};
 
 ?>
 
@@ -29,14 +31,16 @@ use function Livewire\Volt\{state};
             </div>
         </div>
         <div>
-            <a href="/sign-up" wire:navigate class="flex justify-between gap-2">
-                <button
-                    class="py-1.5 px-4 tracking-wider border border-[#f6aa23] rounded-lg text-[#f6aa23] hover:text-[#050e14] transition-colors duration-500 hover:bg-[#f6aa23]">Log
-                    in</button>
-                <button
-                    class="py-1.5 px-4 tracking-wider border border-[#f6aa23] transition-opacity duration-300 hover:opacity-80 rounded-lg text-[#050e14] transition-colors duration-500 bg-[#f6aa23]">Join
-                    Now</button>
-            </a>
+            <div class="flex justify-between gap-2">
+                <div wire:click="redirectTo('log-in')"
+                    class="py-1.5 px-4 cursor-pointer tracking-wider border border-[#f6aa23] rounded-lg text-[#f6aa23] hover:text-[#050e14] transition-colors duration-500 hover:bg-[#f6aa23]">
+                    Log
+                    in</div>
+                <div wire:click="redirectTo('sign-up')"
+                    class="py-1.5 px-4 cursor-pointer tracking-wider border border-[#f6aa23] transition-opacity duration-300 hover:opacity-80 rounded-lg text-[#050e14] transition-colors duration-500 bg-[#f6aa23]">
+                    Join
+                    Now</div>
+            </div>
         </div>
         <div x-cloak :class="showDropdown ? 'opacity-100' : 'opacity-0 pointer-events-none'"
             class="absolute transition-opacity duration-500 top-6 w-full flex justify-center">
@@ -44,16 +48,21 @@ use function Livewire\Volt\{state};
                 class="p-1 pt-12 w-1/2 flex justify-center text-white rounded-lg bg-[#050e14]">
                 <div class="flex justify-between w-full gap-2">
                     <div class="w-full grid grid-cols-1 gap-4">
-                        <div class="hover:bg-white/10 transition-colors duration-500 rounded-lg py-3 px-4">Copywriting
+                        <div class="hover:bg-white/10 transition-colors duration-500 rounded-lg py-3 px-4">
+                            Copywriting
                         </div>
-                        <div class="hover:bg-white/10 transition-colors duration-500 rounded-lg py-3 px-4">Freelanding
+                        <div class="hover:bg-white/10 transition-colors duration-500 rounded-lg py-3 px-4">
+                            Freelanding
                         </div>
-                        <div class="hover:bg-white/10 transition-colors duration-500 rounded-lg py-3 px-4">E-Commercs
+                        <div class="hover:bg-white/10 transition-colors duration-500 rounded-lg py-3 px-4">
+                            E-Commercs
                         </div>
                     </div>
                     <div class="w-full grid grid-cols-1 gap-4">
-                        <div class="hover:bg-white/10 transition-colors duration-500 rounded-lg py-3 px-4">Stocks</div>
-                        <div class="hover:bg-white/10 transition-colors duration-500 rounded-lg py-3 px-4">Business &
+                        <div class="hover:bg-white/10 transition-colors duration-500 rounded-lg py-3 px-4">Stocks
+                        </div>
+                        <div class="hover:bg-white/10 transition-colors duration-500 rounded-lg py-3 px-4">Business
+                            &
                             Finance
                         </div>
                         <div class="hover:bg-white/10 transition-colors duration-500 rounded-lg py-3 px-4">User
