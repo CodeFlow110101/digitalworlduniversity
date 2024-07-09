@@ -49,7 +49,7 @@ $submit = function (Request $request) {
             </div>
             <div class="grid grid-cols-1 gap-4">
                 <div class="text-gray-400">Password</div>
-                <input wire:model="password" type="text"
+                <input wire:model="password" type="password"
                     class="rounded-lg w-full px-4 py-4 bg-transparent border border-gray-400 text-gray-400 text-lg">
                 <div>
                     @error('password')
