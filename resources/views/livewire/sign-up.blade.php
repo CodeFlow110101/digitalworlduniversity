@@ -15,34 +15,27 @@ use function Livewire\Volt\{state};
     <div class="mt-12">
         <div class="flex justify-between items-center whitespace-nowrap gap-2 w-min">
             <div class="p-1 rounded-full bg-gray-400 flex justitfy-center items-center">
-                <svg class="w-5 h-5 text-black" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" width="24"
-                    height="24" fill="none" viewBox="0 0 24 24">
-                    <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="4"
-                        d="M5 11.917 9.724 16.5 19 7.5" />
+                <svg class="w-5 h-5 text-black" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none" viewBox="0 0 24 24">
+                    <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="4" d="M5 11.917 9.724 16.5 19 7.5" />
                 </svg>
             </div>
             <div class="text-gray-400 uppercase text-xl font-bold">Personal Information</div>
         </div>
         <div class="px-8 grid grid-cols-1 gap-3 mt-4">
             <div class="text-gray-400">Email Address</div>
-            <div><input type="email" class="rounded-lg w-full px-4 py-4 bg-transparent border border-gray-400"
-                    placeholder="example@gmail.com"></div>
+            <div><input type="email" class="rounded-lg w-full px-4 py-4 bg-transparent border border-gray-400" placeholder="example@gmail.com"></div>
             <div class="text-gray-400">First Name</div>
-            <div><input type="email" class="rounded-lg w-full px-4 py-4 bg-transparent border border-gray-400"
-                    placeholder="First Name"></div>
+            <div><input type="email" class="rounded-lg w-full px-4 py-4 bg-transparent border border-gray-400" placeholder="First Name"></div>
             <div class="text-gray-400">Last Name</div>
-            <div><input type="email" class="rounded-lg w-full px-4 py-4 bg-transparent border border-gray-400"
-                    placeholder="Last Name"></div>
+            <div><input type="email" class="rounded-lg w-full px-4 py-4 bg-transparent border border-gray-400" placeholder="Last Name"></div>
         </div>
     </div>
 
     <div class="mt-12">
         <div class="flex justify-between items-center whitespace-nowrap gap-2 w-min">
             <div class="p-1 rounded-full bg-gray-400 flex justitfy-center items-center">
-                <svg class="w-5 h-5 text-black" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" width="24"
-                    height="24" fill="none" viewBox="0 0 24 24">
-                    <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="4"
-                        d="M5 11.917 9.724 16.5 19 7.5" />
+                <svg class="w-5 h-5 text-black" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none" viewBox="0 0 24 24">
+                    <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="4" d="M5 11.917 9.724 16.5 19 7.5" />
                 </svg>
             </div>
             <div class="text-gray-400 uppercase text-xl font-bold">Select plan</div>
