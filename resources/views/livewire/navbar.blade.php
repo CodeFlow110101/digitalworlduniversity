@@ -34,12 +34,19 @@ $redirectTo = function ($path) {
             <div class="flex justify-between gap-2">
                 <div wire:click="redirectTo('log-in')"
                     class="py-1.5 px-4 cursor-pointer tracking-wider border border-[#f6aa23] rounded-lg text-[#f6aa23] hover:text-[#050e14] transition-colors duration-500 hover:bg-[#f6aa23]">
-                    Log
-                    in</div>
+                   @if(Auth::check())
+                   Dashboard
+                   @else
+                   Log
+                    in
+                   @endif
+                    </div>
+                    @if(!Auth::check())
                 <div wire:click="redirectTo('sign-up')"
                     class="py-1.5 px-4 cursor-pointer tracking-wider border border-[#f6aa23] transition-opacity duration-300 hover:opacity-80 rounded-lg text-[#050e14] transition-colors duration-500 bg-[#f6aa23]">
                     Join
                     Now</div>
+                    @endif
             </div>
         </div>
         <div x-cloak :class="showDropdown ? 'opacity-100' : 'opacity-0 pointer-events-none'"
