@@ -13,11 +13,6 @@ use function Livewire\Volt\{state, layout};
                     <div class="font-bold">a skill</div>
                 </div>
             </div>
-            <div class="text-6xl text-white font-semibold flex justify-center w-full">
-                <div class="w-min whitespace-nowrap flex justify-between gap-3">
-                    Email: codeflow110101@gmail.com
-                </div>
-            </div>
             <div class="text-3xl text-white font-semibold flex justify-center w-full">
                 <div class="w-min  whitespace-nowrap flex justify-between gap-3">
                     <div class="font-medium">We will teach you how to</div>

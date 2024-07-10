@@ -6,6 +6,6 @@ use function Livewire\Volt\{state};
 
 ?>
 
-<div>
-    //
+<div class="text-white">
+    Dashboard Contents
 </div>
