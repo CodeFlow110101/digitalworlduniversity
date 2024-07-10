@@ -20,8 +20,8 @@ mount(function (Request $request) {
 
 <div x-data="{showSidebar:false}" class="lg:flex lg:justify-between relative bg-black">
     <div class="w-3/12 p-6 max-lg:hidden"><livewire:logged-in-side-bar :path="$path"></div>
-    <div :class="showSidebar ? 'translate-x-0' : '-translate-x-64'" class="w-64 p-6 transition-transform duration-200 absolute lg:hidden"><livewire:logged-in-side-bar :path="$path"></div>
-    <div class="lg:w-9/12 w-full p-6 grid grid-cols-1 gap-8 h-min">
+    <div :class="showSidebar ? 'translate-x-0' : '-translate-x-64'" class="w-64 py-6 px-4 transition-transform duration-200 absolute lg:hidden"><livewire:logged-in-side-bar :path="$path"></div>
+    <div class="lg:w-9/12 w-full py-6 px-4 lg:px-8 grid grid-cols-1 gap-8 h-min">
         <div class="flex justify-center">
             <div class="py-8 px-8 items-center w-full flex justify-between rounded-2xl bg-gray-900 text-3xl text-center text-[#f6aa23] font-bold">
                 <div class="w-min lg:hidden"></div>
