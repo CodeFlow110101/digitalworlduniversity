@@ -9,7 +9,7 @@
     <title>{{ $title ?? 'Page Title' }}</title>
 </head>
 
-<body class="bg-black">
+<body class="bg-[#b5c1c9]">
     {{ $slot }}
 </body>
 
