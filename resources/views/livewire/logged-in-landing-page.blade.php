@@ -11,8 +11,8 @@ state(['path']);
 mount(function (Request $request) {
     $this->path = $request->path();
 
-    if (($this->path == 'log-in' || $this->path == 'sign-up') && Auth::check()) {
-        $this->redirectRoute('dashboard', navigate: true);
+    if (!Auth::check()) {
+        $this->redirectRoute('landing-page', navigate: true);
     }
 });
 
@@ -37,7 +37,7 @@ mount(function (Request $request) {
             </div>
 
         </div>
-        <div class="bg-[#d6dcde] rounded-2xl p-8">
+        <div>
             @if($path == 'dashboard')
             <livewire:dashboard>
                 @endif
