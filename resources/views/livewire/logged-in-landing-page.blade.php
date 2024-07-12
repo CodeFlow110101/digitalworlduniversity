@@ -25,7 +25,7 @@ mount(function (Request $request) {
         <div class="flex justify-center">
             <div class="py-8 px-8 items-center w-full flex justify-between rounded-2xl bg-[#d6dcde] text-3xl text-center text-[#f6aa23] font-bold">
                 <div class="w-min lg:hidden"></div>
-                <div class="w-full text-[#131e30]">Dashboard</div>
+                <div class="w-full text-[#131e30] capitalize">{{str_replace("-"," ",$path)}}</div>
                 <div @click=" showSidebar=!showSidebar" class="w-min border border-[#131e30] text-[#131e30] p-1 lg:hidden rounded-lg">
                     <svg x-show="!showSidebar" class="sm:w-8 sm:h-8 w-5 h-5 text-[#131e30]" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none" viewBox="0 0 24 24">
                         <path stroke="currentColor" stroke-linecap="round" stroke-width="2" d="M5 7h14M5 12h14M5 17h14" />
@@ -40,7 +40,9 @@ mount(function (Request $request) {
         <div>
             @if($path == 'dashboard')
             <livewire:dashboard>
-                @endif
+                @elseif($path == 'live-chat')
+                <livewire:live-chat>
+                    @endif
         </div>
     </div>
 </div>
