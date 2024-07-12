@@ -16,6 +16,10 @@ $logOut = function (Request $request) {
     $this->redirectRoute('landing-page', navigate: true);
 };
 
+$redirectTo = function ($path) {
+    $this->redirectRoute($path);
+};
+
 mount(function ($path) {
     $this->path = $path;
 });
@@ -30,7 +34,7 @@ mount(function ($path) {
         <div class="border border-[#b5c1c9] rounded-full h-0 lg:mx-4 mx-4 xl:mx-8"></div>
         <div class="grid grid-cols-1 gap-4">
             <div>
-                <div
+                <div wire:click="redirectTo('dashboard')"
                     class="lg:mx-4 mx-4 xl:mx-8 text-center xl:text-left py-2 lg:px-2 xl:px-4 @if($path == 'dashboard') bg-[#131e30] text-[#fafbfb] @else hover:bg-[#131e30] hover:text-[#fafbfb] bg-transparent text-[#131e30]  @endif lg:text-md xl:text-lg cursor-pointer tracking-wider transition-opacity duration-300 rounded-full font-noramal transition-colors duration-500">
                     Dashboard</div>
             </div>
@@ -40,7 +44,7 @@ mount(function ($path) {
                     Programs</div>
             </div>
             <div>
-                <div
+                <div wire:click="redirectTo('live-chat')"
                     class="lg:mx-4 mx-4 xl:mx-8 text-center xl:text-left py-2 lg:px-2 xl:px-4 @if($path == '') bg-[#131e30] text-[#fafbfb] @else hover:bg-[#131e30] hover:text-[#fafbfb] bg-transparent text-[#131e30]  @endif lg:text-md xl:text-lg cursor-pointer tracking-wider transition-opacity duration-300 rounded-full font-noramal transition-colors duration-500">
                     Live Chat</div>
             </div>
