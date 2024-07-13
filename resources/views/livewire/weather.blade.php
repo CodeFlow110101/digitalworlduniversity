@@ -11,7 +11,7 @@ rules(['city' => 'required', 'country' => 'required']);
 
 $submit = function () {
     $this->validate();
-    $this->response = Http::get('https://api.openweathermap.org/data/2.5/weather?q=' . strtolower($this->city) . ',' . strtolower($this->country) . '&APPID=b032e94612abb5c48fd33ca86aba044b')->json();
+    $this->response = Http::get('https://api.openweathermap.org/data/2.5/weather?q=' . strtolower($this->city) . ',' . strtolower($this->country) . '&APPID=' . env('open_weather_map_api'))->json();
     if ($this->response['cod'] == 404) {
         $this->message = $this->response['message'];
     } else {
