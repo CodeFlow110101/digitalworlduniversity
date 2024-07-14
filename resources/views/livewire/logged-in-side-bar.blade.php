@@ -26,7 +26,7 @@ mount(function ($path) {
 
 ?>
 
-<div class="bg-[#d6dcde] h-full py-16 rounded-2xl">
+<div class="bg-[#d6dcde] h-full py-16 rounded-2xl select-none">
     <div class="grid grid-cols-1 gap-8">
         <div class="flex justify-center text-[#131e30] xl:font-semibold xl:text-2xl">
             Digital Worlds University
@@ -49,8 +49,8 @@ mount(function ($path) {
                     Live Chat</div>
             </div>
             <div>
-                <div
-                    class="lg:mx-4 mx-4 xl:mx-8 text-center xl:text-left py-2 lg:px-2 xl:px-4 @if($path == '') bg-[#131e30] text-[#fafbfb] @else hover:bg-[#131e30] hover:text-[#fafbfb] bg-transparent text-[#131e30]  @endif lg:text-md xl:text-lg cursor-pointer tracking-wider transition-opacity duration-300 rounded-full font-noramal transition-colors duration-500">
+                <div wire:click="redirectTo('find-jobs')"
+                    class="lg:mx-4 mx-4 xl:mx-8 text-center xl:text-left py-2 lg:px-2 xl:px-4 @if($path == 'find-jobs') bg-[#131e30] text-[#fafbfb] @else hover:bg-[#131e30] hover:text-[#fafbfb] bg-transparent text-[#131e30]  @endif lg:text-md xl:text-lg cursor-pointer tracking-wider transition-opacity duration-300 rounded-full font-noramal transition-colors duration-500">
                     Find Jobs</div>
             </div>
             <div>
