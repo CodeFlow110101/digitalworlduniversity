@@ -7,6 +7,9 @@
     @vite('resources/css/app.css')
     <link href="{{ asset('css/style.css') }}" rel="stylesheet">
     <title>{{ $title ?? 'Page Title' }}</title>
+    <meta name="csrf-token" content="{{ csrf_token() }}">
+    <script src="{{asset('livewire-events/events.js')}}"></script>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 </head>
 
 <body class="bg-[#b5c1c9]">

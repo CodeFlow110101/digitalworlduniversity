@@ -13,3 +13,8 @@
   background: #f6aa23;
   border-radius: 10px;
 }
+
+/* For Webkit browsers (Chrome, Safari) */
+.no-scrollbar::-webkit-scrollbar {
+  display: none;  /* Webkit browsers */
+}
