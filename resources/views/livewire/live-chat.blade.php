@@ -33,7 +33,7 @@ mount(function () {
 ?>
 
 <div wire:poll.6s class="rounded-2xl bg-[#d6dcde] text-[#131e30]">
-    <div class=" text-center py-8 font-thin text-4xl">{{$this->current_channel->name}}</div>
+    <div class=" text-center py-8 font-thin text-4xl select-none">{{$this->current_channel->name}}</div>
     <div class="h-full w-full grid grid-cols-1 gap-4">
         <div class="rounded-2xl pt-4 p-4 h-full w-full flex justify-between gap-4">
             <div class="bg-[#d6dcde] rounded-2xl h-full grid grid-cols-1 gap-2">
@@ -50,7 +50,7 @@ mount(function () {
                     </div>
                 </div>
             </div>
-            <div class="w-full">
+            <div class="w-full select-none">
                 <div class=" rounded-2xl px-4 overflow-auto max-h-96 lg:max-h-[480px] grid grid-cols-1 gap-4 sm:gap-6">
                     @foreach($chats as $chat)
                     <div wire:key="chat{{ $chat->id }}" class="w-full flex justify-end">

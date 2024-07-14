@@ -42,7 +42,10 @@ mount(function (Request $request) {
             <livewire:dashboard>
                 @elseif($path == 'live-chat')
                 <livewire:live-chat>
-                    @endif
+                    @elseif($path == 'find-jobs')
+                    <livewire:find-jobs>
+                        @endif
         </div>
     </div>
+    <livewire:modals.modal-list>
 </div>
