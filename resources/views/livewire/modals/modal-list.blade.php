@@ -31,6 +31,8 @@ on([
         </div>
         @if($show_modal && $modal == 'add-job')
         <livewire:modals.modal-add-job :modal="$modal" :args="$args" :data="$data" :callback_event="$callback_event">
-            @endif
+            @elseif($show_modal && $modal == 'modal-user')
+            <livewire:modals.modal-user :modal="$modal" :args="$args" :data="$data" :callback_event="$callback_event">
+                @endif
     </div>
 </div>
