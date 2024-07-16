@@ -17,7 +17,7 @@ $logOut = function (Request $request) {
 };
 
 $redirectTo = function ($path) {
-    $this->redirectRoute($path);
+    $this->redirectRoute($path, navigate: true);
 };
 
 mount(function ($path) {
@@ -37,6 +37,11 @@ mount(function ($path) {
                 <div wire:click="redirectTo('dashboard')"
                     class="lg:mx-4 mx-4 xl:mx-8 text-center xl:text-left py-2 lg:px-2 xl:px-4 @if($path == 'dashboard') bg-[#131e30] text-[#fafbfb] @else hover:bg-[#131e30] hover:text-[#fafbfb] bg-transparent text-[#131e30]  @endif lg:text-md xl:text-lg cursor-pointer tracking-wider transition-opacity duration-300 rounded-full font-noramal transition-colors duration-500">
                     Dashboard</div>
+            </div>
+            <div>
+                <div wire:click="redirectTo('admin-panel')"
+                    class="lg:mx-4 mx-4 xl:mx-8 text-center xl:text-left py-2 lg:px-2 xl:px-4 @if($path == 'admin-panel' || $path == 'admin-panel-users' || $path == 'admin-panel-programs') bg-[#131e30] text-[#fafbfb] @else hover:bg-[#131e30] hover:text-[#fafbfb] bg-transparent text-[#131e30]  @endif lg:text-md xl:text-lg cursor-pointer tracking-wider transition-opacity duration-300 rounded-full font-noramal transition-colors duration-500">
+                    Admin Panel</div>
             </div>
             <div>
                 <div
