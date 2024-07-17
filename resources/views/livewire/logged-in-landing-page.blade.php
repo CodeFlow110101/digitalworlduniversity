@@ -6,13 +6,20 @@ use Illuminate\Support\Facades\Auth;
 
 layout('components.layouts.app');
 
-state(['path']);
+state(['path', 'id']);
 
 mount(function (Request $request) {
     $this->path = $request->path();
 
     if (!Auth::check()) {
         $this->redirectRoute('landing-page', navigate: true);
+    }
+
+    if ($this->path == 'admin-panel-videos' && session()->has('admin-panel-video-id')) {
+        $this->id = session()->get('admin-panel-video-id');
+    }
+    if ($this->path == 'admin-panel-videos' && !session()->has('admin-panel-video-id')) {
+        $this->redirectRoute('admin-panel-programs', navigate: true);
     }
 });
 
@@ -44,11 +51,19 @@ mount(function (Request $request) {
                 <livewire:live-chat>
                     @elseif($path == 'find-jobs')
                     <livewire:find-jobs>
-                        @elseif($path == 'admin-panel')
-                        <livewire:admin-panel>
-                            @elseif($path == 'admin-panel-users')
-                            <livewire:users>
-                                @endif
+                        @elseif($path == 'programs')
+                        <livewire:programs>
+                            @elseif($path == 'videos')
+                            <livewire:videos>
+                                @elseif($path == 'admin-panel')
+                                <livewire:admin-panel.admin-panel>
+                                    @elseif($path == 'admin-panel-users')
+                                    <livewire:admin-panel.admin-panel-users>
+                                        @elseif($path == 'admin-panel-programs')
+                                        <livewire:admin-panel.admin-panel-programs>
+                                            @elseif($path == 'admin-panel-videos')
+                                            <livewire:admin-panel.admin-panel-videos :id="$id">
+                                                @endif
         </div>
     </div>
     <livewire:modals.modal-list>

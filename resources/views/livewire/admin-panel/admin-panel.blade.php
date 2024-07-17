@@ -1,5 +1,6 @@
 <?php
 
+use App\Models\Program;
 use App\Models\User;
 
 use function Livewire\Volt\{state, mount};
@@ -12,7 +13,7 @@ $redirectTo = function ($path) {
 
 mount(function () {
     $this->users = User::count();
-    $this->programs = 0;
+    $this->programs = Program::count();
 });
 
 
@@ -44,7 +45,7 @@ mount(function () {
                 </div>
             </div>
         </div>
-        <div class="bg-[#d6dcde] rounded-2xl grid grid-cols-1 gap-4">
+        <div class="bg-[#d6dcde] rounded-2xl grid grid-cols-1 gap-4 hidden">
             <div class="flex items-center justify-center w-full h-48 rounded-t-2xl ">
                 <div class="w-min flex justify-between gap-5">
                     <div>
