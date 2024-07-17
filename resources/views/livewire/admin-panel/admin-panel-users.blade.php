@@ -1,10 +1,15 @@
 <?php
 
 use App\Models\User;
-use function Livewire\Volt\{state, with};
+use function Livewire\Volt\{state, with, on};
 
 with(['users' => User::paginate(0)]);
 
+on([
+    'reset-admin-panel-users' => function () {
+        $this->reset();
+    }
+]);
 ?>
 
 <div class="text-[#131e30] bg-[#d6dcde] rounded-2xl p-6">
