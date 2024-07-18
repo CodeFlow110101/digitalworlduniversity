@@ -15,6 +15,11 @@ on([
     }
 ]);
 
+$redirectTo = function ($path, $id) {
+    session()->flash('admin-panel-video-player-id', $id);
+    $this->redirectRoute($path, navigate: true);
+};
+
 $deleteVideo = function ($id) {
     $video = Video::find($id);
     Storage::disk('public')->delete($video->video);
@@ -52,7 +57,7 @@ mount(function ($id) {
             </div>
             <div class="text-[#d6dcde] rounded-b-2xl bg-[#131e30] text-center p-3 grid grid-cols-1 gap-1 text-lg font-bold cursor-pointer">
                 <div class="flex justify-between items py-2 center">
-                    <div wire:click="$dispatch('show-modal', { modal:'modal-programs', args:{{$video->id}}, data:null, callback_event:null })" class="w-full">Watch</div>
+                    <div wire:click="redirectTo('admin-panel-video-player',{{$video->id}})" class=" w-full">Watch</div>
                     <div class="w-0 h-full border border-[#d6dcde]"></div>
                     <div wire:click="deleteVideo({{$video->id}})" class="w-full">Delete</div>
                 </div>

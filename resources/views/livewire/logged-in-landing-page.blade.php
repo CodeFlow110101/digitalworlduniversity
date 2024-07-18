@@ -21,6 +21,27 @@ mount(function (Request $request) {
     if ($this->path == 'admin-panel-videos' && !session()->has('admin-panel-video-id')) {
         $this->redirectRoute('admin-panel-programs', navigate: true);
     }
+
+    if ($this->path == 'admin-panel-video-player' && session()->has('admin-panel-video-player-id')) {
+        $this->id = session()->get('admin-panel-video-player-id');
+    }
+    if ($this->path == 'admin-panel-video-player' && !session()->has('admin-panel-video-player-id')) {
+        $this->redirectRoute('admin-panel-programs', navigate: true);
+    }
+
+    if ($this->path == 'videos' && session()->has('videos-id')) {
+        $this->id = session()->get('videos-id');
+    }
+    if ($this->path == 'videos' && !session()->has('videos-id')) {
+        $this->redirectRoute('programs', navigate: true);
+    }
+
+    if ($this->path == 'video-player' && session()->has('video-player-id')) {
+        $this->id = session()->get('video-player-id');
+    }
+    if ($this->path == 'video-player' && !session()->has('video-player-id')) {
+        $this->redirectRoute('programs', navigate: true);
+    }
 });
 
 ?>
@@ -54,16 +75,20 @@ mount(function (Request $request) {
                         @elseif($path == 'programs')
                         <livewire:programs>
                             @elseif($path == 'videos')
-                            <livewire:videos>
-                                @elseif($path == 'admin-panel')
-                                <livewire:admin-panel.admin-panel>
-                                    @elseif($path == 'admin-panel-users')
-                                    <livewire:admin-panel.admin-panel-users>
-                                        @elseif($path == 'admin-panel-programs')
-                                        <livewire:admin-panel.admin-panel-programs>
-                                            @elseif($path == 'admin-panel-videos')
-                                            <livewire:admin-panel.admin-panel-videos :id="$id">
-                                                @endif
+                            <livewire:videos :id="$id">
+                                @elseif($path == 'video-player')
+                                <livewire:video-player :id="$id">
+                                    @elseif($path == 'admin-panel-video-player')
+                                    <livewire:admin-panel.admin-panel-video-player :id="$id">
+                                        @elseif($path == 'admin-panel')
+                                        <livewire:admin-panel.admin-panel>
+                                            @elseif($path == 'admin-panel-users')
+                                            <livewire:admin-panel.admin-panel-users>
+                                                @elseif($path == 'admin-panel-programs')
+                                                <livewire:admin-panel.admin-panel-programs>
+                                                    @elseif($path == 'admin-panel-videos')
+                                                    <livewire:admin-panel.admin-panel-videos :id="$id">
+                                                        @endif
         </div>
     </div>
     <livewire:modals.modal-list>

@@ -40,12 +40,12 @@ mount(function ($path) {
             </div>
             <div>
                 <div wire:click="redirectTo('admin-panel')"
-                    class="lg:mx-4 mx-4 xl:mx-8 text-center xl:text-left py-2 lg:px-2 xl:px-4 @if($path == 'admin-panel' || $path == 'admin-panel-users' || $path == 'admin-panel-programs' || $path == 'admin-panel-videos') bg-[#131e30] text-[#fafbfb] @else hover:bg-[#131e30] hover:text-[#fafbfb] bg-transparent text-[#131e30]  @endif lg:text-md xl:text-lg cursor-pointer tracking-wider transition-opacity duration-300 rounded-full font-noramal transition-colors duration-500">
+                    class="lg:mx-4 mx-4 xl:mx-8 text-center xl:text-left py-2 lg:px-2 xl:px-4 @if($path == 'admin-panel' || $path == 'admin-panel-users' || $path == 'admin-panel-programs' || $path == 'admin-panel-videos' || $path == 'admin-panel-video-player') bg-[#131e30] text-[#fafbfb] @else hover:bg-[#131e30] hover:text-[#fafbfb] bg-transparent text-[#131e30]  @endif lg:text-md xl:text-lg cursor-pointer tracking-wider transition-opacity duration-300 rounded-full font-noramal transition-colors duration-500">
                     Admin Panel</div>
             </div>
             <div>
                 <div wire:click="redirectTo('programs')"
-                    class="lg:mx-4 mx-4 xl:mx-8 text-center xl:text-left py-2 lg:px-2 xl:px-4 @if($path == 'programs') bg-[#131e30] text-[#fafbfb] @else hover:bg-[#131e30] hover:text-[#fafbfb] bg-transparent text-[#131e30]  @endif lg:text-md xl:text-lg cursor-pointer tracking-wider transition-opacity duration-300 rounded-full font-noramal transition-colors duration-500">
+                    class="lg:mx-4 mx-4 xl:mx-8 text-center xl:text-left py-2 lg:px-2 xl:px-4 @if($path == 'programs' || $path == 'videos' || $path == 'video-player') bg-[#131e30] text-[#fafbfb] @else hover:bg-[#131e30] hover:text-[#fafbfb] bg-transparent text-[#131e30]  @endif lg:text-md xl:text-lg cursor-pointer tracking-wider transition-opacity duration-300 rounded-full font-noramal transition-colors duration-500">
                     Programs</div>
             </div>
             <div>

@@ -14,10 +14,12 @@ Volt::route('/live-chat', 'logged-in-landing-page')->name('live-chat');
 Volt::route('/find-jobs', 'logged-in-landing-page')->name('find-jobs');
 Volt::route('/programs', 'logged-in-landing-page')->name('programs');
 Volt::route('/videos', 'logged-in-landing-page')->name('videos');
+Volt::route('/video-player', 'logged-in-landing-page')->name('video-player');
 Volt::route('/admin-panel', 'logged-in-landing-page')->name('admin-panel');
 Volt::route('/admin-panel-users', 'logged-in-landing-page')->name('admin-panel-users');
 Volt::route('/admin-panel-programs', 'logged-in-landing-page')->name('admin-panel-programs');
 Volt::route('/admin-panel-videos', 'logged-in-landing-page')->name('admin-panel-videos');
+Volt::route('/admin-panel-video-player', 'logged-in-landing-page')->name('admin-panel-video-player');
 Volt::route('/weather', 'weather')->name('weather');
 
 Route::post('/upload', [FileUploads::class, 'store']);
