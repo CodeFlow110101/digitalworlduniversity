@@ -1,6 +1,7 @@
 <?php
 
 use App\Models\Video;
+use App\Models\VideoProgress;
 use Illuminate\Support\Facades\Storage;
 
 use function Livewire\Volt\{state, mount, with, on};
@@ -24,6 +25,7 @@ $deleteVideo = function ($id) {
     $video = Video::find($id);
     Storage::disk('public')->delete($video->video);
     Storage::disk('public')->delete($video->thumbnail);
+    VideoProgress::where('video_id', $id)->delete();
     Video::find($id)->delete();
     session()->flash('admin-panel-video-id', $this->program_id);
     $this->redirectRoute('admin-panel-videos', navigate: true);

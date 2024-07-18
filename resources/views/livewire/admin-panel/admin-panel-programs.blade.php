@@ -2,6 +2,7 @@
 
 use App\Models\Program;
 use App\Models\Video;
+use App\Models\VideoProgress;
 use Illuminate\Support\Facades\Storage;
 
 use function Livewire\Volt\{state, with, on};
@@ -28,6 +29,7 @@ $deleteProgram = function ($id) {
     Storage::disk('public')->delete(Program::find($id)->image);
     Video::where('program_id', $id)->delete();
     Program::where('id', $id)->delete();
+    VideoProgress::where('program_id', $id)->delete();
     $this->redirectRoute('admin-panel-programs', navigate: true);
 };
 
