@@ -2,25 +2,41 @@
 
 use App\Models\Video;
 
-use function Livewire\Volt\{state, on, mount};
+use function Livewire\Volt\{state, on, mount, rules};
 
 state(['program_id', 'name', 'video']);
 
 on([
-    'modal-video-set-validation' => function ($validationKey, $validationMessage, $fileName, $filePath) {
-        if ($validationKey && $validationMessage) {
-            $this->addError($validationKey, $validationMessage);
+    'modal-video-set-validation' => function ($validationKey, $validationMessage, $videoName, $videoPath, $thumbnailName, $thumbnailPath) {
+
+        $this->resetValidation();
+
+        if ($validationKey && ($validationKey['video'] || $validationKey['thumbnail'])) {
+
+            if ($validationKey['video']) {
+                $this->addError('video', $validationMessage['video']);
+            }
+
+            if ($validationKey['thumbnail']) {
+                $this->addError('thumbnail', $validationMessage['thumbnail']);
+            }
+
+            if (!$this->name) {
+                $this->addError('name', 'The name field is required.');
+            }
+
             $this->dispatch('admin-panel-video-upload-loader', value: false);
         } else {
             Video::create([
                 'name' => $this->name,
-                'video' => $filePath,
+                'video' => $videoPath,
+                'thumbnail' => $thumbnailPath,
                 'program_id' => $this->program_id,
             ]);
-        }
 
-        session()->flash('admin-panel-video-id', $this->program_id);
-        $this->redirectRoute('admin-panel-videos', navigate: true);
+            session()->flash('admin-panel-video-id', $this->program_id);
+            $this->redirectRoute('admin-panel-videos', navigate: true);
+        }
     }
 ]);
 
@@ -45,8 +61,15 @@ mount(function ($modal, $args, $data, $callback_event) {
             </div>
             @error('video')<div class="text-red-600">{{$message}}</div>@enderror
         </div>
+        <div>
+            <div class="relative">
+                <input x-ref="thumbnail" accept="image/*" type="file" class="block px-2.5 pb-2.5 pt-4 w-full text-sm text-[#131e30] bg-transparent rounded-lg border-2 border-[#131e30] appearance-none focus:outline-none focus:ring-0 peer" placeholder=" " />
+                <label for="floating_outlined" class="absolute text-sm text-[#131e30] duration-300 transform -translate-y-4 scale-75 top-2 z-10 origin-[0] bg-[#d6dcde] px-2 peer-focus:px-2 peer-placeholder-shown:scale-100 peer-placeholder-shown:-translate-y-1/2 peer-placeholder-shown:top-1/2 peer-focus:top-2 peer-focus:scale-75 peer-focus:-translate-y-4 rtl:peer-focus:translate-x-1/4 rtl:peer-focus:left-auto start-1">Thumbnail</label>
+            </div>
+            @error('thumbnail')<div class="text-red-600">{{$message}}</div>@enderror
+        </div>
         <div x-data="{showLoader:false}" x-on:admin-panel-video-upload-loader.window="showLoader = event.detail.value" class="flex justify-center w-full">
-            <button wire:click="$dispatch('upload-video', { file: $refs.video, sizeLimit:400, callbackDispatch:'modal-video-set-validation', callbackLoaderDispatch:'admin-panel-video-upload-loader'})" class="bg-[#131e30] px-8 py-4 text-lg font-semibold rounded-lg text-[#d6dcde]">
+            <button :class="showLoader && 'pointer-events-none'" wire:click="$dispatch('upload-video', { video: $refs.video, thumbnail: $refs.thumbnail, videoSizeLimit:400, thumbnailSizeLimit:1, callbackDispatch:'modal-video-set-validation', callbackLoaderDispatch:'admin-panel-video-upload-loader'})" class="bg-[#131e30] px-8 py-4 text-lg font-semibold rounded-lg text-[#d6dcde]">
                 <div x-show="!showLoader">Submit</div>
                 <div x-show="showLoader" class="flex justify-center">
                     <svg aria-hidden="true" class="w-8 h-8 text-[#131e30] animate-spin fill-white" viewBox="0 0 100 101" fill="none" xmlns="http://www.w3.org/2000/svg">

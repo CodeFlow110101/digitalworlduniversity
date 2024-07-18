@@ -15,9 +15,21 @@ class FileUploads extends Controller
 
     function storeVideo(Request $request)
     {
-        $fileName = (string)Str::uuid() . $request->file('file')->getClientOriginalName();
-        $filePath =  $request->file('file')->storeAs('videos', $fileName, 'public');
 
-        return ['file_name' => $fileName, 'file_path' => $filePath];
+        $videoName = (string)Str::uuid() . $request->file('video')->getClientOriginalName();
+        $videoPath =  $request->file('video')->storeAs('videos', $videoName, 'public');
+
+        $thumbnailName = (string)Str::uuid() . $request->file('thumbnail')->getClientOriginalName();
+        $thumbnailPath =  $request->file('thumbnail')->storeAs('images', $thumbnailName, 'public');
+
+        return ['videoName' => $videoName, 'videoPath' => $videoPath, 'thumbnailName' => $thumbnailName, 'thumbnailPath' => $thumbnailPath];
+    }
+
+    function storeThumbnail(Request $request)
+    {
+        $thumbnailName = (string)Str::uuid() . $request->file('thumbnail')->getClientOriginalName();
+        $thumbnailPath =  $request->file('thumbnail')->storeAs('images', $thumbnailName, 'public');
+
+        return ['thumbnailName' => $thumbnailName, 'thumbnailPath' => $thumbnailPath];
     }
 }

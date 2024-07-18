@@ -22,3 +22,4 @@ Volt::route('/weather', 'weather')->name('weather');
 
 Route::post('/upload', [FileUploads::class, 'store']);
 Route::post('/upload-video', [FileUploads::class, 'storeVideo']);
+Route::post('/upload-thumbnail', [FileUploads::class, 'storeThumbnail']);
