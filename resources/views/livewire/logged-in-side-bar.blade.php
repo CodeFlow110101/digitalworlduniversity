@@ -3,6 +3,7 @@
 use function Livewire\Volt\{state, mount};
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Gate;
 
 state(['path']);
 
@@ -26,7 +27,7 @@ mount(function ($path) {
 
 ?>
 
-<div class="bg-[#d6dcde] h-full py-16 rounded-2xl select-none">
+<div class="bg-[#d6dcde] h-min py-16 rounded-2xl select-none">
     <div class="grid grid-cols-1 gap-8">
         <div class="flex justify-center text-[#131e30] xl:font-semibold xl:text-2xl">
             Digital Worlds University
@@ -36,13 +37,16 @@ mount(function ($path) {
             <div>
                 <div wire:click="redirectTo('dashboard')"
                     class="lg:mx-4 mx-4 xl:mx-8 text-center xl:text-left py-2 lg:px-2 xl:px-4 @if($path == 'dashboard') bg-[#131e30] text-[#fafbfb] @else hover:bg-[#131e30] hover:text-[#fafbfb] bg-transparent text-[#131e30]  @endif lg:text-md xl:text-lg cursor-pointer tracking-wider transition-opacity duration-300 rounded-full font-noramal transition-colors duration-500">
-                    Dashboard</div>
+                    Dashboard
+                </div>
             </div>
+            @if(Gate::allows('is_Admin'))
             <div>
                 <div wire:click="redirectTo('admin-panel')"
                     class="lg:mx-4 mx-4 xl:mx-8 text-center xl:text-left py-2 lg:px-2 xl:px-4 @if($path == 'admin-panel' || $path == 'admin-panel-users' || $path == 'admin-panel-programs' || $path == 'admin-panel-videos' || $path == 'admin-panel-video-player') bg-[#131e30] text-[#fafbfb] @else hover:bg-[#131e30] hover:text-[#fafbfb] bg-transparent text-[#131e30]  @endif lg:text-md xl:text-lg cursor-pointer tracking-wider transition-opacity duration-300 rounded-full font-noramal transition-colors duration-500">
                     Admin Panel</div>
             </div>
+            @endif
             <div>
                 <div wire:click="redirectTo('programs')"
                     class="lg:mx-4 mx-4 xl:mx-8 text-center xl:text-left py-2 lg:px-2 xl:px-4 @if($path == 'programs' || $path == 'videos' || $path == 'video-player') bg-[#131e30] text-[#fafbfb] @else hover:bg-[#131e30] hover:text-[#fafbfb] bg-transparent text-[#131e30]  @endif lg:text-md xl:text-lg cursor-pointer tracking-wider transition-opacity duration-300 rounded-full font-noramal transition-colors duration-500">

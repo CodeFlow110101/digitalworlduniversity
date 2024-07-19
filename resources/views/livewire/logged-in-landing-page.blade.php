@@ -3,6 +3,7 @@
 use function Livewire\Volt\{state, layout, mount};
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Gate;
 
 layout('components.layouts.app');
 
@@ -13,6 +14,10 @@ mount(function (Request $request) {
 
     if (!Auth::check()) {
         $this->redirectRoute('landing-page', navigate: true);
+    }
+
+    if (Gate::check('is_Student') && str_contains($this->path, 'admin-panel')) {
+        $this->redirectRoute('dashboard', navigate: true);
     }
 
     if ($this->path == 'admin-panel-videos' && session()->has('admin-panel-video-id')) {
@@ -67,27 +72,27 @@ mount(function (Request $request) {
         </div>
         <div>
             @if($path == 'dashboard')
-            <livewire:dashboard>
+            <livewire:dashboard lazy>
                 @elseif($path == 'live-chat')
-                <livewire:live-chat>
+                <livewire:live-chat lazy>
                     @elseif($path == 'find-jobs')
-                    <livewire:find-jobs>
+                    <livewire:find-jobs lazy>
                         @elseif($path == 'programs')
-                        <livewire:programs>
+                        <livewire:programs lazy>
                             @elseif($path == 'videos')
-                            <livewire:videos :id="$id">
+                            <livewire:videos :id="$id" lazy>
                                 @elseif($path == 'video-player')
                                 <livewire:video-player :id="$id">
                                     @elseif($path == 'admin-panel-video-player')
                                     <livewire:admin-panel.admin-panel-video-player :id="$id">
                                         @elseif($path == 'admin-panel')
-                                        <livewire:admin-panel.admin-panel>
+                                        <livewire:admin-panel.admin-panel lazy>
                                             @elseif($path == 'admin-panel-users')
-                                            <livewire:admin-panel.admin-panel-users>
+                                            <livewire:admin-panel.admin-panel-users lazy>
                                                 @elseif($path == 'admin-panel-programs')
-                                                <livewire:admin-panel.admin-panel-programs>
+                                                <livewire:admin-panel.admin-panel-programs lazy>
                                                     @elseif($path == 'admin-panel-videos')
-                                                    <livewire:admin-panel.admin-panel-videos :id="$id">
+                                                    <livewire:admin-panel.admin-panel-videos :id="$id" lazy>
                                                         @endif
         </div>
     </div>
