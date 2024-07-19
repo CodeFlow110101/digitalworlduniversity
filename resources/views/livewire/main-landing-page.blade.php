@@ -18,7 +18,7 @@ mount(function (Request $request) {
 
 ?>
 
-<div class="bg-[#050e14]">
+<div class="bg-[#050e14] select-none">
     <livewire:style.landing-page-style>
 
         @if ($path == '/')
