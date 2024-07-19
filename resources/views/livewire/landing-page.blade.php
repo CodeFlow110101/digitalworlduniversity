@@ -6,23 +6,87 @@ use function Livewire\Volt\{state, layout};
 
 <div>
     <div class="flex jusity-center w-full mt-16">
-        <div class="w-full grid grid-cols-1 gap-5">
-            <div class="text-6xl text-white font-semibold flex justify-center w-full">
+        <div class="w-full grid grid-cols-1 gap-5 max-sm:px-4">
+            <div class="lg:text-6xl sm:text-4xl text-xl text-white font-semibold flex justify-center w-full">
                 <div class="w-min uppercase whitespace-nowrap flex justify-between gap-3">
                     <div class="font-light">Money making is</div>
                     <div class="font-bold">a skill</div>
                 </div>
             </div>
-            <div class="text-3xl text-white font-semibold flex justify-center w-full">
+            <div class="lg:text-3xl sm:text-xl text-lg text-white font-semibold flex justify-center w-full">
                 <div class="w-min  whitespace-nowrap flex justify-between gap-3">
                     <div class="font-medium">We will teach you how to</div>
                     <div class="font-bold">master it</div>
                 </div>
             </div>
             <div class="flex justify-center">
+                <div class="border border-gray-300 bg-gray-800 rounded-lg p-2 lg:w-3/5 w-11/12">
+                    <div role="status"
+                        class="flex border border-gray-300 items-center sm:h-80 h-48 justify-center bg-gray-600 rounded-lg">
+                        <svg class="w-10 h-10 text-gray-200" aria-hidden="true" xmlns="http://www.w3.org/2000/svg"
+                            fill="currentColor" viewBox="0 0 16 20">
+                            <path d="M5 5V.13a2.96 2.96 0 0 0-1.293.749L.879 3.707A2.98 2.98 0 0 0 .13 5H5Z" />
+                            <path
+                                d="M14.066 0H7v5a2 2 0 0 1-2 2H0v11a1.97 1.97 0 0 0 1.934 2h12.132A1.97 1.97 0 0 0 16 18V2a1.97 1.97 0 0 0-1.934-2ZM9 13a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-2a2 2 0 0 1 2-2h2a2 2 0 0 1 2 2v2Zm4 .382a1 1 0 0 1-1.447.894L10 13v-2l1.553-1.276a1 1 0 0 1 1.447.894v2.764Z" />
+                        </svg>
+                    </div>
+                </div>
+            </div>
+            <div class="flex justify-center pt-8">
+                <div
+                    class="py-4 px-8 font-extrabold lg:tracking-wider lg:text-xl text-sm w-min whitespace-nowrap bg-[#f6aa23] rounded-lg uppercase hover:scale-105 transition-transform duration-200">
+                    join Digital Worlds University</div>
+            </div>
+            <div class="flex justify-center">
+                <div class="text-gray-400 lg:text-base text-sm">Join 113,000+ like-minded students</div>
+            </div>
+            <div class="flex justify-center">
+                <div class="text-gray-400 uppercase tracking-widest lg:text-2xl text-base">Introducing</div>
+            </div>
+            <div class="flex justify-center">
+                <div class="text-white uppercase lg:text-5xl sm:text-2xl text-lg">A massive upgrade</div>
+            </div>
+            <div class="flex justify-center text-center">
+                <div class="text-gray-400 lg:text-2xl sm:text-lg text-base">The modern education system is designed to make
+                    you poor
+                </div>
+            </div>
+            <div class="flex justify-center">
+                <div class="grid grid-cols-1 gap-1">
+                    <div class="flex justify-center">
+                        <div class="text-white w-full lg:text-2xl text-sm text-pretty text-center gap-1">
+                            <div class="font-bold">Imagine you could get access to multi-millionaire mentors who will give you</div>
+                        </div>
+                    </div>
+                    <div class="text-gray-400 lg:text-2xl text-sm text-center">step-by-step path to reach your goals as fast as possible…</div>
+                </div>
+            </div>
+            <div class="flex justify-center">
+                <div class="grid grid-cols-1 gap-1">
+                    <div class="text-white lg:text-2xl text-sm text-center text-pretty">
+                        <span>That's</span>
+                        <span class="font-bold">exactly
+                        </span>
+                        <span>what you can find</span>
+                        <span class="font-bold">inside digital worlds university</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="my-12 sm:py-32 py-16 bg-slate-900 sm:px-12 px-4 grid cols-1 gap-12">
+        <div class="flex justify-between sm:gap-8">
+            <div class="h-full xl:hidden">
+                <div class="w-min h-full xl:hidden">
+                    <div class="h-4 w-4 rounded-full bg-gray-100"></div>
+                    <div class="my-2 flex h-full justify-center">
+                        <div class="h-auto w-0.5 bg-gray-800 rounded"></div>
+                    </div>
+                </div>
+            </div>
+            <div class="xl:flex xl:justify-between w-full gap-14">
                 <div role="status"
-                    class="flex items-center justify-center h-80 w-3/5 bg-gray-600 rounded-lg animate-pulse"
-                    style="box-shadow: 0 1px 20px rgba(255, 255, 255, 0.8);">
+                    class="flex lg:mt-24 mb-24 mt-8 items-center justify-center h-56 w-full bg-gray-600 rounded-lg">
                     <svg class="w-10 h-10 text-gray-200" aria-hidden="true" xmlns="http://www.w3.org/2000/svg"
                         fill="currentColor" viewBox="0 0 16 20">
                         <path d="M5 5V.13a2.96 2.96 0 0 0-1.293.749L.879 3.707A2.98 2.98 0 0 0 .13 5H5Z" />
@@ -30,222 +94,204 @@ use function Livewire\Volt\{state, layout};
                             d="M14.066 0H7v5a2 2 0 0 1-2 2H0v11a1.97 1.97 0 0 0 1.934 2h12.132A1.97 1.97 0 0 0 16 18V2a1.97 1.97 0 0 0-1.934-2ZM9 13a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-2a2 2 0 0 1 2-2h2a2 2 0 0 1 2 2v2Zm4 .382a1 1 0 0 1-1.447.894L10 13v-2l1.553-1.276a1 1 0 0 1 1.447.894v2.764Z" />
                     </svg>
                 </div>
-            </div>
-            <div class="flex justify-center pt-8">
-                <div
-                    class="py-4 px-8 font-extrabold tracking-wider text-xl w-min whitespace-nowrap bg-[#f6aa23] rounded-lg uppercase hover:scale-105 transition-transform duration-200">
-                    join Digital Worlds University</div>
-            </div>
-            <div class="flex justify-center">
-                <div class="text-gray-400">Join 113,000+ like-minded students</div>
-            </div>
-            <div class="flex justify-center">
-                <div class="text-gray-400 uppercase tracking-widest text-2xl">Introducing</div>
-            </div>
-            <div class="flex justify-center">
-                <div class="text-white uppercase text-5xl">A massive upgrade</div>
-            </div>
-            <div class="flex justify-center">
-                <div class="text-gray-400 text-2xl">The modern education system is designed to make
-                    you poor
-                </div>
-            </div>
-            <div class="flex justify-center">
-                <div class="grid grid-cols-1 gap-1">
-                    <div class="text-white text-2xl flex justify-between gap-1">
-                        <div class="font-bold">Imagine you could get access to multi-millionaire mentors</div>
-                        <div>who will give you</div>
-                    </div>
-                    <div class="text-gray-400 text-2xl text-center">step-by-step path to reach your goals as
-                        fast as
-                        possible…
-                    </div>
-                </div>
-            </div>
-            <div class="flex justify-center">
-                <div class="grid grid-cols-1 gap-1">
-                    <div class="text-white text-2xl flex justify-between gap-1">
-                        <div>That's</div>
-                        <div class="font-bold">exactly</div>
-                        <div>what you can find</div>
-                        <div class="font-bold">inside digital worlds university</div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-    <div class="my-12 py-32 bg-slate-900 px-12 grid cols-1 gap-12">
-        <div class="flex justify-between gap-14">
-            <div role="status"
-                class="flex my-24 items-center justify-center h-56 w-full bg-gray-600 rounded-lg animate-pulse">
-                <svg class="w-10 h-10 text-gray-200" aria-hidden="true" xmlns="http://www.w3.org/2000/svg"
-                    fill="currentColor" viewBox="0 0 16 20">
-                    <path d="M5 5V.13a2.96 2.96 0 0 0-1.293.749L.879 3.707A2.98 2.98 0 0 0 .13 5H5Z" />
-                    <path
-                        d="M14.066 0H7v5a2 2 0 0 1-2 2H0v11a1.97 1.97 0 0 0 1.934 2h12.132A1.97 1.97 0 0 0 16 18V2a1.97 1.97 0 0 0-1.934-2ZM9 13a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-2a2 2 0 0 1 2-2h2a2 2 0 0 1 2 2v2Zm4 .382a1 1 0 0 1-1.447.894L10 13v-2l1.553-1.276a1 1 0 0 1 1.447.894v2.764Z" />
-                </svg>
-            </div>
 
-            <div class="w-min h-auto">
-                <div class="h-4 w-4 rounded-full bg-gray-100"></div>
-                <div class="my-2 flex h-full justify-center">
-                    <div class="h-auto w-0.5 bg-gray-800 rounded"></div>
+                <div class="w-min h-auto max-xl:hidden">
+                    <div class="h-4 w-4 rounded-full bg-gray-100"></div>
+                    <div class="my-2 flex h-full justify-center">
+                        <div class="h-auto w-0.5 bg-gray-800 rounded"></div>
+                    </div>
                 </div>
-            </div>
 
-            <div class="w-full">
-                <div class="text-4xl text-white uppercase text-center font-thin">Learn Vital <span
-                        class="font-extrabold">Life
-                        Lessons</span>
-                </div>
-                <div class="grid grid-cols-1 gap-8 mt-12 whitespace-nowrap text-white">
-                    <div class="flex justify-between w-min gap-4 items-center">
-                        <svg class="w-12 h-12 text-[#f6aa23]" aria-hidden="true" xmlns="http://www.w3.org/2000/svg"
-                            width="24" height="24" fill="none" viewBox="0 0 24 24">
-                            <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="3"
-                                d="M5 11.917 9.724 16.5 19 7.5" />
-                        </svg>
-                        <div class="text-2xl text-gray-300">World-class <span class="text-white font-bold">custom
-                                built
-                                learning
-                                application</span>
-                        </div>
+                <div class="w-full">
+                    <div class="md:text-4xl text-2xl text-white uppercase text-center font-thin">Learn Vital <span
+                            class="font-extrabold">Life
+                            Lessons</span>
                     </div>
-                    <div class="flex justify-between w-min gap-4 items-center">
-                        <svg class="w-12 h-12 text-[#f6aa23]" aria-hidden="true" xmlns="http://www.w3.org/2000/svg"
-                            width="24" height="24" fill="none" viewBox="0 0 24 24">
-                            <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="3"
-                                d="M5 11.917 9.724 16.5 19 7.5" />
-                        </svg>
-                        <div class="text-2xl text-gray-300">Scale from <span class="text-white font-bold">Zero
-                                to
-                                $10k/month</span>
-                            as fast as possible
+                    <div class="grid grid-cols-1 gap-8 mt-12 text-white">
+                        <div class="flex justify-between max-w-max gap-4 items-center">
+                            <svg class="md:w-12 md:h-12 w-8 h-8 text-[#f6aa23]" aria-hidden="true" xmlns="http://www.w3.org/2000/svg"
+                                width="24" height="24" fill="none" viewBox="0 0 24 24">
+                                <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="3"
+                                    d="M5 11.917 9.724 16.5 19 7.5" />
+                            </svg>
+                            <div class="md:text-2xl text-lg text-gray-300">World-class <span class="text-white font-bold">custom
+                                    built
+                                    learning
+                                    application</span>
+                            </div>
                         </div>
-                    </div>
-                    <div class="flex justify-between w-min gap-4 items-center">
-                        <svg class="w-12 h-12 text-[#f6aa23]" aria-hidden="true" xmlns="http://www.w3.org/2000/svg"
-                            width="24" height="24" fill="none" viewBox="0 0 24 24">
-                            <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="3"
-                                d="M5 11.917 9.724 16.5 19 7.5" />
-                        </svg>
-                        <div class="text-2xl text-gray-300">Master the skills you need to <span
-                                class="text-white font-bold">
-                                maximise your income</span>
+                        <div class="flex justify-between gap-4 items-center">
+                            <div class="flex justify-between max-w-max gap-4 items-center">
+                                <svg class="md:w-12 md:h-12 w-8 h-8 text-[#f6aa23]" aria-hidden="true" xmlns="http://www.w3.org/2000/svg"
+                                    width="24" height="24" fill="none" viewBox="0 0 24 24">
+                                    <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="3"
+                                        d="M5 11.917 9.724 16.5 19 7.5" />
+                                </svg>
+                                <div class="md:text-2xl text-lg text-gray-300">Scale from <span class="text-white font-bold">Zero
+                                        to
+                                        $10k/month</span>
+                                    as fast as possible
+                                </div>
+                            </div>
+                        </div>
+                        <div class="flex justify-between gap-4 items-center">
+                            <div class="flex justify-between max-w-max gap-4 items-center">
+                                <svg class="md:w-12 md:h-12 w-8 h-8 text-[#f6aa23]" aria-hidden="true" xmlns="http://www.w3.org/2000/svg"
+                                    width="24" height="24" fill="none" viewBox="0 0 24 24">
+                                    <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="3"
+                                        d="M5 11.917 9.724 16.5 19 7.5" />
+                                </svg>
+                                <div class="md:text-2xl text-lg text-gray-300">Master the skills you need to <span
+                                        class="text-white font-bold">
+                                        maximise your income</span>
+                                </div>
+                            </div>
                         </div>
                     </div>
                 </div>
             </div>
         </div>
-        <div class="flex justify-between gap-14">
-            <div role="status"
-                class="flex my-24 items-center justify-center h-56 w-full bg-gray-600 rounded-lg animate-pulse">
-                <svg class="w-10 h-10 text-gray-200" aria-hidden="true" xmlns="http://www.w3.org/2000/svg"
-                    fill="currentColor" viewBox="0 0 16 20">
-                    <path d="M5 5V.13a2.96 2.96 0 0 0-1.293.749L.879 3.707A2.98 2.98 0 0 0 .13 5H5Z" />
-                    <path
-                        d="M14.066 0H7v5a2 2 0 0 1-2 2H0v11a1.97 1.97 0 0 0 1.934 2h12.132A1.97 1.97 0 0 0 16 18V2a1.97 1.97 0 0 0-1.934-2ZM9 13a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-2a2 2 0 0 1 2-2h2a2 2 0 0 1 2 2v2Zm4 .382a1 1 0 0 1-1.447.894L10 13v-2l1.553-1.276a1 1 0 0 1 1.447.894v2.764Z" />
-                </svg>
-            </div>
-
-            <div class="w-min h-auto">
-                <div class="h-4 w-4 rounded-full bg-gray-100"></div>
-                <div class="my-2 flex h-full justify-center">
-                    <div class="h-auto w-0.5 bg-gray-800 rounded"></div>
+        <div class="flex justify-between sm:gap-8">
+            <div class="h-full xl:hidden">
+                <div class="w-min h-full xl:hidden">
+                    <div class="h-4 w-4 rounded-full bg-gray-100"></div>
+                    <div class="my-2 flex h-full justify-center">
+                        <div class="h-auto w-0.5 bg-gray-800 rounded"></div>
+                    </div>
                 </div>
             </div>
-
-            <div class="w-full">
-                <div class="text-4xl text-white uppercase text-center font-thin">Join a private <span
-                        class="font-extrabold">network</span>
+            <div class="xl:flex xl:justify-between w-full gap-14">
+                <div role="status"
+                    class="flex lg:mt-24 mb-24 mt-8 items-center justify-center h-56 w-full bg-gray-600 rounded-lg ">
+                    <svg class="w-10 h-10 text-gray-200" aria-hidden="true" xmlns="http://www.w3.org/2000/svg"
+                        fill="currentColor" viewBox="0 0 16 20">
+                        <path d="M5 5V.13a2.96 2.96 0 0 0-1.293.749L.879 3.707A2.98 2.98 0 0 0 .13 5H5Z" />
+                        <path
+                            d="M14.066 0H7v5a2 2 0 0 1-2 2H0v11a1.97 1.97 0 0 0 1.934 2h12.132A1.97 1.97 0 0 0 16 18V2a1.97 1.97 0 0 0-1.934-2ZM9 13a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-2a2 2 0 0 1 2-2h2a2 2 0 0 1 2 2v2Zm4 .382a1 1 0 0 1-1.447.894L10 13v-2l1.553-1.276a1 1 0 0 1 1.447.894v2.764Z" />
+                    </svg>
                 </div>
-                <div class="grid grid-cols-1 gap-8 mt-12 whitespace-nowrap text-white">
-                    <div class="flex justify-between w-min gap-4 items-center">
-                        <svg class="w-12 h-12 text-[#f6aa23]" aria-hidden="true" xmlns="http://www.w3.org/2000/svg"
-                            width="24" height="24" fill="none" viewBox="0 0 24 24">
-                            <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"
-                                stroke-width="3" d="M5 11.917 9.724 16.5 19 7.5" />
-                        </svg>
-                        <div class="text-2xl text-gray-300"><span class="text-white font-bold">Celebrate your
-                                wins</span> with people who <div>understand</div>
-                        </div>
+
+                <div class="w-min h-auto max-xl:hidden">
+                    <div class="h-4 w-4 rounded-full bg-gray-100"></div>
+                    <div class="my-2 flex h-full justify-center">
+                        <div class="h-auto w-0.5 bg-gray-800 rounded"></div>
                     </div>
-                    <div class="flex justify-between w-min gap-4 items-center">
-                        <svg class="w-12 h-12 text-[#f6aa23]" aria-hidden="true" xmlns="http://www.w3.org/2000/svg"
-                            width="24" height="24" fill="none" viewBox="0 0 24 24">
-                            <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"
-                                stroke-width="3" d="M5 11.917 9.724 16.5 19 7.5" />
-                        </svg>
-                        <div class="text-2xl text-gray-300">Make <span class="text-white font-bold">like-minded
-                                friends</span>
-                            on your journey
-                        </div>
+                </div>
+
+                <div class="w-full">
+                    <div class="md:text-4xl text-2xl text-white uppercase text-center font-thin">Join a private <span
+                            class="font-extrabold">network</span>
                     </div>
-                    <div class="flex justify-between w-min gap-4 items-center">
-                        <svg class="w-12 h-12 text-[#f6aa23]" aria-hidden="true" xmlns="http://www.w3.org/2000/svg"
-                            width="24" height="24" fill="none" viewBox="0 0 24 24">
-                            <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"
-                                stroke-width="3" d="M5 11.917 9.724 16.5 19 7.5" />
-                        </svg>
-                        <div class="text-2xl text-gray-300"><span class="text-white font-bold">
-                                Network with 113,000+ people</span>
+                    <div class="grid grid-cols-1 gap-8 mt-12 text-white">
+                        <div class="flex justify-between max-w-max gap-4 items-center">
+                            <div class="flex justify-between gap-4 items-center">
+                                <svg class="md:w-12 md:h-12 w-8 h-8 text-[#f6aa23]" aria-hidden="true" xmlns="http://www.w3.org/2000/svg"
+                                    width="24" height="24" fill="none" viewBox="0 0 24 24">
+                                    <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"
+                                        stroke-width="3" d="M5 11.917 9.724 16.5 19 7.5" />
+                                </svg>
+                                <div class="md:text-2xl text-lg text-gray-300"><span class="text-white font-bold">Celebrate your
+                                        wins</span> with people who <div>understand</div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="flex justify-between gap-4 items-center">
+                            <div class="flex justify-between max-w-max gap-4 items-center">
+                                <svg class="md:w-12 md:h-12 w-8 h-8 text-[#f6aa23]" aria-hidden="true" xmlns="http://www.w3.org/2000/svg"
+                                    width="24" height="24" fill="none" viewBox="0 0 24 24">
+                                    <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"
+                                        stroke-width="3" d="M5 11.917 9.724 16.5 19 7.5" />
+                                </svg>
+                                <div class="md:text-2xl text-lg text-gray-300">Make <span class="text-white font-bold">like-minded
+                                        friends</span>
+                                    on your journey
+                                </div>
+                            </div>
+                        </div>
+                        <div class="flex justify-between gap-4 items-center">
+                            <div class="flex justify-between max-w-max gap-4 items-center">
+                                <svg class="md:w-12 md:h-12 w-8 h-8 text-[#f6aa23]" aria-hidden="true" xmlns="http://www.w3.org/2000/svg"
+                                    width="24" height="24" fill="none" viewBox="0 0 24 24">
+                                    <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"
+                                        stroke-width="3" d="M5 11.917 9.724 16.5 19 7.5" />
+                                </svg>
+                                <div class="md:text-2xl text-lg text-gray-300"><span class="text-white font-bold">
+                                        Network with 113,000+ people</span>
+                                </div>
+                            </div>
                         </div>
                     </div>
                 </div>
             </div>
         </div>
-        <div class="flex justify-between gap-14">
-            <div role="status"
-                class="flex my-24 items-center justify-center h-56 w-full bg-gray-600 rounded-lg animate-pulse">
-                <svg class="w-10 h-10 text-gray-200" aria-hidden="true" xmlns="http://www.w3.org/2000/svg"
-                    fill="currentColor" viewBox="0 0 16 20">
-                    <path d="M5 5V.13a2.96 2.96 0 0 0-1.293.749L.879 3.707A2.98 2.98 0 0 0 .13 5H5Z" />
-                    <path
-                        d="M14.066 0H7v5a2 2 0 0 1-2 2H0v11a1.97 1.97 0 0 0 1.934 2h12.132A1.97 1.97 0 0 0 16 18V2a1.97 1.97 0 0 0-1.934-2ZM9 13a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-2a2 2 0 0 1 2-2h2a2 2 0 0 1 2 2v2Zm4 .382a1 1 0 0 1-1.447.894L10 13v-2l1.553-1.276a1 1 0 0 1 1.447.894v2.764Z" />
-                </svg>
-            </div>
-
-            <div class="w-min h-auto">
-                <div class="h-4 w-4 rounded-full bg-gray-100"></div>
-                <div class="my-2 flex h-full justify-center">
-                    <div class="h-auto w-0.5 bg-gray-800 rounded"></div>
+        <div class="flex justify-between sm:gap-8">
+            <div class="h-full xl:hidden">
+                <div class="w-min h-full xl:hidden">
+                    <div class="h-4 w-4 rounded-full bg-gray-100"></div>
+                    <div class="my-2 flex h-full justify-center">
+                        <div class="h-auto w-0.5 bg-gray-800 rounded"></div>
+                    </div>
                 </div>
             </div>
-
-            <div class="w-full">
-                <div class="text-4xl text-white uppercase text-center font-thin">Access to <span
-                        class="font-extrabold">multimillionaire</span>
+            <div class="xl:flex xl:justify-between w-full gap-14">
+                <div role="status"
+                    class="flex lg:mt-24 mb-24 mt-8 items-center justify-center h-56 w-full bg-gray-600 rounded-lg ">
+                    <svg class="w-10 h-10 text-gray-200" aria-hidden="true" xmlns="http://www.w3.org/2000/svg"
+                        fill="currentColor" viewBox="0 0 16 20">
+                        <path d="M5 5V.13a2.96 2.96 0 0 0-1.293.749L.879 3.707A2.98 2.98 0 0 0 .13 5H5Z" />
+                        <path
+                            d="M14.066 0H7v5a2 2 0 0 1-2 2H0v11a1.97 1.97 0 0 0 1.934 2h12.132A1.97 1.97 0 0 0 16 18V2a1.97 1.97 0 0 0-1.934-2ZM9 13a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-2a2 2 0 0 1 2-2h2a2 2 0 0 1 2 2v2Zm4 .382a1 1 0 0 1-1.447.894L10 13v-2l1.553-1.276a1 1 0 0 1 1.447.894v2.764Z" />
+                    </svg>
                 </div>
-                <div class="grid grid-cols-1 gap-8 mt-12 whitespace-nowrap text-white">
-                    <div class="flex justify-between w-min gap-4 items-center">
-                        <svg class="w-12 h-12 text-[#f6aa23]" aria-hidden="true" xmlns="http://www.w3.org/2000/svg"
-                            width="24" height="24" fill="none" viewBox="0 0 24 24">
-                            <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"
-                                stroke-width="3" d="M5 11.917 9.724 16.5 19 7.5" />
-                        </svg>
-                        <div class="text-2xl text-gray-300"><span class="text-white font-bold">Mentors are
-                            </span> hyper-successful experts in their <div> field</div>
-                        </div>
+
+                <div class="w-min h-auto max-xl:hidden">
+                    <div class="h-4 w-4 rounded-full bg-gray-100"></div>
+                    <div class="my-2 flex h-full justify-center">
+                        <div class="h-auto w-0.5 bg-gray-800 rounded"></div>
                     </div>
-                    <div class="flex justify-between w-min gap-4 items-center">
-                        <svg class="w-12 h-12 text-[#f6aa23]" aria-hidden="true" xmlns="http://www.w3.org/2000/svg"
-                            width="24" height="24" fill="none" viewBox="0 0 24 24">
-                            <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"
-                                stroke-width="3" d="M5 11.917 9.724 16.5 19 7.5" />
-                        </svg>
-                        <div class="text-2xl text-gray-300">Get <span class="text-white font-bold">mentored
-                                every step</span>
-                            of your journey
-                        </div>
+                </div>
+
+                <div class="w-full">
+                    <div class="md:text-4xl text-2xl text-white uppercase text-center font-thin">Access to <span
+                            class="font-extrabold">multimillionaire</span>
                     </div>
-                    <div class="flex justify-between w-min gap-4 items-center">
-                        <svg class="w-12 h-12 text-[#f6aa23]" aria-hidden="true" xmlns="http://www.w3.org/2000/svg"
-                            width="24" height="24" fill="none" viewBox="0 0 24 24">
-                            <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"
-                                stroke-width="3" d="M5 11.917 9.724 16.5 19 7.5" />
-                        </svg>
-                        <div class="text-2xl text-gray-300"><span class="text-white font-bold">
-                                1-on-1 advice</span>from industry experts
+                    <div class="grid grid-cols-1 gap-8 mt-12 text-white">
+                        <div class="flex justify-between gap-4 items-center">
+                            <div class="flex justify-between max-w-max gap-4 items-center">
+                                <svg class="md:w-12 md:h-12 w-8 h-8 text-[#f6aa23]" aria-hidden="true" xmlns="http://www.w3.org/2000/svg"
+                                    width="24" height="24" fill="none" viewBox="0 0 24 24">
+                                    <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"
+                                        stroke-width="3" d="M5 11.917 9.724 16.5 19 7.5" />
+                                </svg>
+                                <div class="md:text-2xl text-lg text-gray-300"><span class="text-white font-bold">Mentors are
+                                    </span> hyper-successful experts in their <div> field</div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="flex justify-between gap-4 items-center">
+                            <div class="flex justify-between max-w-max gap-4 items-center">
+                                <svg class="md:w-12 md:h-12 w-8 h-8 text-[#f6aa23]" aria-hidden="true" xmlns="http://www.w3.org/2000/svg"
+                                    width="24" height="24" fill="none" viewBox="0 0 24 24">
+                                    <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"
+                                        stroke-width="3" d="M5 11.917 9.724 16.5 19 7.5" />
+                                </svg>
+                                <div class="md:text-2xl text-lg text-gray-300">Get <span class="text-white font-bold">mentored
+                                        every step</span>
+                                    of your journey
+                                </div>
+                            </div>
+                        </div>
+                        <div class="flex justify-between gap-4 items-center">
+                            <div class="flex justify-between max-w-max gap-4 items-center">
+                                <svg class="md:w-12 md:h-12 w-8 h-8 text-[#f6aa23]" aria-hidden="true" xmlns="http://www.w3.org/2000/svg"
+                                    width="24" height="24" fill="none" viewBox="0 0 24 24">
+                                    <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"
+                                        stroke-width="3" d="M5 11.917 9.724 16.5 19 7.5" />
+                                </svg>
+                                <div class="md:text-2xl text-lg text-gray-300"><span class="text-white font-bold">
+                                        1-on-1 advice</span>from industry experts
+                                </div>
+                            </div>
                         </div>
                     </div>
                 </div>
@@ -254,11 +300,26 @@ use function Livewire\Volt\{state, layout};
         <div class="mt-14">
             <div class="flex justify-center pt-8">
                 <div
-                    class="py-4 px-8 font-extrabold tracking-wider text-xl w-min whitespace-nowrap bg-[#f6aa23] rounded-lg uppercase hover:scale-105 transition-transform duration-200">
+                    class="py-4 px-8 font-extrabold lg:tracking-wider lg:text-xl text-sm w-min whitespace-nowrap bg-[#f6aa23] rounded-lg uppercase hover:scale-105 transition-transform duration-200">
                     join Digital Worlds University</div>
             </div>
             <div class="flex justify-center">
                 <div class="text-gray-400">Join 113,000+ like-minded students</div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <div class="sm:pt-20 pt-8 pb-14 grid grid-cols-1 gap-12">
+        <div class="grid grid-cols-1 gap-4 text-white text-center">
+            <div class="sm:text-xl text-base underline hover:text-[#f6aa23] cursor-pointer">Terms & Conditions</div>
+            <div class="sm:text-xl text-base underline hover:text-[#f6aa23] cursor-pointer">Privacy Policy</div>
+            <div class="sm:text-lg text-sm font-bold">Support: support@digitalworldsuniversity.com</div>
+        </div>
+        <div class="flex justify-center">
+            <div class="w-4/5 grid grid-cols-1 gap-4">
+                <div class="text-gray-400 sm:text-xl text-sm font-normal text-center">Everything taught within The Real World is for education purposes only. It is up to each student to implement and do the work.</div>
+                <div class="text-gray-400 sm:text-xl text-sm font-normal text-center">The Real World team doesn’t guarantee any profits or financial success.</div>
             </div>
         </div>
     </div>

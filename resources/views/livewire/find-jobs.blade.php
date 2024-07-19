@@ -68,7 +68,7 @@ $deleteJob = function ($id) {
                 <div class="font-semibold text-md capitalize">{{$job->description}}</div>
             </div>
             @if($is_seller_mode)
-            <div wire:click="deleteJob({{$job->id}})" class="text-[#d6dcde] bg-[#131e30] rounded-b-2xl text-center py-3 text-lg font-bold">Delete</div>
+            <div wire:click="deleteJob({{$job->id}})" class="text-[#d6dcde] bg-[#131e30] rounded-b-2xl text-center py-3 text-lg font-bold cursor-pointer">Delete</div>
             @else
             <a href="{{$job->url}}" target="_blank" class="text-[#d6dcde] bg-[#131e30] rounded-b-2xl text-center py-3 text-lg font-bold">Apply</a>
             @endif
