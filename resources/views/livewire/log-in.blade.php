@@ -63,7 +63,7 @@ $submit = function (Request $request) {
         </div>
         <div class="grid grid-cols-1 gap-4">
             <div wire:click="submit" wire:loading.class="pointer-events-none" wire:target="submit"
-                class="sm:mx-8 py-4 text-center text-xl px-4 cursor-pointer tracking-wider border border-[#f6aa23] transition-opacity duration-300 hover:opacity-80 rounded-lg text-white font-bold transition-colors duration-500 bg-[#f6aa23]">
+                class="sm:mx-8 py-4 text-center text-xl px-4 cursor-pointer tracking-wider border border-[#f6aa23] transition-opacity duration-300 rounded-lg text-white font-bold transition-colors duration-500 bg-[#f6aa23]">
                 <div wire:loading.class="hidden" wire:target="submit">Login</div>
                 <div wire:loading.class.remove="hidden" wire:target="submit" class="flex justify-center hidden">
                     <svg aria-hidden="true" class="w-8 h-8 text-[#131e30] animate-spin fill-white" viewBox="0 0 100 101" fill="none" xmlns="http://www.w3.org/2000/svg">
