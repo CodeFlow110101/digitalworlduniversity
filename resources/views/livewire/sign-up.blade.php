@@ -6,7 +6,7 @@ use function Livewire\Volt\{state};
 
 ?>
 
-<div class="w-3/5 bg-black p-10">
+<div class="lg:w-3/5 w-full bg-black p-10">
     <div class="grid grid-cols-1 gap-2">
         <div class="text-white text-3xl font-bold uppercase">Join Digital Worlds University</div>
         <div class="text-white text-2xl font-normal uppercase">Escape the Matrix</div>

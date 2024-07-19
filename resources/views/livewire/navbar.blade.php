@@ -9,9 +9,9 @@ $redirectTo = function ($path) {
 ?>
 
 <div class="flex justify-center py-8">
-    <div x-data="{ showDropdown: false }" class="w-4/5 flex justify-between relative">
-        <div class="text-white font-bold text-xl">Digital Worlds University</div>
-        <div class="flex justify-between gap-5">
+    <div x-data="{ showDropdown: false }" class="lg:w-4/5 w-11/12 flex justify-between max-sm:gap-2 relative">
+        <div class="text-white font-bold sm:text-xl text-base">Digital Worlds University</div>
+        <div class="flex justify-between gap-5 max-lg:hidden">
             <div class="text-white hover:text-[#f6aa23] cursor-pointer text-lg">Features</div>
             <div class="text-white hover:text-[#f6aa23] cursor-pointer text-lg">Interviews</div>
             <div class="text-white hover:text-[#f6aa23] cursor-pointer text-lg">Explorer</div>
@@ -31,22 +31,22 @@ $redirectTo = function ($path) {
             </div>
         </div>
         <div>
-            <div class="flex justify-between gap-2">
+            <div class="flex justify-between items-center gap-2 max-sm:text-sm">
                 <div wire:click="redirectTo('log-in')"
-                    class="py-1.5 px-4 cursor-pointer tracking-wider border border-[#f6aa23] rounded-lg text-[#f6aa23] hover:text-[#050e14] transition-colors duration-500 hover:bg-[#f6aa23]">
-                   @if(Auth::check())
-                   Dashboard
-                   @else
-                   Log
+                    class="py-1.5 sm:px-4 px-2 whitespace-nowrap cursor-pointer tracking-wider border border-[#f6aa23] rounded-lg text-[#f6aa23] hover:text-[#050e14] transition-colors duration-500 hover:bg-[#f6aa23]">
+                    @if(Auth::check())
+                    Dashboard
+                    @else
+                    Log
                     in
-                   @endif
-                    </div>
-                    @if(!Auth::check())
+                    @endif
+                </div>
+                @if(!Auth::check())
                 <div wire:click="redirectTo('sign-up')"
-                    class="py-1.5 px-4 cursor-pointer tracking-wider border border-[#f6aa23] transition-opacity duration-300 hover:opacity-80 rounded-lg text-[#050e14] transition-colors duration-500 bg-[#f6aa23]">
+                    class="py-1.5 sm:px-4 px-2 whitespace-nowrap cursor-pointer tracking-wider border border-[#f6aa23] transition-opacity duration-300 hover:opacity-80 rounded-lg text-[#050e14] transition-colors duration-500 bg-[#f6aa23]">
                     Join
                     Now</div>
-                    @endif
+                @endif
             </div>
         </div>
         <div x-cloak :class="showDropdown ? 'opacity-100' : 'opacity-0 pointer-events-none'"
