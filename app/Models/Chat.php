@@ -11,5 +11,5 @@ class Chat extends Model
 
     protected $table = "chats";
 
-    protected $fillable = ['user_id', 'message', 'channel_id', 'is_archive', 'reply_to'];
+    protected $fillable = ['user_id', 'message', 'channel_id', 'is_archive', 'reply_to', 'file_name', 'file_path'];
 }

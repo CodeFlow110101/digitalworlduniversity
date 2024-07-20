@@ -22,6 +22,6 @@ Volt::route('/admin-panel-videos', 'logged-in-landing-page')->name('admin-panel-
 Volt::route('/admin-panel-video-player', 'logged-in-landing-page')->name('admin-panel-video-player');
 Volt::route('/weather', 'weather')->name('weather');
 
-Route::post('/upload', [FileUploads::class, 'store']);
+Route::post('/upload-file', [FileUploads::class, 'storeFile']);
 Route::post('/upload-video', [FileUploads::class, 'storeVideo']);
 Route::post('/upload-thumbnail', [FileUploads::class, 'storeThumbnail']);
