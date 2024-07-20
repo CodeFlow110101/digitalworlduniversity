@@ -1,10 +1,24 @@
 document.addEventListener('livewire:init', () => {
     Livewire.on('send-message', (event) => {
 
-        var formData = new FormData(event.file);
+        Livewire.dispatch(event.callbackLoaderDispatch, { value: true});
+
+        if(event.file.files.length == 0){
+            Livewire.dispatch(event.callbackDispatch, { validationKey:null, validationMessage:null, fileName:null, filePath:null });
+            return;
+        }
+
+        if(event.file.files[0].size>=(event.fileSizeLimit*1024*1024)){
+            Livewire.dispatch(event.callbackDispatch, { validationKey:{'file':event.file.files[0].size>=(event.fileSizeLimit*1024*1024)}, validationMessage:{'file':'The file size should be less than '+event.fileSizeLimit + ' MB.'}, fileName:null, filePath:null });
+            return;
+        }
+
+        var formData = new FormData();
+        var file = event.file.files[0];
+        formData.append('file', file);
 
         $.ajax({
-            url: '/upload', // Update with your route
+            url: '/upload-file',
             type: 'POST',
             headers: {
                 'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
@@ -13,10 +27,9 @@ document.addEventListener('livewire:init', () => {
             processData: false,
             contentType: false,
             success: function(response) {
-                console.log(response);
+                Livewire.dispatch(event.callbackDispatch, { validationKey:null, validationMessage:null, fileName:response['fileName'], filePath:response['filePath'] });
             }
         });
-        Livewire.dispatch('send-message-backend', { message:event.message, isFileAttached:event.isFileAttached, file:null });
     });
 
     Livewire.on('upload-video', (event) => {

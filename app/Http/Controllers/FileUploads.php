@@ -7,10 +7,13 @@ use Illuminate\Support\Str;
 
 class FileUploads extends Controller
 {
-    function store(Request $request)
+    function storeFile(Request $request)
     {
+        $fileName = (string)Str::uuid() . $request->file('file')->getClientOriginalName();
+        $filePath =  $request->file('file')->storeAs('files', $fileName, 'public');
+        $fileName =  $request->file('file')->getClientOriginalName();
 
-        return 'hello';
+        return ['fileName' => $fileName, 'filePath' => $filePath];
     }
 
     function storeVideo(Request $request)
