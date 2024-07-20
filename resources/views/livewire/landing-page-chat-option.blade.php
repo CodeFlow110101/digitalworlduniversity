@@ -7,7 +7,7 @@ use function Livewire\Volt\{state};
 ?>
 
 <div class="fixed bottom-4 right-8 w-min flex justify-between gap-4">
-    <div class="w-full flex items-center">
+    <div class="w-full flex items-center hidden">
         <div class="bg-white rounded-2xl capitalize text-lg whitespace-nowrap py-2 px-4 h-min"> Ready to change your life
         </div>
     </div>
