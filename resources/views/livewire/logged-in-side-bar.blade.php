@@ -68,8 +68,8 @@ mount(function ($path) {
                     Store</div>
             </div>
             <div>
-                <div
-                    class="lg:mx-4 mx-4 xl:mx-8 text-center xl:text-left py-2 lg:px-2 xl:px-4 @if($path == '') bg-[#131e30] text-[#fafbfb] @else hover:bg-[#131e30] hover:text-[#fafbfb] bg-transparent text-[#131e30]  @endif lg:text-md xl:text-lg cursor-pointer tracking-wider transition-opacity duration-300 rounded-full font-noramal transition-colors duration-500">
+                <div wire:click="redirectTo('earn-money')"
+                    class="lg:mx-4 mx-4 xl:mx-8 text-center xl:text-left py-2 lg:px-2 xl:px-4 @if($path == 'earn-money') bg-[#131e30] text-[#fafbfb] @else hover:bg-[#131e30] hover:text-[#fafbfb] bg-transparent text-[#131e30]  @endif lg:text-md xl:text-lg cursor-pointer tracking-wider transition-opacity duration-300 rounded-full font-noramal transition-colors duration-500">
                     Earn Money</div>
             </div>
             <div>

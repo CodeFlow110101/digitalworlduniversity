@@ -39,6 +39,8 @@ on([
                     <livewire:modals.modal-video :modal="$modal" :args="$args" :data="$data" :callback_event="$callback_event">
                         @elseif($show_modal && $modal == 'modal-store')
                         <livewire:modals.modal-store :modal="$modal" :args="$args" :data="$data" :callback_event="$callback_event">
-                            @endif
+                            @elseif($show_modal && $modal == 'modal-earn-money')
+                            <livewire:modals.modal-earn-money :modal="$modal" :args="$args" :data="$data" :callback_event="$callback_event">
+                                @endif
     </div>
 </div>
