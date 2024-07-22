@@ -5,7 +5,9 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 
 
-state(['path']);
+state(['path', 'query_param']);
+state(['referral_code'])->url();
+
 layout('components.layouts.app');
 
 mount(function (Request $request) {
@@ -34,7 +36,7 @@ mount(function (Request $request) {
             <div class="w-2/5 max-lg:hidden"></div>
             @if ($path == 'sign-up')
 
-            <livewire:sign-up>
+            <livewire:sign-up :referral_code="$referral_code">
 
                 @elseif($path == 'log-in')
                 <livewire:log-in>

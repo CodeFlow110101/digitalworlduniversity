@@ -10,7 +10,7 @@ use Illuminate\Support\Facades\Auth;
 use Carbon\Carbon;
 
 
-state(['id', 'balance', 'days_remaining', 'expiry_date', 'referral_code', 'referral_income']);
+state(['id', 'balance', 'days_remaining', 'expiry_date', 'referral_code', 'referral_income', 'url']);
 
 placeholder('<div class="w-full h-96 mt-10 flex justify-center items-center">
                 <svg aria-hidden="true" class="w-12 h-12 text-white animate-spin fill-[#131e30]" viewBox="0 0 100 101" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -19,8 +19,9 @@ placeholder('<div class="w-full h-96 mt-10 flex justify-center items-center">
                 </svg>
             </div>');
 
-mount(function () {
+mount(function ($url) {
     $this->id = Auth::user()->id;
+    $this->url = $url;
     $this->balance = Wallet::where('user_id', $this->id)->first()->amount;
     $this->expiry_date = LkUserPlan::where('user_id', $this->id)->first()->expiry_date;
     $this->days_remaining = (int)Carbon::now()->diffInDays($this->expiry_date);
@@ -36,5 +37,5 @@ mount(function () {
         <div class="bg-[#d6dcde] rounded-2xl py-8 lg:py-12">Wallet: ${{$balance}}</div>
     </div>
     <div class="bg-[#d6dcde] rounded-2xl py-12 px-2 text-center font-bold">Referral Income: ${{$referral_income}}</div>
-    <div class="bg-[#d6dcde] rounded-2xl py-12 px-2 text-center font-bold">Referral Code: {{$referral_code}}</div>
+    <div class="bg-[#d6dcde] rounded-2xl py-12 px-2 text-center font-bold select-text">Refer: {{str_replace("dashboard","sign-up/?referral_code=",$url)}}{{$referral_code}}</div>
 </div>
