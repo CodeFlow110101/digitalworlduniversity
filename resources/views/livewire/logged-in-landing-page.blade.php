@@ -7,10 +7,11 @@ use Illuminate\Support\Facades\Gate;
 
 layout('components.layouts.app');
 
-state(['path', 'id']);
+state(['path', 'id', 'url']);
 
 mount(function (Request $request) {
     $this->path = $request->path();
+    $this->url = $request->url();
 
     if (!Auth::check()) {
         $this->redirectRoute('landing-page', navigate: true);
@@ -73,7 +74,7 @@ mount(function (Request $request) {
             </div>
             <div>
                 @if($path == 'dashboard')
-                <livewire:dashboard lazy>
+                <livewire:dashboard :url="$url" lazy>
                     @elseif($path == 'live-chat')
                     <livewire:live-chat lazy>
                         @elseif($path == 'find-jobs')
