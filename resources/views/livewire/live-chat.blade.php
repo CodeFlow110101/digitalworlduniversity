@@ -20,7 +20,7 @@ placeholder('<div class="w-full h-96 mt-10 flex justify-center items-center">
 
 with(function () {
     $this->dispatch('scroll-bottom');
-    return ['chats' => Chat::where('channel_id', $this->current_channel->id)->orderBy('created_at', 'desc')->limit(200)->paginate(200)->reverse()];
+    return ['chats' => Chat::select(['chats.*', 'users.name'])->where('channel_id', $this->current_channel->id)->join('users', 'users.id', 'chats.user_id')->orderBy('created_at', 'desc')->limit(200)->paginate(200)->reverse()];
 });
 
 $setChannel = function ($id) {
@@ -76,14 +76,14 @@ mount(function () {
 <div wire:poll.6s class="rounded-2xl bg-[#d6dcde] text-[#131e30]">
     <div class=" text-center py-8 font-thin text-4xl select-none">{{$this->current_channel->name}}</div>
     <div class="h-full w-full grid grid-cols-1 gap-4">
-        <div class="rounded-2xl pt-4 p-4 h-full w-full flex justify-between gap-4">
+        <div class="rounded-2xl pt-4 p-4 h-full w-full flex justify-between gap-2 sm:gap-4">
             <div class="bg-[#d6dcde] rounded-2xl h-full grid grid-cols-1 gap-2">
                 <div class="bg-[#b5c1c9] rounded-2xl w-min pr-4 overflow-auto no-scrollbar max-h-96 lg:max-h-[480px] flex justify-center">
                     <div class="w-full">
                         @foreach($channels as $channel)
                         <div class="flex justify-between gap-2 items-center w-min">
-                            <div class="bg-red-500 w-0 @if($channel->id == $current_channel->id) h-10 @else h-3 @endif border-l-4 rounded-r-full border-[#131e30]"></div>
-                            <div wire:click="setChannel({{$channel->id}})" wire:key="channel{{ $channel->id }}" class="w-14 h-14 sm:w-20 sm:h-20 my-4 cursor-pointer flex items-center justify-center font-semibold rounded-full text-center @if($channel->id == $current_channel->id) bg-[#131e30] text-[#fafbfb] @else bg-[#d6dcde] hover:bg-[#131e30] hover:text-[#fafbfb] @endif">
+                            <div class="bg-red-500 w-0 @if($channel->id == $current_channel->id) h-8 sm:h-10 @else h-3 @endif border-l-4 rounded-r-full border-[#131e30]"></div>
+                            <div wire:click="setChannel({{$channel->id}})" wire:key="channel{{ $channel->id }}" class="w-10 h-10 sm:w-20 sm:h-20 max-sm:text-sm my-4 cursor-pointer flex items-center justify-center font-semibold rounded-full text-center @if($channel->id == $current_channel->id) bg-[#131e30] text-[#fafbfb] @else bg-[#d6dcde] hover:bg-[#131e30] hover:text-[#fafbfb] @endif">
                                 {{$channel->name[0]}}
                             </div>
                         </div>
@@ -92,22 +92,97 @@ mount(function () {
                 </div>
             </div>
             <div class="w-full select-none">
-                <div x-init="$refs.chatSection.scrollTop = $refs.chatSection.scrollHeight" x-on:scroll-bottom.window="$refs.chatSection.scrollTop = $refs.chatSection.scrollHeight;" x-ref="chatSection" class="rounded-2xl px-4 overflow-auto max-h-96 lg:max-h-[480px] grid grid-cols-1 gap-4 sm:gap-6">
+                <div x-init="$refs.chatSection.scrollTop = $refs.chatSection.scrollHeight" x-on:scroll-bottom.window="$refs.chatSection.scrollTop = $refs.chatSection.scrollHeight;" x-ref="chatSection" class="rounded-2xl px-4 overflow-auto max-h-96 lg:max-h-[480px] grid grid-cols-1 gap-12 sm:gap-6">
                     @foreach($chats as $chat)
                     <div wire:key="chat{{ $chat->id }}" class="w-full @if($user_id == $chat->user_id) flex justify-end @else justify-start @endif">
                         @if($chat->file_name && $chat->file_path)
-                        <div class="py-1 sm:py-2 px-2 sm:px-6 rounded-xl sm:rounded-2xl text-wrap w-4/5 bg-[#b5c1c9] grid grid-cols-1 gap-2">
-                            <div>
-                                <svg wire:click="downloadFile({{$chat->id}})" class="w-12 h-12 text-[#131e30] cursor-pointer" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="currentColor" viewBox="0 0 24 24">
-                                    <path fill-rule="evenodd" d="M9 2.221V7H4.221a2 2 0 0 1 .365-.5L8.5 2.586A2 2 0 0 1 9 2.22ZM11 2v5a2 2 0 0 1-2 2H4v11a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V4a2 2 0 0 0-2-2h-7Z" clip-rule="evenodd" />
+                        <div class="flex justify-between gap-2">
+                            @if($user_id != $chat->user_id)
+                            <div class="w-min">
+                                <svg class="w-5 h-5 lg:w-10 lg:h-10" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="currentColor" viewBox="0 0 24 24">
+                                    <path fill-rule="evenodd" d="M12 20a7.966 7.966 0 0 1-5.002-1.756l.002.001v-.683c0-1.794 1.492-3.25 3.333-3.25h3.334c1.84 0 3.333 1.456 3.333 3.25v.683A7.966 7.966 0 0 1 12 20ZM2 12C2 6.477 6.477 2 12 2s10 4.477 10 10c0 5.5-4.44 9.963-9.932 10h-.138C6.438 21.962 2 17.5 2 12Zm10-5c-1.84 0-3.333 1.455-3.333 3.25S10.159 13.5 12 13.5c1.84 0 3.333-1.455 3.333-3.25S13.841 7 12 7Z" clip-rule="evenodd" />
                                 </svg>
                             </div>
-                            <div class="text-sm">{{$chat->file_name}}</div>
+                            @endif
+                            <div class="grid grid-cols-1 gap-2">
+                                @if($user_id != $chat->user_id)
+                                <div class="flex justify-between items-center gap-2">
+                                    <div class="font-bold text-sm lg:text-lg">{{$chat->name}}</div>
+                                    <div class="text-xs w-full text-left break-words text-wrap">{{$chat->created_at}}</div>
+                                </div>
+                                <div class="rounded-xl sm:rounded-2xl text-wrap w-full @if($user_id == $chat->user_id) text-right @else text-left @endif">
+                                    <div class="text-sx sm:font-normal tracking-tighter break-words text-wrap"> {{$chat->message}}</div>
+                                </div>
+                                @else
+                                <div class="flex justify-between items-center gap-2">
+                                    <div class="text-xs w-full text-right break-words text-wrap">{{$chat->created_at}}</div>
+                                    <div class="font-bold text-sm lg:text-lg">{{$chat->name}}</div>
+                                </div>
+                                <div class="rounded-xl sm:rounded-2xl text-wrap w-full @if($user_id == $chat->user_id) text-right @else text-left @endif">
+                                    <div class="text-sx sm:text-base sm:font-normal tracking-tighter break-words text-wrap"> {{$chat->message}}</div>
+                                </div>
+                                @endif
+                                <div class="py-4 sm:py-6 px-6 sm:px-6 rounded-xl sm:rounded-2xl text-wrap w-full bg-[#b5c1c9] grid grid-cols-1 gap-4">
+                                    <div class="flex justify-between items-center">
+                                        <div>
+                                            <svg class="w-8 h-8 sm:w-8 sm:h-8 text-[#131e30]" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="currentColor" viewBox="0 0 24 24">
+                                                <path fill-rule="evenodd" d="M9 2.221V7H4.221a2 2 0 0 1 .365-.5L8.5 2.586A2 2 0 0 1 9 2.22ZM11 2v5a2 2 0 0 1-2 2H4v11a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V4a2 2 0 0 0-2-2h-7Z" clip-rule="evenodd" />
+                                            </svg>
+                                        </div>
+                                        <div>
+                                            <svg wire:click="downloadFile({{$chat->id}})" class="w-6 h-6 sm:w-8 sm:h-8 text-[#131e30] cursor-pointer" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="currentColor" viewBox="0 0 24 24">
+                                                <path fill-rule="evenodd" d="M13 11.15V4a1 1 0 1 0-2 0v7.15L8.78 8.374a1 1 0 1 0-1.56 1.25l4 5a1 1 0 0 0 1.56 0l4-5a1 1 0 1 0-1.56-1.25L13 11.15Z" clip-rule="evenodd" />
+                                                <path fill-rule="evenodd" d="M9.657 15.874 7.358 13H5a2 2 0 0 0-2 2v4a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2v-4a2 2 0 0 0-2-2h-2.358l-2.3 2.874a3 3 0 0 1-4.685 0ZM17 16a1 1 0 1 0 0 2h.01a1 1 0 1 0 0-2H17Z" clip-rule="evenodd" />
+                                            </svg>
+                                        </div>
+                                    </div>
+                                    <div class="text-sm">{{$chat->file_name}}</div>
+                                </div>
+                            </div>
+                            @if($user_id == $chat->user_id)
+                            <div class="w-min">
+                                <svg class="w-5 h-5 lg:w-10 lg:h-10" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="currentColor" viewBox="0 0 24 24">
+                                    <path fill-rule="evenodd" d="M12 20a7.966 7.966 0 0 1-5.002-1.756l.002.001v-.683c0-1.794 1.492-3.25 3.333-3.25h3.334c1.84 0 3.333 1.456 3.333 3.25v.683A7.966 7.966 0 0 1 12 20ZM2 12C2 6.477 6.477 2 12 2s10 4.477 10 10c0 5.5-4.44 9.963-9.932 10h-.138C6.438 21.962 2 17.5 2 12Zm10-5c-1.84 0-3.333 1.455-3.333 3.25S10.159 13.5 12 13.5c1.84 0 3.333-1.455 3.333-3.25S13.841 7 12 7Z" clip-rule="evenodd" />
+                                </svg>
+                            </div>
+                            @endif
                         </div>
                         @else
-                        <div class="py-1 sm:py-2 px-2 sm:px-6 rounded-xl sm:rounded-2xl text-wrap w-4/5 bg-[#b5c1c9]">
-                            <div class="font-text-sx sm:font-normal  @if($user_id == $chat->user_id) text-left @else text-right @endif"> {{$chat->message}}</div>
-                            <div class="text-xs max-sm:hidden @if($user_id == $chat->user_id) text-right @else text-left @endif">{{$chat->created_at}}</div>
+                        <div class="flex justify-between items-center gap-2 w-full">
+                            @if($user_id != $chat->user_id)
+                            <div class="w-min">
+                                <svg class="w-5 h-5 lg:w-10 lg:h-10" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="currentColor" viewBox="0 0 24 24">
+                                    <path fill-rule="evenodd" d="M12 20a7.966 7.966 0 0 1-5.002-1.756l.002.001v-.683c0-1.794 1.492-3.25 3.333-3.25h3.334c1.84 0 3.333 1.456 3.333 3.25v.683A7.966 7.966 0 0 1 12 20ZM2 12C2 6.477 6.477 2 12 2s10 4.477 10 10c0 5.5-4.44 9.963-9.932 10h-.138C6.438 21.962 2 17.5 2 12Zm10-5c-1.84 0-3.333 1.455-3.333 3.25S10.159 13.5 12 13.5c1.84 0 3.333-1.455 3.333-3.25S13.841 7 12 7Z" clip-rule="evenodd" />
+                                </svg>
+                            </div>
+                            @endif
+                            <div class="w-full">
+                                @if($user_id != $chat->user_id)
+                                <div class="flex justify-between items-center gap-2">
+                                    <div class="font-bold text-sm lg:text-lg">{{$chat->name}}</div>
+                                    <div class="text-xs w-full text-left break-words text-wrap">{{$chat->created_at}}</div>
+                                </div>
+                                <div class="rounded-xl sm:rounded-2xl text-wrap w-full @if($user_id == $chat->user_id) text-right @else text-left @endif">
+                                    <div class="text-xs sm:text-base sm:font-normal tracking-tighter break-words text-wrap"> {{$chat->message}}</div>
+                                </div>
+                                @else
+                                <div class="flex justify-between items-center gap-2">
+                                    <div class="text-xs w-full text-right break-words text-wrap">{{$chat->created_at}}</div>
+                                    <div class="font-bold text-sm lg:text-lg">{{$chat->name}}</div>
+                                </div>
+                                <div class="rounded-xl sm:rounded-2xl text-wrap w-full @if($user_id == $chat->user_id) text-right @else text-left @endif">
+                                    <div class="text-xs sm:text-base sm:font-normal tracking-tighter break-words text-wrap"> {{$chat->message}}</div>
+                                </div>
+                                @endif
+
+                            </div>
+                            @if($user_id == $chat->user_id)
+                            <div class="w-min">
+                                <svg class="w-5 h-5 lg:w-10 lg:h-10" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="currentColor" viewBox="0 0 24 24">
+                                    <path fill-rule="evenodd" d="M12 20a7.966 7.966 0 0 1-5.002-1.756l.002.001v-.683c0-1.794 1.492-3.25 3.333-3.25h3.334c1.84 0 3.333 1.456 3.333 3.25v.683A7.966 7.966 0 0 1 12 20ZM2 12C2 6.477 6.477 2 12 2s10 4.477 10 10c0 5.5-4.44 9.963-9.932 10h-.138C6.438 21.962 2 17.5 2 12Zm10-5c-1.84 0-3.333 1.455-3.333 3.25S10.159 13.5 12 13.5c1.84 0 3.333-1.455 3.333-3.25S13.841 7 12 7Z" clip-rule="evenodd" />
+                                </svg>
+                            </div>
+                            @endif
                         </div>
                         @endif
                     </div>
@@ -116,7 +191,6 @@ mount(function () {
             </div>
         </div>
         <div x-data="{isFileAttached:false}" class="w-full px-4 pb-4">
-            <!-- <input x-ref="message" class="px-6 py-2 sm:py-4 w-full rounded-t-2xl bg-[#b5c1c9] outline-none font-semibold" placeholder="Message"> -->
             <input wire:model="message" class="px-6 py-2 sm:py-4 w-full rounded-t-2xl bg-[#b5c1c9] outline-none font-semibold" placeholder="Message">
             <div class="flex justify-between bg-[#b5c1c9] rounded-b-2xl p-2 sm:p-4">
                 <div class="w-min flex justify-between items-center gap-4 relative">
