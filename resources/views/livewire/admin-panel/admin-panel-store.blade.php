@@ -50,6 +50,7 @@ $deleteStoreItem = function ($id) {
             <div class="p-4 text-[#131e30] grid grid-cols-1 gap-4">
                 <div class="font-semibold text-2xl">{{$items->title}}</div>
                 <div class="font-semibold text-md capitalize">{{$items->description}}</div>
+                <div class="font-semibold text-lg capitalize">${{$items->price}}</div>
             </div>
             <div class="text-[#d6dcde] rounded-b-2xl bg-[#131e30] text-center p-3 grid grid-cols-1 gap-1 text-lg font-bold cursor-pointer">
                 <div wire:click="deleteStoreItem({{$items->id}})" class="w-full rounded-b-2xl text-center py-2 h-1/2">

@@ -28,7 +28,7 @@ with(fn() => ['storeItems' => Store::paginate(0)]);
                 <div class="font-semibold text-2xl">{{$items->title}}</div>
                 <div class="font-semibold text-md capitalize">{{$items->description}}</div>
             </div>
-            <a href="{{$items->url}}" target="_blank" class="text-[#d6dcde] py-5 bg-[#131e30] rounded-b-2xl text-center py-3 text-lg font-bold">Follow Link</a>
+            <div class="text-[#d6dcde] py-5 bg-[#131e30] rounded-b-2xl text-center cursor-pointer text-lg font-bold">Buy ${{$items->price}}</div>
         </div>
         @endforeach
     </div>
