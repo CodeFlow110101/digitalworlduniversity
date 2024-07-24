@@ -15,6 +15,7 @@ Volt::route('/find-jobs', 'logged-in-landing-page')->name('find-jobs');
 Volt::route('/programs', 'logged-in-landing-page')->name('programs');
 Volt::route('/videos', 'logged-in-landing-page')->name('videos');
 Volt::route('/store', 'logged-in-landing-page')->name('store');
+Volt::route('/settings', 'logged-in-landing-page')->name('settings');
 Volt::route('/earn-money', 'logged-in-landing-page')->name('earn-money');
 Volt::route('/video-player', 'logged-in-landing-page')->name('video-player');
 Volt::route('/admin-panel', 'logged-in-landing-page')->name('admin-panel');

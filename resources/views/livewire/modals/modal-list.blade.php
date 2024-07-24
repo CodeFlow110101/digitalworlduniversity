@@ -41,6 +41,10 @@ on([
                         <livewire:modals.modal-store :modal="$modal" :args="$args" :data="$data" :callback_event="$callback_event">
                             @elseif($show_modal && $modal == 'modal-earn-money')
                             <livewire:modals.modal-earn-money :modal="$modal" :args="$args" :data="$data" :callback_event="$callback_event">
-                                @endif
+                                @elseif($show_modal && $modal == 'modal-update-user')
+                                <livewire:modals.modal-update-user :modal="$modal" :args="$args" :data="$data" :callback_event="$callback_event">
+                                    @elseif($show_modal && $modal == 'modal-reset-password')
+                                    <livewire:modals.modal-reset-password :modal="$modal" :args="$args" :data="$data" :callback_event="$callback_event">
+                                        @endif
     </div>
 </div>

@@ -1,13 +1,19 @@
 <?php
 
-use function Livewire\Volt\{state, layout, mount};
+use function Livewire\Volt\{state, layout, mount, on};
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Gate;
 
 layout('components.layouts.app');
 
-state(['path', 'id', 'url']);
+state(['path', 'id', 'url', 'user']);
+
+on([
+    'reset-user-landing-page' => function () {
+        $this->user = Auth::user();
+    }
+]);
 
 mount(function (Request $request) {
     $this->path = $request->path();
@@ -20,6 +26,8 @@ mount(function (Request $request) {
     if (Gate::check('is_Student') && str_contains($this->path, 'admin-panel')) {
         $this->redirectRoute('dashboard', navigate: true);
     }
+
+    $this->user = Auth::user();
 
     if ($this->path == 'admin-panel-videos' && session()->has('admin-panel-video-id')) {
         $this->id = session()->get('admin-panel-video-id');
@@ -54,8 +62,8 @@ mount(function (Request $request) {
 
 <div x-data="{showSidebar:false}" class="lg:flex lg:justify-between relative bg-[#b5c1c9] select-none">
     <livewire:style.logged-in-landing-page-style>
-        <div class="w-3/12 p-6 max-lg:hidden"><livewire:logged-in-side-bar :path="$path"></div>
-        <div :class="showSidebar ? 'translate-x-0' : '-translate-x-64'" class="w-64 py-6 px-4 transition-transform duration-200 absolute lg:hidden"><livewire:logged-in-side-bar :path="$path"></div>
+        <div class="w-3/12 p-6 max-lg:hidden"><livewire:logged-in-side-bar :path="$path" :user="$user"></div>
+        <div :class="showSidebar ? 'translate-x-0' : '-translate-x-64'" class="w-64 py-6 px-4 transition-transform duration-200 absolute lg:hidden"><livewire:logged-in-side-bar :path="$path" :user="$user"></div>
         <div class="lg:w-9/12 w-full py-6 px-4 lg:px-8 grid grid-cols-1 gap-8 h-min">
             <div class="flex justify-center">
                 <div class="py-8 px-8 items-center w-full flex justify-between rounded-2xl bg-[#d6dcde] text-3xl text-center text-[#f6aa23] font-bold">
@@ -89,21 +97,23 @@ mount(function (Request $request) {
                                         <livewire:store lazy>
                                             @elseif($path == 'earn-money')
                                             <livewire:earn-money lazy>
-                                                @elseif($path == 'admin-panel-video-player')
-                                                <livewire:admin-panel.admin-panel-video-player :id="$id">
-                                                    @elseif($path == 'admin-panel')
-                                                    <livewire:admin-panel.admin-panel lazy>
-                                                        @elseif($path == 'admin-panel-users')
-                                                        <livewire:admin-panel.admin-panel-users lazy>
-                                                            @elseif($path == 'admin-panel-programs')
-                                                            <livewire:admin-panel.admin-panel-programs lazy>
-                                                                @elseif($path == 'admin-panel-store')
-                                                                <livewire:admin-panel.admin-panel-store lazy>
-                                                                    @elseif($path == 'admin-panel-earn-money')
-                                                                    <livewire:admin-panel.admin-panel-earn-money lazy>
-                                                                        @elseif($path == 'admin-panel-videos')
-                                                                        <livewire:admin-panel.admin-panel-videos :id="$id" lazy>
-                                                                            @endif
+                                                @elseif($path == 'settings')
+                                                <livewire:settings :user="$user" lazy>
+                                                    @elseif($path == 'admin-panel-video-player')
+                                                    <livewire:admin-panel.admin-panel-video-player :id="$id">
+                                                        @elseif($path == 'admin-panel')
+                                                        <livewire:admin-panel.admin-panel lazy>
+                                                            @elseif($path == 'admin-panel-users')
+                                                            <livewire:admin-panel.admin-panel-users lazy>
+                                                                @elseif($path == 'admin-panel-programs')
+                                                                <livewire:admin-panel.admin-panel-programs lazy>
+                                                                    @elseif($path == 'admin-panel-store')
+                                                                    <livewire:admin-panel.admin-panel-store lazy>
+                                                                        @elseif($path == 'admin-panel-earn-money')
+                                                                        <livewire:admin-panel.admin-panel-earn-money lazy>
+                                                                            @elseif($path == 'admin-panel-videos')
+                                                                            <livewire:admin-panel.admin-panel-videos :id="$id" lazy>
+                                                                                @endif
             </div>
         </div>
         <livewire:modals.modal-list>

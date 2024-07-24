@@ -25,14 +25,12 @@ mount(function ($url) {
 });
 ?>
 
-<div class="text-[#131e30] grid grid-cols-1 gap-8 sm:gap-36">
-    <div class="grid grid-cols-1 gap-8 lg:grid-cols-3 lg:gap-3 text-center font-bold text-xl lg:text-2xl">
+<div class="text-[#131e30] grid grid-cols-1 gap-8 sm:gap-20">
+    <div class="grid grid-cols-1 gap-8 lg:grid-cols-3 lg:gap-20 text-center font-bold text-xl lg:text-2xl">
         <div class="bg-[#d6dcde] rounded-2xl py-8 lg:py-12">Student ID: {{$id}}</div>
         <div class="bg-[#d6dcde] rounded-2xl py-8 lg:py-12">{{$days_remaining}} Days</div>
         <div class="bg-[#d6dcde] rounded-2xl py-8 lg:py-12">Wallet: ${{$balance}}</div>
     </div>
-    <div class="grid grid-cols-1 gap-8">
-        <div class="bg-[#d6dcde] rounded-2xl py-12 px-2 text-center font-bold">Referral Income: ${{$referral_income}}</div>
-        <div class="bg-[#d6dcde] rounded-2xl py-12 px-2 text-center font-bold select-text">Refer: {{str_replace("dashboard","sign-up/?referral_code=",$url)}}{{$referral_code}}</div>
-    </div>
+    <div class="bg-[#d6dcde] rounded-2xl py-12 px-2 text-center font-bold">Referral Income: ${{$referral_income}}</div>
+    <div class="bg-[#d6dcde] rounded-2xl py-12 px-2 text-center font-bold select-text">Refer: {{str_replace("dashboard","sign-up/?referral_code=",$url)}}{{$referral_code}}</div>
 </div>

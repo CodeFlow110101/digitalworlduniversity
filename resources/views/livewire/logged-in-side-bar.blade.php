@@ -6,6 +6,7 @@ use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Gate;
 
 state(['path']);
+state(['user'])->reactive();
 
 $logOut = function (Request $request) {
     Auth::logout();
@@ -21,8 +22,9 @@ $redirectTo = function ($path) {
     $this->redirectRoute($path, navigate: true);
 };
 
-mount(function ($path) {
+mount(function ($path, $user) {
     $this->path = $path;
+    $this->user = $user;
 });
 
 ?>
@@ -73,12 +75,17 @@ mount(function ($path) {
                     Earn Money</div>
             </div>
             <div>
+                <div wire:click="redirectTo('settings')"
+                    class="lg:mx-4 mx-4 xl:mx-8 text-center xl:text-left py-2 lg:px-2 xl:px-4 @if($path == 'settings') bg-[#131e30] text-[#fafbfb] @else hover:bg-[#131e30] hover:text-[#fafbfb] bg-transparent text-[#131e30]  @endif lg:text-md xl:text-lg cursor-pointer tracking-wider transition-opacity duration-300 rounded-full font-noramal transition-colors duration-500">
+                    Settings</div>
+            </div>
+            <div>
                 <div wire:click="logOut"
                     class="lg:mx-4 mx-4 xl:mx-8 text-center xl:text-left py-2 lg:px-2 xl:px-4 @if($path == '') bg-[#131e30] text-[#fafbfb] @else hover:bg-[#131e30] hover:text-[#fafbfb] bg-transparent text-[#131e30]  @endif lg:text-md xl:text-lg cursor-pointer tracking-wider transition-opacity duration-300 rounded-full font-noramal transition-colors duration-500">
                     Sign Out</div>
             </div>
         </div>
-        <div class="flex justify-center mt-14">
+        <div class="flex justify-center">
             <div class="w-full grid grid-cols-1 gap-1">
                 <div class="flex justify-center">
                     <svg class=" w-14 h-14 text-[#131e30]" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" width="24"
@@ -88,8 +95,8 @@ mount(function ($path) {
                             clip-rule="evenodd" />
                     </svg>
                 </div>
-                <div class="text-center text-xl font-bold">{{Auth::user()->name}}</div>
-                <div class="text-center text-[##a2acb4] text-lg font-thin">{{Auth::user()->email}}</div>
+                <div class="text-center text-xl font-bold">{{$user->name}}</div>
+                <div class="text-center text-[##a2acb4] text-lg font-thin">{{$user->email}}</div>
             </div>
         </div>
     </div>
