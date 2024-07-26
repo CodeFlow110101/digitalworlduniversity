@@ -32,7 +32,7 @@ $submit = function (Request $request) {
         'name' => $this->name,
         'email' => $this->email,
         'password' => Hash::make($this->password),
-        'role_id' => Role::where('name', 'student')->first()->id
+        'role_id' => Role::where('name', 'student')->first()->id,
     ]);
 
     $currentDate = Carbon::now();
@@ -48,18 +48,11 @@ $submit = function (Request $request) {
         'code' => (string) Str::uuid() . $user->id . $user->name,
     ]);
 
-    ReferralIncome::create([
-        'user_id' => $user->id,
-        'amount' => 0,
-    ]);
-
-    Wallet::create(['user_id' => $user->id, 'amount' => 0]);
-
     if ($this->referral_code && ReferralCode::where('code', $this->referral_code)->exists()) {
         $plan_price = Plan::find($this->plan)->price;
         $user_id = ReferralCode::where('code', $this->referral_code)->first('user_id')->user_id;
-        Wallet::where('user_id', $user_id)->increment('amount', $plan_price * 0.25);
-        ReferralIncome::where('user_id', $user_id)->increment('amount', $plan_price * 0.25);
+        User::where('id', $user_id)->increment('wallet', $plan_price * 0.25);
+        User::where('id', $user_id)->increment('referral_income', $plan_price * 0.25);
     }
 
     if (
