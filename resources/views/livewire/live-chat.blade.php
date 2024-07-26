@@ -53,7 +53,7 @@ mount(function () {
                 </div>
             </div>
         </div>
-        <div :class="showChats?'scale-x-100':'scale-x-0'" class="absolute h-[700px] transition-transform duration-200 origin-right flex justify-between gap-2">
+        <div :class="showChats?'scale-x-100':'scale-x-0'" class="absolute h-[700px] w-full transition-transform duration-200 origin-right flex justify-between gap-2">
             <livewire:chat :current_channel="$current_channel" :user_id="$user_id">
         </div>
     </div>
