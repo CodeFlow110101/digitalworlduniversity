@@ -25,7 +25,7 @@ mount(function () {
 
 ?>
 
-<div class="rounded-2xl bg-[#d6dcde] text-[#131e30]">
+<div x-data="{showChats:false}" class="rounded-2xl bg-[#d6dcde] text-[#131e30]">
     <div class="h-full w-full flex justify-between relative">
         <div class="rounded-2xl pt-4 p-4 h-full w-fit gap-2 sm:gap-4">
             <div class="bg-[#d6dcde] rounded-2xl h-full grid grid-cols-1 gap-2">
@@ -43,8 +43,17 @@ mount(function () {
                 </div>
             </div>
         </div>
-        <div class="absolute h-[700px] flex justify-between gap-2">
-            <div class="w-32"></div>
+        <div class="w-full grid grid-cols-1 gap-0 p-6 overflow-auto no-scrollbar">
+            <div class="bg-[#b5c1c9] rounded-2xl text-[#131e30] ">
+                <div class="text-center py-4 w-full sm:py-8 font-thin text-4xl select-none">
+                    {{$this->current_channel->name}}
+                </div>
+                <div class="h-full px-8 text-2xl">
+                    <div @Click="showChats=true" class="hover:bg-[#131e30] hover:text-[#b5c1c9] p-4 rounded-2xl"># | Discussion</div>
+                </div>
+            </div>
+        </div>
+        <div :class="showChats?'scale-x-100':'scale-x-0'" class="absolute h-[700px] transition-transform duration-200 origin-right flex justify-between gap-2">
             <livewire:chat :current_channel="$current_channel" :user_id="$user_id">
         </div>
     </div>
