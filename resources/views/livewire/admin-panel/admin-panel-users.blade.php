@@ -3,10 +3,8 @@
 use App\Models\Job;
 use App\Models\LkUserPlan;
 use App\Models\ReferralCode;
-use App\Models\ReferralIncome;
 use App\Models\User;
 use App\Models\VideoProgress;
-use App\Models\Wallet;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Storage;
 
@@ -31,10 +29,6 @@ $deleteUser = function ($id) {
     LkUserPlan::where('user_id', $id)->delete();
 
     ReferralCode::where('user_id', $id)->delete();
-
-    ReferralIncome::where('user_id', $id)->delete();
-
-    Wallet::where('user_id', $id)->delete();
 
     VideoProgress::where('user_id', $id)->delete();
 

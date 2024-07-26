@@ -39,13 +39,6 @@ $submit = function () {
         'code' => (string) Str::uuid() . $user->id . $user->name,
     ]);
 
-    ReferralIncome::create([
-        'user_id' => $user->id,
-        'amount' => 0,
-    ]);
-
-    Wallet::create(['user_id' => $user->id, 'amount' => 0]);
-
     $this->dispatch('hide-modal');
     $this->dispatch('reset-admin-panel-users');
 };
