@@ -2,7 +2,6 @@
 
 use App\Models\LkUserPlan;
 use App\Models\User;
-use App\Models\Wallet;
 use Carbon\Carbon;
 use Illuminate\Support\Facades\Storage;
 
@@ -40,7 +39,6 @@ $removePhoto = function () {
 
 mount(function ($user) {
     $this->$user = $user;
-    $this->balance = Wallet::where('user_id', $this->user->id)->first()->amount;
     $this->expiry_date = LkUserPlan::where('user_id', $this->user->id)->first()->expiry_date;
     $this->days_remaining = (int)Carbon::now()->diffInDays($this->expiry_date);
 });
@@ -98,7 +96,7 @@ mount(function ($user) {
         <div class="grid grid-cols-1 gap-8 lg:grid-cols-3 lg:gap-16 text-center font-bold text-xl lg:text-2xl">
             <div class="bg-[#d6dcde] rounded-2xl py-8 lg:py-12">Student ID: {{$user->id}}</div>
             <div class="bg-[#d6dcde] rounded-2xl py-8 lg:py-12">{{$days_remaining}} Days</div>
-            <div class="bg-[#d6dcde] rounded-2xl py-8 lg:py-12">Wallet: ${{$balance}}</div>
+            <div class="bg-[#d6dcde] rounded-2xl py-8 lg:py-12">Total Income: ${{$user->referral_income + $user->task_income}}</div>
         </div>
         <div class="bg-[#d6dcde] rounded-2xl py-12 px-2 text-center font-bold">Name: {{$user->name}}</div>
         <div class="bg-[#d6dcde] rounded-2xl py-12 px-2 text-center font-bold select-text">Email: {{$user->email}}</div>
