@@ -56,10 +56,19 @@ mount(function ($current_channel, $user_id) {
 
 ?>
 
-<div wire:poll.6s class="w-full">
+<div wire:poll.6s class="bg-[#d6dcde] rounded-2xl w-full">
     <div class="w-full grid grid-cols-1 gap-4 pb-4">
-        <div x-data="{showChats:false}" class="w-full select-none">
-            <div class="text-center py-4 sm:py-8 font-thin text-4xl select-none">{{$this->current_channel->name}}</div>
+        <div class="w-full select-none">
+            <div class="flex justify-between items-center">
+                <div class="w-min pl-8 pt-8">
+                    <button @Click="showChats=false" class="bg-[#131e30] px-4 py-4 text-lg font-semibold rounded-lg text-[#d6dcde]">
+                        <svg class="w-6 h-6 text-[#d6dcde]" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none" viewBox="0 0 24 24">
+                            <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="m9 5 7 7-7 7" />
+                        </svg>
+                    </button>
+                </div>
+                <div class="text-center py-4 w-full sm:py-8 font-thin text-4xl select-none">{{$this->current_channel->name}}</div>
+            </div>
             <div class="rounded-2xl px-4 overflow-auto max-h-96 lg:max-h-[480px] grid grid-cols-1 gap-12 sm:gap-6">
                 @foreach($chats as $chat)
                 <div wire:key="chat{{ $chat->id }}" class="w-full @if($user_id == $chat->user_id) flex justify-end @else justify-start @endif">
