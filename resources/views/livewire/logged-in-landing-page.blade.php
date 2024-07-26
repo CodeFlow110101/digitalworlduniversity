@@ -1,6 +1,9 @@
 <?php
 
 use function Livewire\Volt\{state, layout, mount, on};
+
+use App\Models\Program;
+use App\Models\Video;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Gate;
@@ -68,7 +71,7 @@ mount(function (Request $request) {
             <div class="flex justify-center">
                 <div class="py-8 px-8 items-center w-full flex justify-between rounded-2xl bg-[#d6dcde] text-3xl text-center text-[#f6aa23] font-bold">
                     <div class="w-min lg:hidden"></div>
-                    <div class="w-full text-[#131e30] capitalize">{{str_replace("-"," ",$path)}}</div>
+                    <div class="w-full text-[#131e30] capitalize">@if($path == 'video-player' || $path == 'admin-panel-video-player') {{Program::find(Video::find($this->id)->program_id)->title}} @else {{str_replace("-"," ",$path)}} @endif</div>
                     <div @click="showSidebar=!showSidebar" class="w-min border border-[#131e30] text-[#131e30] p-1 lg:hidden rounded-lg">
                         <svg x-show="!showSidebar" class="sm:w-8 sm:h-8 w-5 h-5 text-[#131e30]" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none" viewBox="0 0 24 24">
                             <path stroke="currentColor" stroke-linecap="round" stroke-width="2" d="M5 7h14M5 12h14M5 17h14" />
