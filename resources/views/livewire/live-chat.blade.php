@@ -35,7 +35,7 @@ mount(function () {
 
 ?>
 
-<div x-on:show-chats="showChats=false" x-data="{showChats:true}" class="rounded-2xl p-2 bg-[#d6dcde] text-[#131e30]">
+<div x-on:show-chats="showChats=true" x-data="{showChats:false}" class="rounded-2xl p-2 bg-[#d6dcde] text-[#131e30]">
     <div class="w-full flex justify-between gap-2 max-lg:relative h-[700px]">
         <div class="rounded-2xl h-full">
             <div class="bg-[#d6dcde] rounded-2xl h-full">
@@ -68,7 +68,7 @@ mount(function () {
                 </div>
             </div>
         </div>
-        <div :class="showChats?'max-lg:scale-x-100':'max-lg:scale-x-0'" class="max-lg:absolute h-[700px] w-full max-lg:transition-transform max-lg:duration-200 max-lg:origin-right flex justify-between gap-2">
+        <div :class="showChats?'max-lg:scale-x-100':'max-lg:scale-x-0'" class="max-lg:absolute max-lg:z-10 h-[700px] w-full max-lg:transition-transform max-lg:duration-200 max-lg:origin-right flex justify-between gap-2">
             @if($current_group)
             <livewire:chat :current_group="$current_group" :user_id="$user_id">
                 @endif
