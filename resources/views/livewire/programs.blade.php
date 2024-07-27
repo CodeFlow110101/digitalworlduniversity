@@ -28,7 +28,7 @@ $redirectTo = function ($path, $id) {
             </div>
             <div wire:click="redirectTo('videos',{{$program->id}})" class="text-[#d6dcde] rounded-b-2xl bg-[#131e30] text-center p-3 grid grid-cols-1 gap-1 text-lg font-bold cursor-pointer">
                 <div class="w-full rounded-b-2xl text-center py-2 h-1/2">
-                    Videos
+                    Start Course
                 </div>
             </div>
         </div>

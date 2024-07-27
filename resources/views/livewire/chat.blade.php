@@ -5,10 +5,10 @@ use Illuminate\Support\Facades\Storage;
 
 use function Livewire\Volt\{state, on, mount, with};
 
-state(['current_channel', 'user_id', 'message'])->reactive();
+state(['current_group', 'user_id', 'message'])->reactive();
 
 with(function () {
-    return ['chats' => Chat::select(['chats.*', 'users.name'])->where('channel_id', $this->current_channel->id)->join('users', 'users.id', 'chats.user_id')->orderBy('created_at', 'desc')->limit(200)->paginate(200)->reverse()];
+    return ['chats' => Chat::select(['chats.*', 'users.name'])->where('group_id', $this->current_group->id)->join('users', 'users.id', 'chats.user_id')->orderBy('created_at', 'desc')->limit(200)->paginate(200)->reverse()];
 });
 
 on(['live-chat-handle-message' => function ($validationKey, $validationMessage, $fileName, $filePath) {
@@ -25,7 +25,7 @@ on(['live-chat-handle-message' => function ($validationKey, $validationMessage, 
             [
                 'user_id' => $this->user_id,
                 'message' => $this->message,
-                'channel_id' => $this->current_channel->id,
+                'group_id' => $this->current_group->id,
                 'file_name' => $fileName,
                 'file_path' => $filePath,
             ]
@@ -44,13 +44,13 @@ $downloadFile = function ($id) {
 
 $sendMessage = function () {
     if ($this->message && rtrim($this->message) != "") {
-        Chat::create(['user_id' => $this->user_id, 'message' => $this->message, 'channel_id' => $this->current_channel->id]);
+        Chat::create(['user_id' => $this->user_id, 'message' => $this->message, 'group_id' => $this->current_channel->id]);
         $this->reset(['message']);
     }
 };
 
-mount(function ($current_channel, $user_id) {
-    $this->current_channel = $current_channel;
+mount(function ($current_group, $user_id) {
+    $this->current_group = $current_group;
     $this->$user_id = $user_id;
 });
 
@@ -60,16 +60,16 @@ mount(function ($current_channel, $user_id) {
     <div class="w-full grid grid-cols-1 gap-4 pb-4">
         <div class="w-full select-none">
             <div class="flex justify-between items-center">
-                <div class="w-min pl-8 pt-8">
-                    <button @Click="showChats=false" class="bg-[#131e30] px-4 py-4 text-lg font-semibold rounded-lg text-[#d6dcde]">
+                <div class="w-min pl-4 lg:hidden">
+                    <button @Click="showChats=false" class="bg-[#131e30] p-2 text-lg font-semibold rounded-lg text-[#d6dcde]">
                         <svg class="w-6 h-6 text-[#d6dcde]" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none" viewBox="0 0 24 24">
                             <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="m9 5 7 7-7 7" />
                         </svg>
                     </button>
                 </div>
-                <div class="text-center py-4 w-full sm:py-8 font-thin text-4xl select-none">{{$this->current_channel->name}}</div>
+                <div class="text-center py-4 w-full sm:py-8 font-thin text-2xl sm:text-3xl lg:text-4xl select-none"># | {{$this->current_group->name}}</div>
             </div>
-            <div class="rounded-2xl px-4 overflow-auto max-h-96 lg:max-h-[480px] grid grid-cols-1 gap-12 sm:gap-6">
+            <div class="rounded-2xl overflow-auto h-[530px] sm:h-[460px] grid grid-cols-1 gap-12 sm:gap-6">
                 @foreach($chats as $chat)
                 <div wire:key="chat{{ $chat->id }}" class="w-full @if($user_id == $chat->user_id) flex justify-end @else justify-start @endif">
                     @if($chat->file_name && $chat->file_path)
@@ -167,7 +167,7 @@ mount(function ($current_channel, $user_id) {
             </div>
         </div>
     </div>
-    <div x-data="{isFileAttached:false}" class="w-full px-4 pb-4">
+    <div x-data="{isFileAttached:false}" class="w-full pb-4">
         <input wire:model="message" class="px-6 py-2 sm:py-4 w-full rounded-t-2xl bg-[#b5c1c9] outline-none font-semibold" placeholder="Message">
         <div class="flex justify-between bg-[#b5c1c9] rounded-b-2xl p-2 sm:p-4">
             <div class="w-min flex justify-between items-center gap-4 relative">
