@@ -35,7 +35,7 @@ mount(function () {
 
 ?>
 
-<div x-on:show-chats="showChats=true" x-data="{showChats:true}" class="rounded-2xl p-2 bg-[#d6dcde] text-[#131e30]">
+<div x-on:show-chats="showChats=false" x-data="{showChats:true}" class="rounded-2xl p-2 bg-[#d6dcde] text-[#131e30]">
     <div class="w-full flex justify-between gap-2 max-lg:relative h-[700px]">
         <div class="rounded-2xl h-full">
             <div class="bg-[#d6dcde] rounded-2xl h-full">
@@ -55,7 +55,7 @@ mount(function () {
         </div>
         <div class="lg:w-min w-full whitespace-nowrap h-full">
             <div class="bg-[#b5c1c9] h-full rounded-2xl text-[#131e30]">
-                <div class="text-center px-4 w-full sm:py-8 font-thin text-4xl select-none">
+                <div class="text-center px-4 w-full py-4 sm:py-8 font-thin text-4xl select-none">
                     {{$this->current_channel->name}}
                 </div>
                 <div class="h-full w-full pr-4 text-2xl overflow-y-auto no-scrollbar">
