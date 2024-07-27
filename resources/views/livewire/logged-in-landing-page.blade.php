@@ -66,7 +66,7 @@ mount(function (Request $request) {
 <div x-data="{showSidebar:false}" class="lg:flex lg:justify-between relative bg-[#b5c1c9] select-none">
     <livewire:style.logged-in-landing-page-style>
         <div class="w-3/12 p-6 max-lg:hidden"><livewire:logged-in-side-bar :path="$path" :user="$user"></div>
-        <div :class="showSidebar ? 'translate-x-0' : '-translate-x-64'" class="w-64 py-6 px-4 transition-transform duration-200 absolute lg:hidden"><livewire:logged-in-side-bar :path="$path" :user="$user"></div>
+        <div :class="showSidebar ? 'translate-x-0' : '-translate-x-64'" class="w-64 py-6 px-4 transition-transform duration-200 absolute lg:hidden z-50"><livewire:logged-in-side-bar :path="$path" :user="$user"></div>
         <div class="lg:w-9/12 w-full py-6 px-4 lg:px-8 grid grid-cols-1 gap-8 h-min">
             <div class="flex justify-center">
                 <div class="py-8 px-8 items-center w-full flex justify-between rounded-2xl bg-[#d6dcde] text-3xl text-center text-[#f6aa23] font-bold">
