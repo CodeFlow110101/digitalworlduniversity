@@ -11,8 +11,8 @@ $redirectTo = function ($path, $id) {
     $this->redirectRoute($path, navigate: true);
 };
 
-mount(function ($id) {
-    $this->id = $id;
+mount(function ($data) {
+    $this->id = $data['video-player-id'];
     $video =  Video::find($this->id);
     $this->url = $video->video;
     $this->name = $video->name;
