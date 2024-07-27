@@ -7,7 +7,7 @@ use Illuminate\Support\Facades\Auth;
 
 use function Livewire\Volt\{state, mount, on};
 
-state(['id', 'url', 'name', 'program_id']);
+state(['id', 'url', 'name', 'program_id', 'allowedVideoIds', 'nextVideoId']);
 
 on([
     'video-completed' => function () {
@@ -23,12 +23,19 @@ $redirectTo = function ($path, $id) {
     $this->redirectRoute($path, navigate: true);
 };
 
-mount(function ($id) {
-    $this->id = $id;
+$redirectToNextVideo = function ($path, $id) {
+    $data = ['video-player-id' => $id, 'allowedVideoIds' => $this->allowedVideoIds];
+    session()->flash('video-player-id', $data);
+    $this->redirectRoute($path, navigate: true);
+};
+
+mount(function ($data) {
+    $this->id = $data['video-player-id'];
     $video =  Video::find($this->id);
     $this->url = $video->video;
     $this->name = $video->name;
     $this->program_id = $video->program_id;
+    $this->allowedVideoIds = $data['allowedVideoIds'];
 });
 
 ?>
@@ -43,6 +50,11 @@ mount(function ($id) {
         </video>
     </div>
     <div class="w-full flex justify-center">
-        <div wire:click="redirectTo('videos',{{$program_id}})" class="bg-[#131e30] w-min px-8 cursor-pointer py-4 text-lg font-semibold rounded-lg text-[#d6dcde]">Back</div>
+        <div class="flex justify-between gap-4">
+            <div wire:click="redirectTo('videos',{{$program_id}})" class="bg-[#131e30] w-min px-8 cursor-pointer py-4 text-lg font-semibold rounded-lg text-[#d6dcde]">Back</div>
+            @if($nextVideoId)
+            <div wire:click="redirectToNextVideo('video-player',{{$nextVideoId}})" class="bg-[#131e30] w-min px-8 cursor-pointer py-4 text-lg font-semibold rounded-lg text-[#d6dcde]">Next</div>
+            @endif
+        </div>
     </div>
 </div>

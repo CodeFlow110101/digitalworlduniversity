@@ -19,7 +19,8 @@ on([
 ]);
 
 $redirectTo = function ($path, $id) {
-    session()->flash('admin-panel-video-player-id', $id);
+    $data = ['video-player-id' => $id];
+    session()->flash('admin-panel-video-player-id', $data);
     $this->redirectRoute($path, navigate: true);
 };
 

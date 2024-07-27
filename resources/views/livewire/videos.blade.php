@@ -14,7 +14,8 @@ state(['id', 'allowedVideoIds']);
 with(fn() => ['videos' => Video::where('program_id', $this->id)->paginate(0)]);
 
 $redirectTo = function ($path, $id) {
-    session()->flash('video-player-id', $id);
+    $data = ['video-player-id' => $id, 'allowedVideoIds' => $this->allowedVideoIds];
+    session()->flash('video-player-id', $data);
     $this->redirectRoute($path, navigate: true);
 };
 
