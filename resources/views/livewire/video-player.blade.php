@@ -15,6 +15,31 @@ on([
             ['user_id' => Auth::user()->id, 'video_id' => $this->id, 'program_id' => $this->program_id],
             []
         );
+
+        $user_video_progress = VideoProgress::select('video_id')->where('user_id', Auth::user()->id)->where('program_id', $this->program_id)->get()->toArray();
+        $allVideoIds = Video::select('id')->where('program_id', $this->program_id)->get()->toArray();
+
+        $allowedVideoIds = [];
+
+        $i = 0;
+
+        for ($i = 0; $i <= count($user_video_progress) - 1; $i++) {
+            $allowedVideoIds[] = $allVideoIds[$i];
+        }
+
+        if (array_key_exists($i, $allVideoIds)) {
+            $allowedVideoIds[] = $allVideoIds[$i];
+        }
+
+        $this->allowedVideoIds = [];
+
+        foreach ($allowedVideoIds as $ids) {
+            $this->allowedVideoIds[] = $ids['id'];
+        }
+
+        if (array_key_exists(array_search($this->id, $this->allowedVideoIds) + 1, $this->allowedVideoIds)) {
+            $this->nextVideoId = $this->allowedVideoIds[array_search($this->id, $this->allowedVideoIds) + 1];
+        }
     }
 ]);
 
@@ -36,6 +61,10 @@ mount(function ($data) {
     $this->name = $video->name;
     $this->program_id = $video->program_id;
     $this->allowedVideoIds = $data['allowedVideoIds'];
+
+    if (array_key_exists(array_search($video->id, $this->allowedVideoIds) + 1, $this->allowedVideoIds)) {
+        $this->nextVideoId = $this->allowedVideoIds[array_search($video->id, $this->allowedVideoIds) + 1];
+    }
 });
 
 ?>
