@@ -35,16 +35,16 @@ mount(function () {
 
 ?>
 
-<div x-on:show-chats="showChats=true" x-data="{showChats:false}" class="rounded-2xl p-2 bg-[#d6dcde] text-[#131e30]">
+<div x-on:show-chats="showChats=true" x-data="{showChats:false}" class="rounded-2xl p-2 bg-[#d6dcde] dark:bg-gray-800 text-[#131e30]">
     <div class="w-full flex justify-between gap-2 max-lg:relative h-[700px]">
         <div class="rounded-2xl h-full">
-            <div class="bg-[#d6dcde] rounded-2xl h-full">
-                <div class="bg-[#b5c1c9] rounded-2xl pr-4 overflow-y-auto no-scrollbar h-full flex justify-center">
+            <div class="rounded-2xl h-full">
+                <div class="bg-[#b5c1c9] dark:bg-black rounded-2xl pr-4 overflow-y-auto no-scrollbar h-full flex justify-center">
                     <div>
                         @foreach($channels as $channel)
                         <div class="flex justify-between gap-2 items-center">
-                            <div class="bg-red-500 w-0 @if($channel->id == $current_channel->id) h-8 sm:h-10 @else h-3 @endif border-l-4 rounded-r-full border-[#131e30]"></div>
-                            <div wire:click="setChannel({{$channel->id}})" wire:key="channel{{ $channel->id }}" class="w-10 h-10 sm:w-16 sm:h-16 max-sm:text-sm my-4 cursor-pointer flex items-center justify-center font-semibold rounded-full text-center @if($channel->id == $current_channel->id) bg-[#131e30] text-[#fafbfb] @else bg-[#d6dcde] hover:bg-[#131e30] hover:text-[#fafbfb] @endif">
+                            <div class="bg-red-500 w-0 @if($channel->id == $current_channel->id) h-8 sm:h-10 @else h-3 @endif border-l-4 rounded-r-full border-[#131e30] dark:border-[#b5c1c9]"></div>
+                            <div wire:click="setChannel({{$channel->id}})" wire:key="channel{{ $channel->id }}" class="w-10 h-10 sm:w-16 sm:h-16 max-sm:text-sm my-4 cursor-pointer flex items-center justify-center font-semibold rounded-full text-center @if($channel->id == $current_channel->id) bg-[#131e30] text-[#fafbfb] dark:text-[#131e30] dark:bg-[#b5c1c9] @else bg-[#d6dcde] dark:bg-[#131e30] dark:text-[#d6dcde] dark:hover:text-[#131e30] dark:hover:bg-[#d6dcde] hover:bg-[#131e30] hover:text-[#fafbfb] @endif">
                                 {{$channel->name[0]}}
                             </div>
                         </div>
@@ -54,15 +54,15 @@ mount(function () {
             </div>
         </div>
         <div class="lg:w-min w-full whitespace-nowrap h-full">
-            <div class="bg-[#b5c1c9] h-full rounded-2xl text-[#131e30]">
+            <div class="bg-[#b5c1c9] dark:bg-black h-full rounded-2xl text-[#131e30] dark:text-[#DDE6ED]">
                 <div class="text-center px-4 w-full py-4 sm:py-8 font-thin text-4xl select-none">
                     {{$this->current_channel->name}}
                 </div>
                 <div class="h-full w-full pr-4 text-2xl overflow-y-auto no-scrollbar">
                     @foreach($groups as $group)
                     <div class="flex justify-between gap-2 items-center">
-                        <div class="bg-red-500 w-0 @if($group->id == $current_group->id) h-8 sm:h-8 @else h-3 @endif border-l-4 rounded-r-full border-[#131e30]"></div>
-                        <div wire:click="setGroup({{$group->id}})" class="@if($group->id == $current_group->id) bg-[#131e30] text-[#fafbfb] @else bg-[#d6dcde] hover:bg-[#131e30] hover:text-[#fafbfb] @endif text-base px-6 py-2 my-2 max-lg:w-full rounded-2xl cursor-pointer"># | {{$group->name}}</div>
+                        <div class="bg-red-500 w-0 @if($group->id == $current_group->id) h-8 sm:h-8 @else h-3 @endif border-l-4 rounded-r-full border-[#131e30] dark:border-[#b5c1c9]"></div>
+                        <div wire:click="setGroup({{$group->id}})" class="@if($group->id == $current_group->id) bg-[#131e30] text-[#fafbfb] dark:text-[#131e30] dark:bg-[#b5c1c9] @else bg-[#d6dcde] dark:bg-[#131e30] dark:text-[#d6dcde] dark:hover:text-[#131e30] dark:hover:bg-[#b5c1c9] hover:bg-[#131e30] hover:text-[#fafbfb] @endif text-base px-6 py-2 my-2 max-lg:w-full rounded-2xl cursor-pointer"># | {{$group->name}}</div>
                     </div>
                     @endforeach
                 </div>

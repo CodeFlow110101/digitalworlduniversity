@@ -5,7 +5,8 @@ use Illuminate\Support\Facades\Storage;
 
 use function Livewire\Volt\{state, on, mount, with};
 
-state(['current_group', 'user_id', 'message'])->reactive();
+state(['message']);
+state(['current_group', 'user_id'])->reactive();
 
 with(function () {
     return ['chats' => Chat::select(['chats.*', 'users.name'])->where('group_id', $this->current_group->id)->join('users', 'users.id', 'chats.user_id')->orderBy('created_at', 'desc')->limit(200)->paginate(200)->reverse()];
@@ -56,7 +57,7 @@ mount(function ($current_group, $user_id) {
 
 ?>
 
-<div wire:poll.6s class="bg-[#d6dcde] rounded-2xl w-full">
+<div wire:poll.6s class="bg-[#d6dcde] dark:bg-black rounded-2xl w-full">
     <div class="w-full grid grid-cols-1 gap-4 pb-4">
         <div class="w-full select-none">
             <div class="flex justify-between items-center">
@@ -67,7 +68,7 @@ mount(function ($current_group, $user_id) {
                         </svg>
                     </button>
                 </div>
-                <div class="text-center py-4 w-full sm:py-8 font-thin text-2xl sm:text-3xl lg:text-4xl select-none"># | {{$this->current_group->name}}</div>
+                <div class="text-center dark:text-[#DDE6ED] py-4 w-full sm:py-8 font-thin text-2xl sm:text-3xl lg:text-4xl select-none"># | {{$this->current_group->name}}</div>
             </div>
             <div class="rounded-2xl overflow-auto h-[530px] sm:h-[460px] grid grid-cols-1 gap-12 sm:gap-6">
                 @foreach($chats as $chat)
@@ -76,49 +77,49 @@ mount(function ($current_group, $user_id) {
                     <div class="flex justify-between gap-2">
                         @if($user_id != $chat->user_id)
                         <div class="w-min">
-                            <svg class="w-5 h-5 lg:w-10 lg:h-10" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="currentColor" viewBox="0 0 24 24">
+                            <svg class="w-5 h-5 lg:w-10 lg:h-10 dark:text-[#DDE6ED]" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="currentColor" viewBox="0 0 24 24">
                                 <path fill-rule="evenodd" d="M12 20a7.966 7.966 0 0 1-5.002-1.756l.002.001v-.683c0-1.794 1.492-3.25 3.333-3.25h3.334c1.84 0 3.333 1.456 3.333 3.25v.683A7.966 7.966 0 0 1 12 20ZM2 12C2 6.477 6.477 2 12 2s10 4.477 10 10c0 5.5-4.44 9.963-9.932 10h-.138C6.438 21.962 2 17.5 2 12Zm10-5c-1.84 0-3.333 1.455-3.333 3.25S10.159 13.5 12 13.5c1.84 0 3.333-1.455 3.333-3.25S13.841 7 12 7Z" clip-rule="evenodd" />
                             </svg>
                         </div>
                         @endif
-                        <div class="grid grid-cols-1 gap-2">
+                        <div class="grid grid-cols-1 gap-2 dark:text-[#DDE6ED]">
                             @if($user_id != $chat->user_id)
                             <div class="flex justify-between items-center gap-2">
-                                <div class="font-bold text-sm lg:text-lg">{{$chat->name}}</div>
-                                <div class="text-xs w-full text-left break-words text-wrap">{{$chat->created_at}}</div>
+                                <div class="font-bold text-sm lg:text-lg dark:text-[#DDE6ED]">{{$chat->name}}</div>
+                                <div class="text-xs w-full text-left break-words text-wrap dark:text-[#DDE6ED]">{{$chat->created_at}}</div>
                             </div>
                             <div class="rounded-xl sm:rounded-2xl text-wrap w-full @if($user_id == $chat->user_id) text-right @else text-left @endif">
-                                <div class="text-sx sm:font-normal tracking-tighter break-words text-wrap"> {{$chat->message}}</div>
+                                <div class="text-sx sm:font-normal tracking-tighter break-words text-wrap dark:text-[#DDE6ED]"> {{$chat->message}}</div>
                             </div>
                             @else
                             <div class="flex justify-between items-center gap-2">
-                                <div class="text-xs w-full text-right break-words text-wrap">{{$chat->created_at}}</div>
-                                <div class="font-bold text-sm lg:text-lg">{{$chat->name}}</div>
+                                <div class="text-xs w-full text-right break-words text-wrap dark:text-[#DDE6ED]">{{$chat->created_at}}</div>
+                                <div class="font-bold text-sm lg:text-lg dark:text-[#DDE6ED]">{{$chat->name}}</div>
                             </div>
                             <div class="rounded-xl sm:rounded-2xl text-wrap w-full @if($user_id == $chat->user_id) text-right @else text-left @endif">
                                 <div class="text-sx sm:text-base sm:font-normal tracking-tighter break-words text-wrap"> {{$chat->message}}</div>
                             </div>
                             @endif
-                            <div class="py-4 sm:py-6 px-6 sm:px-6 rounded-xl sm:rounded-2xl text-wrap w-full bg-[#b5c1c9] grid grid-cols-1 gap-4">
+                            <div class="py-4 sm:py-6 px-6 sm:px-6 rounded-xl sm:rounded-2xl text-wrap w-full bg-[#b5c1c9] dark:bg-gray-800 grid grid-cols-1 gap-4">
                                 <div class="flex justify-between items-center">
                                     <div>
-                                        <svg class="w-8 h-8 sm:w-8 sm:h-8 text-[#131e30]" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="currentColor" viewBox="0 0 24 24">
+                                        <svg class="w-8 h-8 sm:w-8 sm:h-8 text-[#131e30] dark:text-[#DDE6ED]" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="currentColor" viewBox="0 0 24 24">
                                             <path fill-rule="evenodd" d="M9 2.221V7H4.221a2 2 0 0 1 .365-.5L8.5 2.586A2 2 0 0 1 9 2.22ZM11 2v5a2 2 0 0 1-2 2H4v11a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V4a2 2 0 0 0-2-2h-7Z" clip-rule="evenodd" />
                                         </svg>
                                     </div>
                                     <div>
-                                        <svg wire:click="downloadFile({{$chat->id}})" class="w-6 h-6 sm:w-8 sm:h-8 text-[#131e30] cursor-pointer" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="currentColor" viewBox="0 0 24 24">
+                                        <svg wire:click="downloadFile({{$chat->id}})" class="w-6 h-6 sm:w-8 sm:h-8 text-[#131e30] dark:text-[#DDE6ED] cursor-pointer" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="currentColor" viewBox="0 0 24 24">
                                             <path fill-rule="evenodd" d="M13 11.15V4a1 1 0 1 0-2 0v7.15L8.78 8.374a1 1 0 1 0-1.56 1.25l4 5a1 1 0 0 0 1.56 0l4-5a1 1 0 1 0-1.56-1.25L13 11.15Z" clip-rule="evenodd" />
                                             <path fill-rule="evenodd" d="M9.657 15.874 7.358 13H5a2 2 0 0 0-2 2v4a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2v-4a2 2 0 0 0-2-2h-2.358l-2.3 2.874a3 3 0 0 1-4.685 0ZM17 16a1 1 0 1 0 0 2h.01a1 1 0 1 0 0-2H17Z" clip-rule="evenodd" />
                                         </svg>
                                     </div>
                                 </div>
-                                <div class="text-sm">{{$chat->file_name}}</div>
+                                <div class="text-sm dark:text-[#DDE6ED]">{{$chat->file_name}}</div>
                             </div>
                         </div>
                         @if($user_id == $chat->user_id)
                         <div class="w-min">
-                            <svg class="w-5 h-5 lg:w-10 lg:h-10" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="currentColor" viewBox="0 0 24 24">
+                            <svg class="w-5 h-5 lg:w-10 lg:h-10 dark:text-[#DDE6ED]" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="currentColor" viewBox="0 0 24 24">
                                 <path fill-rule="evenodd" d="M12 20a7.966 7.966 0 0 1-5.002-1.756l.002.001v-.683c0-1.794 1.492-3.25 3.333-3.25h3.334c1.84 0 3.333 1.456 3.333 3.25v.683A7.966 7.966 0 0 1 12 20ZM2 12C2 6.477 6.477 2 12 2s10 4.477 10 10c0 5.5-4.44 9.963-9.932 10h-.138C6.438 21.962 2 17.5 2 12Zm10-5c-1.84 0-3.333 1.455-3.333 3.25S10.159 13.5 12 13.5c1.84 0 3.333-1.455 3.333-3.25S13.841 7 12 7Z" clip-rule="evenodd" />
                             </svg>
                         </div>
@@ -128,12 +129,12 @@ mount(function ($current_group, $user_id) {
                     <div class="flex justify-between items-center gap-2 w-full">
                         @if($user_id != $chat->user_id)
                         <div class="w-min">
-                            <svg class="w-5 h-5 lg:w-10 lg:h-10" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="currentColor" viewBox="0 0 24 24">
+                            <svg class="w-5 h-5 lg:w-10 lg:h-10 dark:text-[#DDE6ED]" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="currentColor" viewBox="0 0 24 24">
                                 <path fill-rule="evenodd" d="M12 20a7.966 7.966 0 0 1-5.002-1.756l.002.001v-.683c0-1.794 1.492-3.25 3.333-3.25h3.334c1.84 0 3.333 1.456 3.333 3.25v.683A7.966 7.966 0 0 1 12 20ZM2 12C2 6.477 6.477 2 12 2s10 4.477 10 10c0 5.5-4.44 9.963-9.932 10h-.138C6.438 21.962 2 17.5 2 12Zm10-5c-1.84 0-3.333 1.455-3.333 3.25S10.159 13.5 12 13.5c1.84 0 3.333-1.455 3.333-3.25S13.841 7 12 7Z" clip-rule="evenodd" />
                             </svg>
                         </div>
                         @endif
-                        <div class="w-full">
+                        <div class="w-full dark:text-[#DDE6ED]">
                             @if($user_id != $chat->user_id)
                             <div class="flex justify-between items-center gap-2">
                                 <div class="font-bold text-sm lg:text-lg">{{$chat->name}}</div>
@@ -155,7 +156,7 @@ mount(function ($current_group, $user_id) {
                         </div>
                         @if($user_id == $chat->user_id)
                         <div class="w-min">
-                            <svg class="w-5 h-5 lg:w-10 lg:h-10" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="currentColor" viewBox="0 0 24 24">
+                            <svg class="w-5 h-5 lg:w-10 lg:h-10 dark:text-[#DDE6ED]" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="currentColor" viewBox="0 0 24 24">
                                 <path fill-rule="evenodd" d="M12 20a7.966 7.966 0 0 1-5.002-1.756l.002.001v-.683c0-1.794 1.492-3.25 3.333-3.25h3.334c1.84 0 3.333 1.456 3.333 3.25v.683A7.966 7.966 0 0 1 12 20ZM2 12C2 6.477 6.477 2 12 2s10 4.477 10 10c0 5.5-4.44 9.963-9.932 10h-.138C6.438 21.962 2 17.5 2 12Zm10-5c-1.84 0-3.333 1.455-3.333 3.25S10.159 13.5 12 13.5c1.84 0 3.333-1.455 3.333-3.25S13.841 7 12 7Z" clip-rule="evenodd" />
                             </svg>
                         </div>
@@ -168,7 +169,7 @@ mount(function ($current_group, $user_id) {
         </div>
     </div>
     <div x-data="{isFileAttached:false}" class="w-full pb-4">
-        <input wire:model="message" class="px-6 py-2 sm:py-4 w-full rounded-t-2xl bg-[#b5c1c9] outline-none font-semibold" placeholder="Message">
+        <input wire:model="message" class="px-6 py-2 sm:py-4 w-full rounded-t-2xl bg-[#b5c1c9] dark:bg-[#b5c1c9] outline-none font-semibold" placeholder="Message">
         <div class="flex justify-between bg-[#b5c1c9] rounded-b-2xl p-2 sm:p-4">
             <div class="w-min flex justify-between items-center gap-4 relative">
                 <div @click="$refs.file.click()" class="hover:bg-gray-300 cursor-pointer p-1 rounded-full bg-transparent">

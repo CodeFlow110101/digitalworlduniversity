@@ -22,21 +22,21 @@ $submit = function () {
     <div class="w-full h-min grid grid-cols-1 gap-6">
         <div>
             <div class="relative">
-                <input wire:model="password" type="password" class="block px-2.5 pb-2.5 pt-4 w-full text-sm text-[#131e30] bg-transparent rounded-lg border-2 border-[#131e30] appearance-none focus:outline-none focus:ring-0 peer" placeholder=" " />
-                <label for="floating_outlined" class="absolute text-sm text-[#131e30] duration-300 transform -translate-y-4 scale-75 top-2 z-10 origin-[0] bg-[#d6dcde] px-2 peer-focus:px-2 peer-placeholder-shown:scale-100 peer-placeholder-shown:-translate-y-1/2 peer-placeholder-shown:top-1/2 peer-focus:top-2 peer-focus:scale-75 peer-focus:-translate-y-4 rtl:peer-focus:translate-x-1/4 rtl:peer-focus:left-auto start-1">password</label>
+                <input wire:model="password" type="password" class="block px-2.5 pb-2.5 pt-4 w-full text-sm text-[#131e30] dark:text-[#DDE6ED] bg-transparent rounded-lg border-2 border-[#131e30] dark:border-[#DDE6ED] appearance-none focus:outline-none focus:ring-0 peer" placeholder=" " />
+                <label for="floating_outlined" class="absolute text-sm text-[#131e30] dark:text-[#DDE6ED] duration-300 transform -translate-y-4 scale-75 top-2 z-10 origin-[0] bg-[#d6dcde] dark:bg-gray-800 px-2 peer-focus:px-2 peer-placeholder-shown:scale-100 peer-placeholder-shown:-translate-y-1/2 peer-placeholder-shown:top-1/2 peer-focus:top-2 peer-focus:scale-75 peer-focus:-translate-y-4 rtl:peer-focus:translate-x-1/4 rtl:peer-focus:left-auto start-1">password</label>
             </div>
             @error('password')<div class="text-red-600">{{$message}}</div>@enderror
         </div>
         <div>
             <div class="relative">
-                <input wire:model="password_confirmation" type="password" class="block px-2.5 pb-2.5 pt-4 w-full text-sm text-[#131e30] bg-transparent rounded-lg border-2 border-[#131e30] appearance-none focus:outline-none focus:ring-0 peer" placeholder=" " />
-                <label for="floating_outlined" class="absolute text-sm text-[#131e30] duration-300 transform -translate-y-4 scale-75 top-2 z-10 origin-[0] bg-[#d6dcde] px-2 peer-focus:px-2 peer-placeholder-shown:scale-100 peer-placeholder-shown:-translate-y-1/2 peer-placeholder-shown:top-1/2 peer-focus:top-2 peer-focus:scale-75 peer-focus:-translate-y-4 rtl:peer-focus:translate-x-1/4 rtl:peer-focus:left-auto start-1">Confirm Password</label>
+                <input wire:model="password_confirmation" type="password" class="block px-2.5 pb-2.5 pt-4 w-full text-sm text-[#131e30] dark:text-[#DDE6ED] bg-transparent rounded-lg border-2 border-[#131e30] dark:border-[#DDE6ED] appearance-none focus:outline-none focus:ring-0 peer" placeholder=" " />
+                <label for="floating_outlined" class="absolute text-sm text-[#131e30] dark:text-[#DDE6ED] duration-300 transform -translate-y-4 scale-75 top-2 z-10 origin-[0] bg-[#d6dcde] dark:bg-gray-800 px-2 peer-focus:px-2 peer-placeholder-shown:scale-100 peer-placeholder-shown:-translate-y-1/2 peer-placeholder-shown:top-1/2 peer-focus:top-2 peer-focus:scale-75 peer-focus:-translate-y-4 rtl:peer-focus:translate-x-1/4 rtl:peer-focus:left-auto start-1">Confirm Password</label>
             </div>
             @error('password_confirmation')<div class="text-red-600">{{$message}}</div>@enderror
         </div>
 
         <div class="flex justify-center w-full">
-            <button wire:click="submit" wire:loading.class="pointer-events-none" wire:target="submit" class="bg-[#131e30] px-8 py-4 text-lg font-semibold rounded-lg text-[#d6dcde]">
+            <button wire:click="submit" wire:loading.class="pointer-events-none" wire:target="submit" class="bg-[#131e30] dark:bg-[#DDE6ED] px-8 py-4 text-lg font-semibold rounded-lg text-[#d6dcde] dark:text-[#131e30]">
                 <div wire:loading.class="hidden" wire:target="submit">Submit</div>
                 <div wire:loading.class.remove="hidden" wire:target="submit" class="flex justify-center hidden">
                     <svg aria-hidden="true" class="w-8 h-8 text-[#131e30] animate-spin fill-white" viewBox="0 0 100 101" fill="none" xmlns="http://www.w3.org/2000/svg">

@@ -49,27 +49,27 @@ mount(function ($modal, $args, $data, $callback_event) {
     <div class="w-full h-min grid grid-cols-1 gap-6">
         <div>
             <div class=" relative">
-                <input wire:model="name" type="text" class="block px-2.5 pb-2.5 pt-4 w-full text-sm text-[#131e30] bg-transparent rounded-lg border-2 border-[#131e30] appearance-none focus:outline-none focus:ring-0 peer" placeholder=" " />
-                <label for="floating_outlined" class="absolute text-sm text-[#131e30] duration-300 transform -translate-y-4 scale-75 top-2 z-10 origin-[0] bg-[#d6dcde] px-2 peer-focus:px-2 peer-placeholder-shown:scale-100 peer-placeholder-shown:-translate-y-1/2 peer-placeholder-shown:top-1/2 peer-focus:top-2 peer-focus:scale-75 peer-focus:-translate-y-4 rtl:peer-focus:translate-x-1/4 rtl:peer-focus:left-auto start-1">Name</label>
+                <input wire:model="name" type="text" class="block px-2.5 pb-2.5 pt-4 w-full text-sm text-[#131e30] dark:text-[#DDE6ED] bg-transparent rounded-lg border-2 border-[#131e30] dark:border-[#DDE6ED] appearance-none focus:outline-none focus:ring-0 peer" placeholder=" " />
+                <label for="floating_outlined" class="absolute text-sm text-[#131e30] dark:text-[#DDE6ED] duration-300 transform -translate-y-4 scale-75 top-2 z-10 origin-[0] bg-[#d6dcde] dark:bg-gray-800 px-2 peer-focus:px-2 peer-placeholder-shown:scale-100 peer-placeholder-shown:-translate-y-1/2 peer-placeholder-shown:top-1/2 peer-focus:top-2 peer-focus:scale-75 peer-focus:-translate-y-4 rtl:peer-focus:translate-x-1/4 rtl:peer-focus:left-auto start-1">Name</label>
             </div>
             @error('name')<div class="text-red-600">{{$message}}</div>@enderror
         </div>
         <div>
             <div class="relative">
-                <input x-ref="video" accept="video/*" type="file" class="block px-2.5 pb-2.5 pt-4 w-full text-sm text-[#131e30] bg-transparent rounded-lg border-2 border-[#131e30] appearance-none focus:outline-none focus:ring-0 peer" placeholder=" " />
-                <label for="floating_outlined" class="absolute text-sm text-[#131e30] duration-300 transform -translate-y-4 scale-75 top-2 z-10 origin-[0] bg-[#d6dcde] px-2 peer-focus:px-2 peer-placeholder-shown:scale-100 peer-placeholder-shown:-translate-y-1/2 peer-placeholder-shown:top-1/2 peer-focus:top-2 peer-focus:scale-75 peer-focus:-translate-y-4 rtl:peer-focus:translate-x-1/4 rtl:peer-focus:left-auto start-1">Video</label>
+                <input x-ref="video" accept="video/*" type="file" class="block px-2.5 pb-2.5 pt-4 w-full text-sm text-[#131e30] dark:text-[#DDE6ED] bg-transparent rounded-lg border-2 border-[#131e30] dark:border-[#DDE6ED] appearance-none focus:outline-none focus:ring-0 peer" placeholder=" " />
+                <label for="floating_outlined" class="absolute text-sm text-[#131e30] dark:text-[#DDE6ED] duration-300 transform -translate-y-4 scale-75 top-2 z-10 origin-[0] bg-[#d6dcde] dark:bg-gray-800 px-2 peer-focus:px-2 peer-placeholder-shown:scale-100 peer-placeholder-shown:-translate-y-1/2 peer-placeholder-shown:top-1/2 peer-focus:top-2 peer-focus:scale-75 peer-focus:-translate-y-4 rtl:peer-focus:translate-x-1/4 rtl:peer-focus:left-auto start-1">Video</label>
             </div>
             @error('video')<div class="text-red-600">{{$message}}</div>@enderror
         </div>
         <div>
             <div class="relative">
-                <input x-ref="thumbnail" accept="image/*" type="file" class="block px-2.5 pb-2.5 pt-4 w-full text-sm text-[#131e30] bg-transparent rounded-lg border-2 border-[#131e30] appearance-none focus:outline-none focus:ring-0 peer" placeholder=" " />
-                <label for="floating_outlined" class="absolute text-sm text-[#131e30] duration-300 transform -translate-y-4 scale-75 top-2 z-10 origin-[0] bg-[#d6dcde] px-2 peer-focus:px-2 peer-placeholder-shown:scale-100 peer-placeholder-shown:-translate-y-1/2 peer-placeholder-shown:top-1/2 peer-focus:top-2 peer-focus:scale-75 peer-focus:-translate-y-4 rtl:peer-focus:translate-x-1/4 rtl:peer-focus:left-auto start-1">Thumbnail</label>
+                <input x-ref="thumbnail" accept="image/*" type="file" class="block px-2.5 pb-2.5 pt-4 w-full text-sm text-[#131e30] dark:text-[#DDE6ED] bg-transparent rounded-lg border-2 border-[#131e30] dark:border-[#DDE6ED] appearance-none focus:outline-none focus:ring-0 peer" placeholder=" " />
+                <label for="floating_outlined" class="absolute text-sm text-[#131e30] dark:text-[#DDE6ED] duration-300 transform -translate-y-4 scale-75 top-2 z-10 origin-[0] bg-[#d6dcde] dark:bg-gray-800 px-2 peer-focus:px-2 peer-placeholder-shown:scale-100 peer-placeholder-shown:-translate-y-1/2 peer-placeholder-shown:top-1/2 peer-focus:top-2 peer-focus:scale-75 peer-focus:-translate-y-4 rtl:peer-focus:translate-x-1/4 rtl:peer-focus:left-auto start-1">Thumbnail</label>
             </div>
             @error('thumbnail')<div class="text-red-600">{{$message}}</div>@enderror
         </div>
         <div x-data="{showLoader:false}" x-on:admin-panel-video-upload-loader.window="showLoader = event.detail.value" class="flex justify-center w-full">
-            <button :class="showLoader && 'pointer-events-none'" wire:click="$dispatch('upload-video', { video: $refs.video, thumbnail: $refs.thumbnail, videoSizeLimit:400, thumbnailSizeLimit:1, callbackDispatch:'modal-video-set-validation', callbackLoaderDispatch:'admin-panel-video-upload-loader'})" class="bg-[#131e30] px-8 py-4 text-lg font-semibold rounded-lg text-[#d6dcde]">
+            <button :class="showLoader && 'pointer-events-none'" wire:click="$dispatch('upload-video', { video: $refs.video, thumbnail: $refs.thumbnail, videoSizeLimit:400, thumbnailSizeLimit:1, callbackDispatch:'modal-video-set-validation', callbackLoaderDispatch:'admin-panel-video-upload-loader'})" class="bg-[#131e30] dark:bg-[#DDE6ED] px-8 py-4 text-lg font-semibold rounded-lg text-[#d6dcde] dark:text-[#131e30]">
                 <div x-show="!showLoader">Submit</div>
                 <div x-show="showLoader" class="flex justify-center">
                     <svg aria-hidden="true" class="w-8 h-8 text-[#131e30] animate-spin fill-white" viewBox="0 0 100 101" fill="none" xmlns="http://www.w3.org/2000/svg">
