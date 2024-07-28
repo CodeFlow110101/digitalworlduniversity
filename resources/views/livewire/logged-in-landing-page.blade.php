@@ -87,8 +87,8 @@ mount(function (Request $request) {
         <div :class="showSidebar ? 'translate-x-0' : '-translate-x-64'" class="w-64 py-6 px-4 transition-transform duration-200 absolute lg:hidden z-50"><livewire:logged-in-side-bar :path="$path" :user="$user"></div>
         <div class="lg:w-9/12 w-full py-6 px-4 lg:px-8 grid grid-cols-1 gap-8 h-min">
             <div class="flex justify-center">
-                <div class="py-8 px-4 lg:px-8 items-center w-full flex justify-between rounded-2xl bg-[#d6dcde] dark:bg-[#27374D] text-3xl text-center font-bold">
-                    <div wire:click="$toggle('darkmode')" class="w-min border border-[#131e30] text-[#131e30] p-1 rounded-lg lg:hidden">
+                <div class="py-8 px-4 lg:px-8 items-center w-full flex justify-between rounded-2xl bg-[#d6dcde] dark:bg-gray-800 text-3xl text-center font-bold">
+                    <div wire:click="$toggle('darkmode')" class="w-min border border-[#131e30] dark:border-[#DDE6ED] text-[#131e30] p-1 rounded-lg lg:hidden">
                         @if($darkmode)
                         <svg class="sm:w-8 sm:h-8 w-5 h-5 text-[#131e30] dark:text-[#DDE6ED]" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="currentColor" viewBox="0 0 24 24">
                             <path fill-rule="evenodd" d="M13 3a1 1 0 1 0-2 0v2a1 1 0 1 0 2 0V3ZM6.343 4.929A1 1 0 0 0 4.93 6.343l1.414 1.414a1 1 0 0 0 1.414-1.414L6.343 4.929Zm12.728 1.414a1 1 0 0 0-1.414-1.414l-1.414 1.414a1 1 0 0 0 1.414 1.414l1.414-1.414ZM12 7a5 5 0 1 0 0 10 5 5 0 0 0 0-10Zm-9 4a1 1 0 1 0 0 2h2a1 1 0 1 0 0-2H3Zm16 0a1 1 0 1 0 0 2h2a1 1 0 1 0 0-2h-2ZM7.757 17.657a1 1 0 1 0-1.414-1.414l-1.414 1.414a1 1 0 1 0 1.414 1.414l1.414-1.414Zm9.9-1.414a1 1 0 0 0-1.414 1.414l1.414 1.414a1 1 0 0 0 1.414-1.414l-1.414-1.414ZM13 19a1 1 0 1 0-2 0v2a1 1 0 1 0 2 0v-2Z" clip-rule="evenodd" />
@@ -100,7 +100,7 @@ mount(function (Request $request) {
                         @endif
                     </div>
                     <div class="w-full text-[#131e30] dark:text-[#DDE6ED] capitalize">@if($path == 'video-player' || $path == 'admin-panel-video-player') {{Program::find(Video::find($this->data['video-player-id'])->program_id)->title}} @else {{str_replace("-"," ",$path)}} @endif</div>
-                    <div @click="showSidebar=!showSidebar" class="w-min border border-[#131e30] text-[#131e30] p-1 lg:hidden rounded-lg">
+                    <div @click="showSidebar=!showSidebar" class="w-min border border-[#131e30] dark:border-[#DDE6ED] text-[#131e30] p-1 lg:hidden rounded-lg">
                         <svg x-show="!showSidebar" class="sm:w-8 sm:h-8 w-5 h-5 text-[#131e30] dark:text-[#DDE6ED]" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none" viewBox="0 0 24 24">
                             <path stroke="currentColor" stroke-linecap="round" stroke-width="2" d="M5 7h14M5 12h14M5 17h14" />
                         </svg>

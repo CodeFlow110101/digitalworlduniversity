@@ -12,7 +12,7 @@
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 </head>
 
-<body class="bg-[#b5c1c9]">
+<body class="bg-[#b5c1c9] dark:bg-black">
     {{ $slot }}
 </body>
 

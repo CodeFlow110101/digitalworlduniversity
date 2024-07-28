@@ -29,7 +29,7 @@ mount(function ($path, $user) {
 
 ?>
 
-<div class="bg-[#d6dcde] dark:bg-[#27374D] h-min py-16 rounded-2xl select-none">
+<div class="bg-[#d6dcde] dark:bg-gray-800 h-min py-16 rounded-2xl select-none">
     <div class="grid grid-cols-1 gap-8">
         <div class="flex justify-center text-[#131e30] dark:text-[#DDE6ED] xl:font-semibold xl:text-2xl">
             Digital Worlds University
