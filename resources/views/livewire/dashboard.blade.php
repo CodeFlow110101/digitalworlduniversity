@@ -26,13 +26,13 @@ mount(function ($url) {
 
 <div class="text-[#131e30] grid grid-cols-1 gap-8 sm:gap-20 dark:text-[#DDE6ED]">
     <div class="grid grid-cols-1 gap-8 lg:grid-cols-3 lg:gap-20 text-center font-bold text-xl lg:text-2xl">
-        <div class="bg-[#d6dcde] dark:bg-[#27374D] rounded-2xl py-8 lg:py-12">Student ID: {{$id}}</div>
-        <div class="bg-[#d6dcde] dark:bg-[#27374D] rounded-2xl py-8 lg:py-12">{{$days_remaining}} Days Till Expiry</div>
-        <div class="bg-[#d6dcde] dark:bg-[#27374D] rounded-2xl py-8 lg:py-12">Total Income: ${{$user->referral_income + $user->task_income}}</div>
+        <div class="bg-[#d6dcde] dark:bg-gray-800 rounded-2xl py-8 lg:py-12">Student ID: {{$id}}</div>
+        <div class="bg-[#d6dcde] dark:bg-gray-800 rounded-2xl py-8 lg:py-12">{{$days_remaining}} Days Till Expiry</div>
+        <div class="bg-[#d6dcde] dark:bg-gray-800 rounded-2xl py-8 lg:py-12">Total Income: ${{$user->referral_income + $user->task_income}}</div>
     </div>
     <div class="grid grid-cols-1 gap-8 lg:grid-cols-2 lg:gap-20 text-center font-bold text-xl lg:text-2xl">
-        <div class="bg-[#d6dcde] dark:bg-[#27374D] rounded-2xl py-8 lg:py-12">Referral Income: ${{$user->referral_income}}</div>
-        <div class="bg-[#d6dcde] dark:bg-[#27374D] rounded-2xl py-8 lg:py-12">Task Income: ${{$user->task_income}}</div>
+        <div class="bg-[#d6dcde] dark:bg-gray-800 rounded-2xl py-8 lg:py-12">Referral Income: ${{$user->referral_income}}</div>
+        <div class="bg-[#d6dcde] dark:bg-gray-800 rounded-2xl py-8 lg:py-12">Task Income: ${{$user->task_income}}</div>
     </div>
-    <div class="bg-[#d6dcde] dark:bg-[#27374D] rounded-2xl py-12 px-2 text-center font-bold select-text">Refer: {{str_replace("dashboard","sign-up/?referral_code=",$url)}}{{$referral_code}}</div>
+    <div class="bg-[#d6dcde] dark:bg-gray-800 rounded-2xl py-12 px-2 text-center font-bold select-text">Refer: {{str_replace("dashboard","sign-up/?referral_code=",$url)}}{{$referral_code}}</div>
 </div>
