@@ -7,7 +7,7 @@ use Illuminate\Support\Facades\Auth;
 
 use function Livewire\Volt\{state, mount, on};
 
-state(['id', 'url', 'name', 'program_id', 'allowedVideoIds', 'nextVideoId', 'allVideoIds']);
+state(['id', 'url', 'name', 'program_id', 'allowedVideoIds', 'nextVideoId']);
 
 on([
     'video-completed' => function () {
