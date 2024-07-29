@@ -2,6 +2,9 @@
 
 use function Livewire\Volt\{state, layout};
 
+$redirectTo = function ($path) {
+    $this->redirectRoute($path, navigate: true);
+};
 ?>
 
 <div>
@@ -33,7 +36,7 @@ use function Livewire\Volt\{state, layout};
                 </div>
             </div>
             <div class="flex justify-center pt-8">
-                <div
+                <div wire:click="redirectTo('sign-up')"
                     class="py-4 px-8 font-extrabold lg:tracking-wider lg:text-xl text-sm w-min whitespace-nowrap bg-[#f6aa23] rounded-lg uppercase hover:scale-105 transition-transform duration-200">
                     join Digital Worlds University</div>
             </div>
@@ -299,7 +302,7 @@ use function Livewire\Volt\{state, layout};
         </div>
         <div class="mt-14">
             <div class="flex justify-center pt-8">
-                <div
+                <div wire:click="redirectTo('sign-up')"
                     class="py-4 px-8 font-extrabold lg:tracking-wider lg:text-xl text-sm w-min whitespace-nowrap bg-[#f6aa23] rounded-lg uppercase hover:scale-105 transition-transform duration-200">
                     join Digital Worlds University</div>
             </div>
