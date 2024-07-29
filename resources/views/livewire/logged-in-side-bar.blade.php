@@ -31,6 +31,9 @@ mount(function ($path, $user) {
 
 <div class="bg-[#d6dcde] dark:bg-gray-800 h-min py-16 rounded-2xl select-none">
     <div class="grid grid-cols-1 gap-8">
+        <div class="flex justify-center">
+            <img class="w-10 h-10 sm:w-14 sm:h-14 rounded-full" src="{{ asset('images/logo.jpg') }}" alt="Example Image">
+        </div>
         <div class="flex justify-center text-[#131e30] dark:text-[#DDE6ED] xl:font-semibold xl:text-2xl">
             Digital Worlds University
         </div>
@@ -56,7 +59,7 @@ mount(function ($path, $user) {
             </div>
             <div>
                 <div wire:click="redirectTo('live-chat')"
-                    class="lg:mx-4 mx-4 xl:mx-8 text-center xl:text-left py-2 lg:px-2 xl:px-4 @if($path == 'live-chat') bg-[#131e30] text-[#fafbfb] dark:text-[#27374D] dark:bg-[#DDE6ED] @else dark:text-[#fafbfb] hover:dark:bg-[#DDE6ED] dark:hover:text-[#27374D] bg-transparent text-[#131e30]  @endif lg:text-md xl:text-lg cursor-pointer tracking-wider transition-opacity duration-300 rounded-full font-noramal transition-colors duration-500">
+                    class="lg:mx-4 mx-4 xl:mx-8 text-center xl:text-left py-2 lg:px-2 xl:px-4 @if($path == 'live-chat') bg-[#131e30] text-[#fafbfb] dark:text-[#27374D] dark:bg-[#DDE6ED] @else dark:text-[#fafbfb] hover:dark:bg-[#DDE6ED] dark:hover:text-[#27374D] hover:bg-[#131e30] hover:text-[#fafbfb] bg-transparent text-[#131e30]  @endif lg:text-md xl:text-lg cursor-pointer tracking-wider transition-opacity duration-300 rounded-full font-noramal transition-colors duration-500">
                     Live Chat</div>
             </div>
             <div>
