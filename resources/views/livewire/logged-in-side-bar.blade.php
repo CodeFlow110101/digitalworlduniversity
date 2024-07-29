@@ -32,7 +32,7 @@ mount(function ($path, $user) {
 <div class="bg-[#d6dcde] dark:bg-gray-800 h-min py-16 rounded-2xl select-none">
     <div class="grid grid-cols-1 gap-8">
         <div class="flex justify-center">
-            <img class="w-10 h-10 sm:w-14 sm:h-14 rounded-full" src="{{ asset('images/logo.jpg') }}" alt="Example Image">
+            <img class="w-16 h-16 rounded-full" src="{{ asset('images/logo.jpg') }}" alt="Example Image">
         </div>
         <div class="flex justify-center text-[#131e30] dark:text-[#DDE6ED] xl:font-semibold xl:text-2xl">
             Digital Worlds University
