@@ -13,14 +13,14 @@ $redirectTo = function ($path) {
 ?>
 
 <div class="flex justify-center py-8">
-    <div x-data="{ showDropdown: false ,showMobileHeader: false}" class="lg:w-4/5 w-11/12 flex justify-between max-sm:gap-2 relative">
+    <div x-data="{ showDropdown: false ,showMobileHeader: false}" class="lg:w-4/5 w-11/12 flex justify-between items-center max-sm:gap-2 relative">
         <div class="text-white font-bold sm:text-xl text-base flex justify-between items-center gap-4">
             <div>Digital Worlds University</div>
             <div>
                 <img class="w-10 h-10 sm:w-14 sm:h-14 rounded-full" src="{{ asset('images/logo.jpg') }}" alt="Example Image">
             </div>
         </div>
-        <div class="flex justify-between gap-5 max-lg:hidden pt-3">
+        <div class="flex justify-between gap-5 max-lg:hidden">
             <div class="text-white hover:text-[#f6aa23] cursor-pointer text-lg">Features</div>
             <div class="text-white hover:text-[#f6aa23] cursor-pointer text-lg">Interviews</div>
             <div class="text-white hover:text-[#f6aa23] cursor-pointer text-lg">Explorer</div>
@@ -40,7 +40,7 @@ $redirectTo = function ($path) {
             </div>
         </div>
         <div class="max-lg:hidden">
-            <div class="flex justify-between items-center gap-2 max-sm:text-sm pt-2">
+            <div class="flex justify-between items-center gap-2 max-sm:text-sm">
                 <div wire:click="redirectTo('log-in')"
                     class="py-1.5 sm:px-4 px-2 whitespace-nowrap cursor-pointer tracking-wider border border-[#f6aa23] rounded-lg text-[#f6aa23] hover:text-[#050e14] transition-colors duration-500 hover:bg-[#f6aa23]">
                     @if(Auth::check())
@@ -58,7 +58,7 @@ $redirectTo = function ($path) {
                 @endif
             </div>
         </div>
-        <div class="lg:hidden pt-3">
+        <div class="lg:hidden">
             <div @click="showMobileHeader=!showMobileHeader" class="w-min border border-[#f6aa23] text-[#f6aa23] p-1 lg:hidden rounded-lg">
                 <svg x-show="!showMobileHeader" class="sm:w-8 sm:h-8 w-5 h-5 text-[#f6aa23]" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none" viewBox="0 0 24 24">
                     <path stroke="currentColor" stroke-linecap="round" stroke-width="2" d="M5 7h14M5 12h14M5 17h14" />
