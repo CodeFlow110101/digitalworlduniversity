@@ -18,7 +18,7 @@ $redirectTo = function ($path, $id) {
 <div>
     <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-12">
         @foreach($programs as $program)
-        <div class="bg-[#d6dcde] dark:bg-gray-800 rounded-2xl grid grid-cols-1 gap-4">
+        <div class="bg-[#d6dcde] dark:bg-gray-800 rounded-2xl flex flex-col h-full">
             <div wire:click="$dispatch('show-modal', { modal:'modal-program-preview', args:{{$program->id}}, data:null, callback_event:null })" class="cursor-pointer">
                 <div class="flex items-center justify-center w-full h-48 bg-gray-500 rounded-t-2xl">
                     <img src="{{asset('storage/'.$program->image)}}" class="w-full h-full rounded-t-2xl">
@@ -28,7 +28,7 @@ $redirectTo = function ($path, $id) {
                     <div class="font-semibold text-md capitalize">{{$program->description}}</div>
                 </div>
             </div>
-            <div wire:click="redirectTo('videos',{{$program->id}})" class="text-[#d6dcde] rounded-b-2xl bg-[#131e30] text-center p-3 grid grid-cols-1 gap-1 text-lg font-bold cursor-pointer">
+            <div wire:click="redirectTo('videos',{{$program->id}})" class="text-[#d6dcde] mt-auto rounded-b-2xl bg-[#131e30] text-center p-3 grid grid-cols-1 gap-1 text-lg font-bold cursor-pointer">
                 <div class="w-full rounded-b-2xl text-center py-2 h-1/2">
                     Start Course
                 </div>

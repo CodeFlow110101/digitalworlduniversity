@@ -1,6 +1,10 @@
 <?php
 
-use function Livewire\Volt\{state, layout};
+use App\Models\Program;
+use App\Models\Video;
+use function Livewire\Volt\{with};
+
+with(fn() => ['programs' => Program::get()]);
 
 $redirectTo = function ($path) {
     $this->redirectRoute($path, navigate: true);
@@ -309,6 +313,44 @@ $redirectTo = function ($path) {
             <div class="flex justify-center">
                 <div class="text-gray-400">Join 113,000+ like-minded students</div>
             </div>
+        </div>
+
+        <!-- Programs -->
+
+        <div class="grid grid-cols-1 lg:grid-cols-2 gap-10 mt-12">
+            @foreach($programs as $program)
+            <div class="grid grid-cols-1 gap-6 sm:gap-12 text-white bg-gray-700 rounded-2xl pt-10 sm:pt-16">
+                <div class="text-2xl sm:text-4xl font-bold flex justify-center">
+                    <div class="flex justify-between gap-4 w-min whitespace-nowrap items-center">
+                        <div>
+                            <svg class="w-10 h-10 sm:w-16 sm:h-16 text-[#f6aa23]" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="currentColor" viewBox="0 0 24 24">
+                                <path fill-rule="evenodd" d="M11 4.717c-2.286-.58-4.16-.756-7.045-.71A1.99 1.99 0 0 0 2 6v11c0 1.133.934 2.022 2.044 2.007 2.759-.038 4.5.16 6.956.791V4.717Zm2 15.081c2.456-.631 4.198-.829 6.956-.791A2.013 2.013 0 0 0 22 16.999V6a1.99 1.99 0 0 0-1.955-1.993c-2.885-.046-4.76.13-7.045.71v15.081Z" clip-rule="evenodd" />
+                            </svg>
+                        </div>
+                        <div>{{$program->title}}</div>
+                    </div>
+                </div>
+                <div class="text-xl sm:text-2xl font-light text-center text-gray-300 px-12">
+                    {{substr($program->description, 0, 100)}}
+                    @if(strlen($program->description) > 100)<span>...</span>@endif
+                </div>
+                <div class="flex justify-center items-center">
+                    <div wire:click="$dispatch('show-modal', { modal:'modal-landing-page-program-preview', args:{{$program->id}}, data:null, callback_event:null })" class="w-min py-2 px-6 whitespace-nowrap cursor-pointer tracking-wider border border-[#f6aa23] rounded-lg text-[#f6aa23] hover:text-[#050e14] transition-colors duration-500 hover:bg-[#f6aa23] font-semibold text-lg sm:text-2xl">Learn More</div>
+                </div>
+                <div>
+                    @if(Video::where('program_id',$program->id)->count()!=0)
+                    @php
+                    $url = Video::where('program_id',$program->id)->first()->video;
+                    @endphp
+                    <video x-ref=" myVideo" class="h-96 w-full rounded-b-2xl bg-black" controls controlsList="nodownload">
+                        <source src="{{asset('storage/'.$url)}}" type="video/mp4">
+                        <source src="{{asset('storage/'.$url)}}" type="video/webm">
+                        Your browser does not support the video tag.
+                    </video>
+                    @endif
+                </div>
+            </div>
+            @endforeach
         </div>
     </div>
 

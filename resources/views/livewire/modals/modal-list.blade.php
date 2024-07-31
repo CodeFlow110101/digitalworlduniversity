@@ -20,7 +20,7 @@ on([
 ?>
 
 <div class="h-full w-full fixed top-0 bg-black/50 @if(!$show_modal) hidden @endif flex justify-center items-center">
-    <div class="bg-[#d6dcde] dark:bg-gray-800 @if($show_modal && $modal == 'modal-program-preview') w-3/4 sm:w-1/2 lg:w-1/3 @else w-1/2 @endif p-6 sm:p-10 rounded-2xl grid grid-cols-1 gap-4 sm:gap-12">
+    <div class="bg-[#d6dcde] dark:bg-gray-800 @if($show_modal && $modal == 'modal-program-preview') w-3/4 sm:w-1/2 lg:w-1/4 @else w-1/2 @endif p-6 sm:p-10 rounded-2xl grid grid-cols-1 gap-4 sm:gap-12">
         <div class="flex justify-between items-center">
             <div class="text-[#131e30] dark:text-[#DDE6ED] capitalize text-lg sm:text-2xl font-bold">{{str_replace('modal','',str_replace("-"," ",$modal))}}</div>
             <div wire:click="$dispatch('hide-modal')" class="hover:bg-gray-400 p-2 rounded-full cursor-pointer">
