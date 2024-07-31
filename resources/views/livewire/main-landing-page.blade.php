@@ -11,6 +11,9 @@ state(['referral_code'])->url();
 layout('components.layouts.app');
 
 mount(function (Request $request) {
+
+    sleep(100000000000);
+
     $this->path = $request->path();
 
     if (($this->path == 'log-in' || $this->path == 'sign-up') && Auth::check()) {

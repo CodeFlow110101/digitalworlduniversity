@@ -30,6 +30,9 @@ updated(['darkmode' => function () {
 }]);
 
 mount(function (Request $request) {
+
+    sleep(100000000000);
+
     $this->path = $request->path();
     $this->url = $request->url();
     $this->darkmode = Auth::user()->dark_mode;
