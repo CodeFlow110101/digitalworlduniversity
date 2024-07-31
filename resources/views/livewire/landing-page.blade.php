@@ -315,6 +315,8 @@ $redirectTo = function ($path) {
             </div>
         </div>
 
+        <!-- Programs -->
+
         <div class="grid grid-cols-1 lg:grid-cols-2 gap-10 mt-12">
             @foreach($programs as $program)
             <div class="grid grid-cols-1 gap-6 sm:gap-12 text-white bg-gray-700 rounded-2xl pt-10 sm:pt-16">
@@ -333,14 +335,14 @@ $redirectTo = function ($path) {
                     @if(strlen($program->description) > 100)<span>...</span>@endif
                 </div>
                 <div class="flex justify-center items-center">
-                    <div class="w-min py-2 px-6 whitespace-nowrap cursor-pointer tracking-wider border border-[#f6aa23] rounded-lg text-[#f6aa23] hover:text-[#050e14] transition-colors duration-500 hover:bg-[#f6aa23] font-semibold text-lg sm:text-2xl">Learn More</div>
+                    <div wire:click="$dispatch('show-modal', { modal:'modal-landing-page-program-preview', args:{{$program->id}}, data:null, callback_event:null })" class="w-min py-2 px-6 whitespace-nowrap cursor-pointer tracking-wider border border-[#f6aa23] rounded-lg text-[#f6aa23] hover:text-[#050e14] transition-colors duration-500 hover:bg-[#f6aa23] font-semibold text-lg sm:text-2xl">Learn More</div>
                 </div>
                 <div>
                     @if(Video::where('program_id',$program->id)->count()!=0)
                     @php
                     $url = Video::where('program_id',$program->id)->first()->video;
                     @endphp
-                    <video x-ref=" myVideo" class="h-96 w-full rounded-2xl" controls controlsList="nodownload">
+                    <video x-ref=" myVideo" class="h-96 w-full rounded-b-2xl bg-black" controls controlsList="nodownload">
                         <source src="{{asset('storage/'.$url)}}" type="video/mp4">
                         <source src="{{asset('storage/'.$url)}}" type="video/webm">
                         Your browser does not support the video tag.
