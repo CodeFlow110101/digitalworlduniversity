@@ -6,14 +6,16 @@ use App\Models\Group;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Storage;
 
-use function Livewire\Volt\{state, mount, with, usesPagination};
+use function Livewire\Volt\{state, mount, on, with, usesPagination};
 
 usesPagination();
 
 state(['channels', 'current_channel', 'current_group', 'user_id', 'message']);
 
 with(function () {
-    return ['groups' => Group::where('channel_id', $this->current_channel->id)->paginate(0)];
+    return ['groups' => Group::when($this->current_channel, function ($query) {
+        return $query->where('channel_id', $this->current_channel->id);
+    })->paginate(0)];
 });
 
 $setChannel = function ($id) {
@@ -28,9 +30,13 @@ $setGroup = function ($id) {
 
 mount(function () {
     $this->channels = Channel::get();
-    $this->current_channel = Channel::first();
+    if (Channel::count() != 0) {
+        $this->current_channel = Channel::first();
+        if (Group::count() != 0) {
+            $this->current_group = Group::where('channel_id', $this->current_channel->id)->first();
+        }
+    }
     $this->user_id = Auth::user()->id;
-    $this->current_group = Group::where('channel_id', $this->current_channel->id)->first();
 });
 
 ?>
@@ -56,7 +62,9 @@ mount(function () {
         <div class="lg:w-min w-full whitespace-nowrap h-full">
             <div class="bg-[#b5c1c9] dark:bg-black h-full rounded-2xl text-[#131e30] dark:text-[#DDE6ED]">
                 <div class="text-center px-4 w-full py-4 sm:py-8 font-thin text-4xl select-none">
+                    @if($this->current_channel)
                     {{$this->current_channel->name}}
+                    @endif
                 </div>
                 <div class="h-full w-full pr-4 text-2xl overflow-y-auto no-scrollbar">
                     @foreach($groups as $group)

@@ -9,10 +9,10 @@ usesPagination();
 
 state(['is_seller_mode' => false]);
 
-
-
 with(fn() => ['jobs' => Job::when($this->is_seller_mode, function ($query) {
     return $query->where('created_by', Auth::user()->id);
+})->when(!$this->is_seller_mode, function ($query) {
+    return $query->where('is_approved', true);
 })->paginate(0)]);
 
 on(['reset-find-jobs-page' => function () {

@@ -47,6 +47,8 @@ on([
                                     <livewire:modals.modal-reset-password :modal="$modal" :args="$args" :data="$data" :callback_event="$callback_event">
                                         @elseif($show_modal && $modal == 'modal-program-preview')
                                         <livewire:modals.modal-program-preview :modal="$modal" :args="$args" :data="$data" :callback_event="$callback_event">
-                                            @endif
+                                            @elseif($show_modal && $modal == 'modal-channels')
+                                            <livewire:modals.modal-channels :modal="$modal" :args="$args" :data="$data" :callback_event="$callback_event">
+                                                @endif
     </div>
 </div>

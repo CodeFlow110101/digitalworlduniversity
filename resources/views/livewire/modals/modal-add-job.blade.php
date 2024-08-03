@@ -3,6 +3,7 @@
 use App\Models\Job;
 use function Livewire\Volt\{state, rules, on};
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Gate;
 
 state(['title', 'description', 'thumbnail', 'url']);
 
@@ -40,6 +41,7 @@ on([
                 'image' => $thumbnailPath,
                 'url' => $this->url,
                 'created_by' => Auth::user()->id,
+                'is_approved' => Gate::check('is_Admin'),
             ]);
 
             $this->dispatch('hide-modal');
@@ -48,22 +50,6 @@ on([
     }
 ]);
 
-
-$submit = function () {
-
-    $this->validate();
-
-    Job::create([
-        'title' => $this->title,
-        'description' => $this->description,
-        'image' => $this->image,
-        'url' => $this->url,
-        'created_by' => Auth::user()->id,
-    ]);
-
-    $this->dispatch('hide-modal');
-    $this->dispatch('reset-find-jobs-page');
-};
 ?>
 
 <div>

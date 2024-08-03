@@ -21,9 +21,8 @@ $redirectTo = function ($path) {
             </div>
         </div>
         <div class="flex justify-between gap-5 max-lg:hidden">
-            <div class="text-white hover:text-[#f6aa23] cursor-pointer text-lg">Features</div>
-            <div class="text-white hover:text-[#f6aa23] cursor-pointer text-lg">Interviews</div>
-            <div class="text-white hover:text-[#f6aa23] cursor-pointer text-lg">Explorer</div>
+            <div @click="$dispatch('scroll-features')" class="text-white hover:text-[#f6aa23] cursor-pointer text-lg">Features</div>
+            <div @click="$dispatch('scroll-review')" class="text-white hover:text-[#f6aa23] cursor-pointer text-lg">Reviews</div>
             <div @mouseenter="showDropdown = true" @mouseleave="showDropdown = false" class="text-white cursor-pointer">
                 <div class="flex justify-between items-center gap-2">
                     <div class="text-lg">Courses</div>
@@ -38,6 +37,7 @@ $redirectTo = function ($path) {
                     </div>
                 </div>
             </div>
+            <div @click="$dispatch('scroll-doubt')" class="text-white hover:text-[#f6aa23] cursor-pointer text-lg">Doubt?</div>
         </div>
         <div class="max-lg:hidden">
             <div class="flex justify-between items-center gap-2 max-sm:text-sm">
@@ -72,7 +72,7 @@ $redirectTo = function ($path) {
         <div x-cloak :class="showMobileHeader ? 'scale-y-100' : 'scale-y-0 pointer-events-none'" class="transition-transform origin-top absolute top-16 bg-[#050e14] w-full py-3 px-2 lg:hidden">
             <div class="grid grid-cols-1 w-full gap-3">
                 <div class="text-white hover:text-[#f6aa23] cursor-pointer text-lg">Features</div>
-                <div class="text-white hover:text-[#f6aa23] cursor-pointer text-lg">Interviews</div>
+                <div class="text-white hover:text-[#f6aa23] cursor-pointer text-lg">Reviews</div>
                 <div class="text-white hover:text-[#f6aa23] cursor-pointer text-lg">Explorer</div>
                 <div class="text-white hover:text-[#f6aa23] cursor-pointer text-lg">Courses</div>
                 @foreach($programs as $program)
@@ -99,7 +99,7 @@ $redirectTo = function ($path) {
         </div>
 
         <div x-cloak :class="showDropdown ? 'opacity-100' : 'opacity-0 pointer-events-none'"
-            class="absolute transition-opacity duration-500 top-6 w-full flex justify-center">
+            class="absolute transition-opacity duration-500 top-10 w-full flex justify-center">
             <div @mouseenter="showDropdown = true" @mouseleave="showDropdown = false"
                 class="p-1 pt-12 w-1/2 flex justify-center text-white rounded-lg bg-[#050e14]">
                 <div class="grid grid-cols-2 w-full gap-2">
