@@ -82,6 +82,7 @@ $redirectTo = function ($path) {
         </div>
     </div>
     <div class="my-12 sm:py-32 py-16 bg-slate-900 sm:px-12 px-4 grid cols-1 gap-12">
+        <div x-ref="scrollFeatures" x-on:scroll-features.window="$refs.scrollFeatures.scrollIntoView({ behavior: 'smooth' });"></div>
         <div class="flex justify-between sm:gap-8">
             <div class="h-full xl:hidden">
                 <div class="w-min h-full xl:hidden">
@@ -355,7 +356,7 @@ $redirectTo = function ($path) {
     </div>
 
     <!-- Testinomials -->
-
+    <div x-ref="scrollReview" x-on:scroll-review.window="$refs.scrollReview.scrollIntoView({ behavior: 'smooth' });"></div>
     <div class="grid grid-cols-1 gap-16 py-20">
         <div class="grid grid-cols-1 gap-4">
             <div class="uppercase sm:text-xl md:text-2xl font-semibold tracking-widest text-gray-500 text-center">the real world wins</div>
@@ -377,6 +378,7 @@ $redirectTo = function ($path) {
 
 <!-- Section -->
 
+<div x-ref="scrollDoubt" x-on:scroll-doubt.window="$refs.scrollDoubt.scrollIntoView({ behavior: 'smooth' });"></div>
 <div class="flex justify-center py-20">
     <div class="grid grid-cols-1 gap-8 sm:gap-12 w-3/4 text-white text-center">
         <div class="text-2xl sm:text-3xl lg:text-4xl font-semibold">WILL YOU LISTEN?</div>

@@ -6,8 +6,6 @@ use function Livewire\Volt\{state, placeholder, usesPagination, with};
 
 usesPagination();
 
-
-
 with(fn() => ['storeItems' => Store::paginate(0)]);
 
 ?>

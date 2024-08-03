@@ -77,11 +77,6 @@ mount(function ($path, $user) {
                     class="lg:mx-4 mx-4 xl:mx-8 text-center xl:text-left py-2 lg:px-2 xl:px-4 @if($path == 'earn-money') bg-[#131e30] text-[#fafbfb] dark:text-[#27374D] dark:bg-[#DDE6ED] @else dark:text-[#fafbfb] hover:dark:bg-[#DDE6ED] dark:hover:text-[#27374D] hover:bg-[#131e30] hover:text-[#fafbfb] bg-transparent text-[#131e30]  @endif lg:text-md xl:text-lg cursor-pointer tracking-wider transition-opacity duration-300 rounded-full font-noramal transition-colors duration-500">
                     Earn Money</div>
             </div>
-            <div>
-                <div wire:click="logOut"
-                    class="lg:mx-4 mx-4 xl:mx-8 text-center xl:text-left py-2 lg:px-2 xl:px-4 @if($path == '') bg-[#131e30] text-[#fafbfb] dark:text-[#27374D] dark:bg-[#DDE6ED] @else dark:text-[#fafbfb] hover:dark:bg-[#DDE6ED] dark:hover:text-[#27374D] hover:bg-[#131e30] hover:text-[#fafbfb] bg-transparent text-[#131e30]  @endif lg:text-md xl:text-lg cursor-pointer tracking-wider transition-opacity duration-300 rounded-full font-noramal transition-colors duration-500">
-                    Sign Out</div>
-            </div>
         </div>
         <div class="flex justify-center">
             <div class="w-full grid grid-cols-1 gap-1">
@@ -99,6 +94,18 @@ mount(function ($path, $user) {
                 </div>
                 <div class="text-center text-xl font-bold text-[#131e30] dark:text-[#DDE6ED]">{{$user->name}}</div>
                 <div class="text-center text-[##a2acb4] text-lg font-thin text-[#131e30] dark:text-[#DDE6ED]">{{$user->email}}</div>
+            </div>
+        </div>
+        <div class="flex justify-between">
+            <div>
+                <div
+                    class="lg:mx-4 mx-4 xl:mx-8 text-center py-2 px-2 xl:px-4 @if($path == '') bg-[#131e30] text-[#fafbfb] dark:text-[#27374D] dark:bg-[#DDE6ED] @else dark:text-[#fafbfb] hover:dark:bg-[#DDE6ED] dark:hover:text-[#27374D] hover:bg-[#131e30] hover:text-[#fafbfb] bg-transparent text-[#131e30]  @endif lg:text-md xl:text-lg cursor-pointer tracking-wider transition-opacity duration-300 rounded-xl font-noramal transition-colors duration-500">
+                    Billing</div>
+            </div>
+            <div>
+                <div wire:click="logOut"
+                    class="lg:mx-4 mx-4 xl:mx-8 text-center py-2 px-2 xl:px-4 @if($path == '') bg-[#131e30] text-[#fafbfb] dark:text-[#27374D] dark:bg-[#DDE6ED] @else dark:text-[#fafbfb] hover:dark:bg-[#DDE6ED] dark:hover:text-[#27374D] hover:bg-[#131e30] hover:text-[#fafbfb] bg-transparent text-[#131e30]  @endif lg:text-md xl:text-lg cursor-pointer tracking-wider transition-opacity duration-300 rounded-xl font-noramal transition-colors duration-500">
+                    Sign Out</div>
             </div>
         </div>
     </div>

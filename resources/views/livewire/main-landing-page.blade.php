@@ -15,7 +15,7 @@ mount(function (Request $request) {
     $this->path = $request->path();
 
     if (($this->path == 'log-in' || $this->path == 'sign-up') && Auth::check()) {
-        $this->redirectRoute('dashboard', navigate: true);
+        return $this->redirectRoute('dashboard', navigate: true);
     }
 });
 

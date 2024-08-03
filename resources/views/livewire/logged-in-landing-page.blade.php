@@ -31,6 +31,10 @@ updated(['darkmode' => function () {
 
 mount(function (Request $request) {
 
+    if (!Auth::check()) {
+        return $this->redirectRoute('landing-page', navigate: true);
+    }
+
     $this->path = $request->path();
     $this->url = $request->url();
     $this->darkmode = Auth::user()->dark_mode;
@@ -39,10 +43,6 @@ mount(function (Request $request) {
         $this->js("document.documentElement.classList.add('dark');");
     } else {
         $this->js("document.documentElement.classList.remove('dark');");
-    }
-
-    if (!Auth::check()) {
-        $this->redirectRoute('landing-page', navigate: true);
     }
 
     if (Gate::check('is_Student') && str_contains($this->path, 'admin-panel')) {
@@ -130,17 +130,19 @@ mount(function (Request $request) {
                                                     <livewire:admin-panel.admin-panel-video-player :data="$data">
                                                         @elseif($path == 'admin-panel')
                                                         <livewire:admin-panel.admin-panel lazy>
-                                                            @elseif($path == 'admin-panel-users')
-                                                            <livewire:admin-panel.admin-panel-users lazy>
-                                                                @elseif($path == 'admin-panel-programs')
-                                                                <livewire:admin-panel.admin-panel-programs lazy>
-                                                                    @elseif($path == 'admin-panel-store')
-                                                                    <livewire:admin-panel.admin-panel-store lazy>
-                                                                        @elseif($path == 'admin-panel-earn-money')
-                                                                        <livewire:admin-panel.admin-panel-earn-money lazy>
-                                                                            @elseif($path == 'admin-panel-videos')
-                                                                            <livewire:admin-panel.admin-panel-videos :id="$id" lazy>
-                                                                                @endif
+                                                            @elseif($path == 'admin-panel-find-jobs')
+                                                            <livewire:admin-panel.admin-panel-find-jobs lazy>
+                                                                @elseif($path == 'admin-panel-users')
+                                                                <livewire:admin-panel.admin-panel-users lazy>
+                                                                    @elseif($path == 'admin-panel-programs')
+                                                                    <livewire:admin-panel.admin-panel-programs lazy>
+                                                                        @elseif($path == 'admin-panel-store')
+                                                                        <livewire:admin-panel.admin-panel-store lazy>
+                                                                            @elseif($path == 'admin-panel-earn-money')
+                                                                            <livewire:admin-panel.admin-panel-earn-money lazy>
+                                                                                @elseif($path == 'admin-panel-videos')
+                                                                                <livewire:admin-panel.admin-panel-videos :id="$id" lazy>
+                                                                                    @endif
             </div>
         </div>
         <livewire:modals.modal-list>
