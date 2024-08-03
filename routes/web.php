@@ -26,6 +26,8 @@ Volt::route('/admin-panel-earn-money', 'logged-in-landing-page')->name('admin-pa
 Volt::route('/admin-panel-video-player', 'logged-in-landing-page')->name('admin-panel-video-player');
 Volt::route('/admin-panel-store', 'logged-in-landing-page')->name('admin-panel-store');
 Volt::route('/admin-panel-find-jobs', 'logged-in-landing-page')->name('admin-panel-find-jobs');
+Volt::route('/admin-panel-channel', 'logged-in-landing-page')->name('admin-panel-channel');
+Volt::route('/admin-panel-group', 'logged-in-landing-page')->name('admin-panel-group');
 
 Route::post('/upload-file', [FileUploads::class, 'storeFile']);
 Route::post('/upload-video', [FileUploads::class, 'storeVideo']);

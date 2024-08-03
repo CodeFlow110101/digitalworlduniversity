@@ -1,5 +1,6 @@
 <?php
 
+use App\Models\Channel;
 use App\Models\EarnMoney;
 use App\Models\Job;
 use App\Models\Program;
@@ -8,7 +9,7 @@ use App\Models\User;
 
 use function Livewire\Volt\{state, mount, placeholder};
 
-state(['users', 'programs', 'store', 'earnmoney', 'jobs']);
+state(['users', 'programs', 'store', 'earnmoney', 'jobs', 'channels']);
 
 
 
@@ -22,6 +23,7 @@ mount(function () {
     $this->store = Store::count();
     $this->earnmoney = EarnMoney::count();
     $this->jobs = Job::where('is_approved', false)->count();
+    $this->channels = Channel::count();
 });
 
 
@@ -86,6 +88,18 @@ mount(function () {
                         </svg>
                     </div>
                     <div class="text-[#131e30] text-5xl dark:text-[#DDE6ED]">{{$jobs}}</div>
+                </div>
+            </div>
+        </div>
+        <div wire:click="redirectTo('admin-panel-channel')" class="bg-[#d6dcde] dark:bg-gray-800 cursor-pointer rounded-2xl grid grid-cols-1 gap-4">
+            <div class="flex items-center justify-center w-full h-48 rounded-t-2xl ">
+                <div class="w-min flex justify-between gap-5">
+                    <div>
+                        <svg class="w-14 h-14 text-[#131e30] dark:text-[#DDE6ED]" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="currentColor" viewBox="0 0 24 24">
+                            <path fill-rule="evenodd" d="M3 6a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2v9a2 2 0 0 1-2 2h-6.616l-2.88 2.592C8.537 20.461 7 19.776 7 18.477V17H5a2 2 0 0 1-2-2V6Zm4 2a1 1 0 0 0 0 2h5a1 1 0 1 0 0-2H7Zm8 0a1 1 0 1 0 0 2h2a1 1 0 1 0 0-2h-2Zm-8 3a1 1 0 1 0 0 2h2a1 1 0 1 0 0-2H7Zm5 0a1 1 0 1 0 0 2h5a1 1 0 1 0 0-2h-5Z" clip-rule="evenodd" />
+                        </svg>
+                    </div>
+                    <div class="text-[#131e30] text-5xl dark:text-[#DDE6ED]">{{$channels}}</div>
                 </div>
             </div>
         </div>
