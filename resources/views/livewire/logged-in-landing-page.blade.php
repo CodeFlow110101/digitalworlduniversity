@@ -78,6 +78,14 @@ mount(function (Request $request) {
     if ($this->path == 'video-player' && !session()->has('video-player-id')) {
         $this->redirectRoute('programs', navigate: true);
     }
+
+    if ($this->path == 'admin-panel-group' && !session()->has('admin-panel-channel-id')) {
+        $this->redirectRoute('admin-panel', navigate: true);
+    }
+
+    if ($this->path == 'admin-panel-group' && session()->has('admin-panel-channel-id')) {
+        $this->id = session()->get('admin-panel-channel-id');
+    }
 });
 
 ?>
@@ -140,9 +148,13 @@ mount(function (Request $request) {
                                                                         <livewire:admin-panel.admin-panel-store lazy>
                                                                             @elseif($path == 'admin-panel-earn-money')
                                                                             <livewire:admin-panel.admin-panel-earn-money lazy>
-                                                                                @elseif($path == 'admin-panel-videos')
-                                                                                <livewire:admin-panel.admin-panel-videos :id="$id" lazy>
-                                                                                    @endif
+                                                                                @elseif($path == 'admin-panel-channel')
+                                                                                <livewire:admin-panel.admin-panel-channel lazy>
+                                                                                    @elseif($path == 'admin-panel-group')
+                                                                                    <livewire:admin-panel.admin-panel-group :id="$id" lazy>
+                                                                                        @elseif($path == 'admin-panel-videos')
+                                                                                        <livewire:admin-panel.admin-panel-videos :id="$id" lazy>
+                                                                                            @endif
             </div>
         </div>
         <livewire:modals.modal-list>
