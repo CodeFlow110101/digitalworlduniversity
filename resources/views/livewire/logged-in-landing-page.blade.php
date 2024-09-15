@@ -117,45 +117,45 @@ mount(function (Request $request) {
             </div>
             <div>
                 @if($path == 'dashboard')
-                <livewire:dashboard :url="$url" lazy>
-                    @elseif($path == 'live-chat')
-                    <livewire:live-chat lazy>
-                        @elseif($path == 'find-jobs')
-                        <livewire:find-jobs lazy>
-                            @elseif($path == 'programs')
-                            <livewire:programs lazy>
-                                @elseif($path == 'videos')
-                                <livewire:videos :id="$id" lazy>
-                                    @elseif($path == 'video-player')
-                                    <livewire:video-player :data="$data">
-                                        @elseif($path == 'store')
-                                        <livewire:store lazy>
-                                            @elseif($path == 'earn-money')
-                                            <livewire:earn-money lazy>
-                                                @elseif($path == 'settings')
-                                                <livewire:settings :user="$user" lazy>
-                                                    @elseif($path == 'admin-panel-video-player')
-                                                    <livewire:admin-panel.admin-panel-video-player :data="$data">
-                                                        @elseif($path == 'admin-panel')
-                                                        <livewire:admin-panel.admin-panel lazy>
-                                                            @elseif($path == 'admin-panel-find-jobs')
-                                                            <livewire:admin-panel.admin-panel-find-jobs lazy>
-                                                                @elseif($path == 'admin-panel-users')
-                                                                <livewire:admin-panel.admin-panel-users lazy>
-                                                                    @elseif($path == 'admin-panel-programs')
-                                                                    <livewire:admin-panel.admin-panel-programs lazy>
-                                                                        @elseif($path == 'admin-panel-store')
-                                                                        <livewire:admin-panel.admin-panel-store lazy>
-                                                                            @elseif($path == 'admin-panel-earn-money')
-                                                                            <livewire:admin-panel.admin-panel-earn-money lazy>
-                                                                                @elseif($path == 'admin-panel-channel')
-                                                                                <livewire:admin-panel.admin-panel-channel lazy>
-                                                                                    @elseif($path == 'admin-panel-group')
-                                                                                    <livewire:admin-panel.admin-panel-group :id="$id" lazy>
-                                                                                        @elseif($path == 'admin-panel-videos')
-                                                                                        <livewire:admin-panel.admin-panel-videos :id="$id" lazy>
-                                                                                            @endif
+                <livewire:dashboard :url="$url" lazy />
+                @elseif($path == 'live-chat')
+                <livewire:live-chat lazy />
+                @elseif($path == 'find-jobs')
+                <livewire:find-jobs lazy />
+                @elseif($path == 'programs')
+                <livewire:programs lazy />
+                @elseif($path == 'videos')
+                <livewire:videos :id="$id" lazy />
+                @elseif($path == 'video-player')
+                <livewire:video-player :data="$data" />
+                @elseif($path == 'store')
+                <livewire:store lazy />
+                @elseif($path == 'earn-money')
+                <livewire:earn-money lazy />
+                @elseif($path == 'settings')
+                <livewire:settings :user="$user" lazy />
+                @elseif($path == 'admin-panel-video-player')
+                <livewire:admin-panel.admin-panel-video-player :data="$data" />
+                @elseif($path == 'admin-panel')
+                <livewire:admin-panel.admin-panel lazy />
+                @elseif($path == 'admin-panel-find-jobs')
+                <livewire:admin-panel.admin-panel-find-jobs lazy />
+                @elseif($path == 'admin-panel-users')
+                <livewire:admin-panel.admin-panel-users lazy />
+                @elseif($path == 'admin-panel-programs')
+                <livewire:admin-panel.admin-panel-programs lazy />
+                @elseif($path == 'admin-panel-store')
+                <livewire:admin-panel.admin-panel-store lazy />
+                @elseif($path == 'admin-panel-earn-money')
+                <livewire:admin-panel.admin-panel-earn-money lazy />
+                @elseif($path == 'admin-panel-channel')
+                <livewire:admin-panel.admin-panel-channel lazy />
+                @elseif($path == 'admin-panel-group')
+                <livewire:admin-panel.admin-panel-group :id="$id" lazy />
+                @elseif($path == 'admin-panel-videos')
+                <livewire:admin-panel.admin-panel-videos :id="$id" lazy />
+                @endif
             </div>
         </div>
-        <livewire:modals.modal-list>
+        <livewire:modals.modal-list />
 </div>
