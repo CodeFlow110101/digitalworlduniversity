@@ -393,7 +393,7 @@ $redirectTo = function ($path) {
 <!-- Footer -->
 <div class="sm:pt-20 pt-8 pb-14 grid grid-cols-1 gap-12 bg-slate-900">
     <div class="grid grid-cols-1 gap-4 text-white text-center">
-        <div class="sm:text-xl text-base underline hover:text-[#f6aa23] cursor-pointer">Terms & Conditions</div>
+        <div wire:click="redirectTo('terms-and-conditions')" class="sm:text-xl text-base underline hover:text-[#f6aa23] cursor-pointer">Terms & Conditions</div>
         <div class="sm:text-xl text-base underline hover:text-[#f6aa23] cursor-pointer">Privacy Policy</div>
         <div class="sm:text-lg text-sm font-bold">Support: support@digitalworldsuniversity.com</div>
     </div>
