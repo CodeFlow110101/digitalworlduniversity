@@ -17,7 +17,7 @@ $redirectTo = function ($path) {
             <div class="lg:text-6xl sm:text-4xl text-xl text-white font-semibold flex justify-center w-full">
                 <div class="w-min uppercase whitespace-nowrap flex justify-between gap-3">
                     <div class="font-light">Money making is</div>
-                    <div class="font-bold">a skill</div>
+                    <div class="font-bold">a skill hello</div>
                 </div>
             </div>
             <div class="lg:text-3xl sm:text-xl text-lg text-white font-semibold flex justify-center w-full">
