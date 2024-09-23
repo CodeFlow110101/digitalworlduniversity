@@ -24,7 +24,7 @@ mount(function (Request $request) {
 <div class="bg-[#050e14] select-none">
     <livewire:style.landing-page-style />
     <livewire:modals.modal-landing-page-list />
-    @if ($path == '/' || $path == 'terms-and-conditions')
+    @if ($path == '/' || $path == 'terms-and-conditions' || $path == 'privacy-policy')
     <div>
         @if($path == '/')
         <livewire:navbar />
@@ -32,6 +32,8 @@ mount(function (Request $request) {
         <livewire:landing-page />
         @elseif($path == 'terms-and-conditions')
         <livewire:terms-and-conditions />
+        @elseif($path == 'privacy-policy')
+        <livewire:privacy-policy />
         @endif
     </div>
     @elseif($path == 'sign-up' || $path == 'log-in')
