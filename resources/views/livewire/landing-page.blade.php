@@ -17,7 +17,7 @@ $redirectTo = function ($path) {
             <div class="lg:text-6xl sm:text-4xl text-xl text-white font-semibold flex justify-center w-full">
                 <div class="w-min uppercase whitespace-nowrap flex justify-between gap-3">
                     <div class="font-light">Money making is</div>
-                    <div class="font-bold">a skill hello</div>
+                    <div class="font-bold">a skill</div>
                 </div>
             </div>
             <div class="lg:text-3xl sm:text-xl text-lg text-white font-semibold flex justify-center w-full">
@@ -90,12 +90,7 @@ $redirectTo = function ($path) {
             <div class="xl:flex xl:justify-between w-full gap-14">
                 <div role="status"
                     class="flex lg:mt-24 mb-24 mt-8 items-center justify-center h-56 w-full bg-gray-600 rounded-lg">
-                    <svg class="w-10 h-10 text-gray-200" aria-hidden="true" xmlns="http://www.w3.org/2000/svg"
-                        fill="currentColor" viewBox="0 0 16 20">
-                        <path d="M5 5V.13a2.96 2.96 0 0 0-1.293.749L.879 3.707A2.98 2.98 0 0 0 .13 5H5Z" />
-                        <path
-                            d="M14.066 0H7v5a2 2 0 0 1-2 2H0v11a1.97 1.97 0 0 0 1.934 2h12.132A1.97 1.97 0 0 0 16 18V2a1.97 1.97 0 0 0-1.934-2ZM9 13a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-2a2 2 0 0 1 2-2h2a2 2 0 0 1 2 2v2Zm4 .382a1 1 0 0 1-1.447.894L10 13v-2l1.553-1.276a1 1 0 0 1 1.447.894v2.764Z" />
-                    </svg>
+                    <img src="{{asset('images/home1.png')}}" class="rounded-lg w-full h-full">
                 </div>
 
                 <div class="w-min h-auto max-xl:hidden">
@@ -166,12 +161,7 @@ $redirectTo = function ($path) {
             <div class="xl:flex xl:justify-between w-full gap-14">
                 <div role="status"
                     class="flex lg:mt-24 mb-24 mt-8 items-center justify-center h-56 w-full bg-gray-600 rounded-lg ">
-                    <svg class="w-10 h-10 text-gray-200" aria-hidden="true" xmlns="http://www.w3.org/2000/svg"
-                        fill="currentColor" viewBox="0 0 16 20">
-                        <path d="M5 5V.13a2.96 2.96 0 0 0-1.293.749L.879 3.707A2.98 2.98 0 0 0 .13 5H5Z" />
-                        <path
-                            d="M14.066 0H7v5a2 2 0 0 1-2 2H0v11a1.97 1.97 0 0 0 1.934 2h12.132A1.97 1.97 0 0 0 16 18V2a1.97 1.97 0 0 0-1.934-2ZM9 13a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-2a2 2 0 0 1 2-2h2a2 2 0 0 1 2 2v2Zm4 .382a1 1 0 0 1-1.447.894L10 13v-2l1.553-1.276a1 1 0 0 1 1.447.894v2.764Z" />
-                    </svg>
+                    <img src="{{asset('images/home2.png')}}" class="rounded-lg w-full h-full">
                 </div>
 
                 <div class="w-min h-auto max-xl:hidden">
@@ -239,12 +229,7 @@ $redirectTo = function ($path) {
             <div class="xl:flex xl:justify-between w-full gap-14">
                 <div role="status"
                     class="flex lg:mt-24 mb-24 mt-8 items-center justify-center h-56 w-full bg-gray-600 rounded-lg ">
-                    <svg class="w-10 h-10 text-gray-200" aria-hidden="true" xmlns="http://www.w3.org/2000/svg"
-                        fill="currentColor" viewBox="0 0 16 20">
-                        <path d="M5 5V.13a2.96 2.96 0 0 0-1.293.749L.879 3.707A2.98 2.98 0 0 0 .13 5H5Z" />
-                        <path
-                            d="M14.066 0H7v5a2 2 0 0 1-2 2H0v11a1.97 1.97 0 0 0 1.934 2h12.132A1.97 1.97 0 0 0 16 18V2a1.97 1.97 0 0 0-1.934-2ZM9 13a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-2a2 2 0 0 1 2-2h2a2 2 0 0 1 2 2v2Zm4 .382a1 1 0 0 1-1.447.894L10 13v-2l1.553-1.276a1 1 0 0 1 1.447.894v2.764Z" />
-                    </svg>
+                    <img src="{{asset('images/home3.png')}}" class="rounded-lg w-full h-full">
                 </div>
 
                 <div class="w-min h-auto max-xl:hidden">
@@ -389,7 +374,7 @@ $redirectTo = function ($path) {
 <div class="sm:pt-20 pt-8 pb-14 grid grid-cols-1 gap-12 bg-slate-900">
     <div class="grid grid-cols-1 gap-4 text-white text-center">
         <div wire:click="redirectTo('terms-and-conditions')" class="sm:text-xl text-base underline hover:text-[#f6aa23] cursor-pointer">Terms & Conditions</div>
-        <div class="sm:text-xl text-base underline hover:text-[#f6aa23] cursor-pointer">Privacy Policy</div>
+        <div wire:click="redirectTo('privacy-policy')" class="sm:text-xl text-base underline hover:text-[#f6aa23] cursor-pointer">Privacy Policy</div>
         <div class="sm:text-lg text-sm font-bold">Support: support@digitalworldsuniversity.com</div>
     </div>
     <div class="flex justify-center">

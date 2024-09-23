@@ -21,8 +21,8 @@ rules(['name' => 'required|min:3', 'email' => 'required|email|unique:users,email
 
 with(fn() => ['plans' => Plan::paginate(0)]);
 
-$redirectTo = function () {
-    $this->redirectRoute('landing-page', navigate: true);
+$redirectTo = function ($path) {
+    $this->redirectRoute($path, navigate: true);
 };
 
 $submit = function (Request $request) {
@@ -124,13 +124,39 @@ mount(function ($referral_code) {
 
         <div class="grid grid-cols-1 md:grid-cols-3 gap-6 md:gap-8 mt-6">
             @foreach($plans as $plan_option)
-            <div @click="$refs.plan{{$plan_option->id}}.click();" class="w-full @if($plan_option->id == $plan) border-2 border-[#f6aa23] @endif bg-gray-700 grid-cols-1 px-2 md:px-5 py-4 gap-4 rounded-lg">
-                <div class="font-bold text-white text-2xl">${{$plan_option->price}}<span class="text-xl text-gray-300 font-normal">/
-                        monthly</span>
+            <div @click="$refs.plan{{$plan_option->id}}.click();" class="w-full @if($plan_option->id == $plan) border-2 border-[#f6aa23] @endif bg-gray-700 grid grid-cols-1 px-2 md:px-5 py-4 gap-4 rounded-lg">
+                <div class="font-bold text-white text-2xl inline-flex items-center">
+                    <div>
+                        <img width="30" height="30" src="https://img.icons8.com/external-ios-line-2px-amoghdesign/30/FFFFFF/external-bangladesh-currency-minima-30px-ios-line-2px-amoghdesign.png" alt="external-bangladesh-currency-minima-30px-ios-line-2px-amoghdesign" />
+                    </div>
+                    <div>{{$plan_option->price}}</div>
+                    <div class="text-xl text-gray-300 font-normal">/monthly</div>
                 </div>
                 <input type="radio" x-ref="plan{{$plan_option->id}}" value="{{$plan_option->id}}" wire:model.live="plan" class="hidden">
                 <div class="text-2xl text-left text-white">{{$plan_option->name}}</div>
-                <div class="w-full mt-8 md:mt-48 text-center align-middle font-semibold uppercase py-2 rounded-lg @if($plan_option->id == $plan) bg-[#f6aa23] font-bold @else bg-gray-500 text-white @endif">
+                <div class="grid grid-cols-1 gap-2 h-min">
+                    <div class="inline-flex gap-2">
+                        <div>
+                            <svg class="w-6 h-6 text-[#f6aa23]" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none" viewBox="0 0 24 24">
+                                <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 11.917 9.724 16.5 19 7.5" />
+                            </svg>
+                        </div>
+                        <div class="text-gray-300">
+                            Get access to all course
+                        </div>
+                    </div>
+                    <div class="inline-flex gap-2">
+                        <div>
+                            <svg class="w-6 h-6 text-[#f6aa23]" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none" viewBox="0 0 24 24">
+                                <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 11.917 9.724 16.5 19 7.5" />
+                            </svg>
+                        </div>
+                        <div class="text-gray-300">
+                            Connect your self with same minded people direct advice and guide from the mentor
+                        </div>
+                    </div>
+                </div>
+                <div class="w-full mt-8 md:mt-20 text-center align-middle font-semibold uppercase py-2 rounded-lg @if($plan_option->id == $plan) bg-[#f6aa23] font-bold @else bg-gray-500 text-white @endif">
                     @if($plan_option->id == $plan)
                     Select
                     @else
@@ -141,6 +167,18 @@ mount(function ($referral_code) {
             @endforeach
         </div>
         @error('plan')<div class="text-red-600">{{$message}}</div>@enderror
+    </div>
+    <div class="mt-12">
+        <div class="flex items-start mb-4">
+            <input type="checkbox" class="w-5 h-5 outline-none  accent-[#f6aa23] bg-gray-100 border-gray-300 rounded">
+            <label for="default-checkbox" class="ms-2 font-medium text-[#f6aa23]">I've read and accept the <span wire:click="redirectTo('terms-and-conditions')" class="hover:underline cursor-pointer">
+                    Terms & Conditions
+                </span>
+                &<span wire:click="redirectTo('privacy-policy')" class="hover:underline cursor-pointer">
+                    Privacy Policy
+                </span>
+            </label>
+        </div>
     </div>
     <div class="mt-12 grid grid-cols-1 gap-6">
         <div wire:click="submit" wire:loading.class="pointer-events-none" wire:target="submit"
@@ -153,7 +191,7 @@ mount(function ($referral_code) {
                 </svg>
             </div>
         </div>
-        <div wire:click="redirectTo"
+        <div wire:click="redirectTo('landing-page')"
             class="sm:mx-8 py-4 text-center text-xl px-4 cursor-pointer tracking-wider border border-[#f6aa23] hover:text-white hover:bg-[#f6aa23] transition-opacity duration-300 rounded-lg text-[#f6aa23] font-bold transition-colors duration-500">
             Back
         </div>
