@@ -12,11 +12,13 @@ use Illuminate\Support\Str;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Http;
+
 use function Livewire\Volt\{state, with, rules, mount};
 
-state(['email', 'name', 'password', 'plan', 'password_confirmation', 'referral_code']);
+state(['email', 'name', 'password', 'plan', 'phone_no', 'termsAndConditions', 'password_confirmation', 'referral_code']);
 
-rules(['name' => 'required|min:3', 'email' => 'required|email|unique:users,email', 'password' => 'required|min:6|confirmed', 'plan' => 'required']);
+rules(['name' => 'required|min:3', 'email' => 'required|email|unique:users,email', 'phone_no' => 'required|digits:10', 'termsAndConditions' => 'required|accepted', 'password' => 'required|min:6|confirmed', 'plan' => 'required']);
 
 
 with(fn() => ['plans' => Plan::paginate(0)]);
@@ -28,48 +30,41 @@ $redirectTo = function ($path) {
 $submit = function (Request $request) {
     $this->validate();
 
-    $user = User::create([
-        'name' => $this->name,
-        'email' => $this->email,
-        'password' => Hash::make($this->password),
-        'role_id' => Role::where('name', 'student')->first()->id,
-    ]);
+    $plan = Plan::find($this->plan);
 
-    $currentDate = Carbon::now();
+    $response = json_decode(Http::withHeaders([
+        'Content-Type' => 'application/json',
+    ])->post(env('AAMAR_PAY_URL'), [
+        "store_id" => env('AAMAR_PAY_STORE_ID'),
+        "tran_id" => Str::uuid() . Carbon::now()->timestamp,
+        "success_url" => url('/payment-success'),
+        "fail_url" => url('/payment-fail'),
+        "cancel_url" => url('/sign-up'),
+        "amount" => $plan->price,
+        "currency" => "BDT",
+        "signature_key" => env('AAMAR_PAY_SIGNATURE_KEY'),
+        "desc" => 'Subscription Plan: ' . $plan->name,
+        "cus_name" => $this->name,
+        "cus_email" => $this->email,
+        "cus_add1" => "",
+        "cus_add2" => "",
+        "cus_city" => "",
+        "cus_state" => "",
+        "cus_postcode" => "",
+        "cus_country" => "Bangladesh",
+        "cus_phone" => $this->phone_no,
+        "type" => "json",
+        'opt_a' => $this->password,
+        'opt_b' => $this->referral_code,
+        'opt_c' => $this->plan,
+        'opt_d' => '',
+    ])->body());
 
-    LkUserPlan::create([
-        'user_id' => $user->id,
-        'plan_id' => $this->plan,
-        'expiry_date' => $currentDate->addMonths(3),
-    ]);
-
-    ReferralCode::create([
-        'user_id' => $user->id,
-        'code' => (string) Str::uuid() . $user->id . $user->name,
-    ]);
-
-    if ($this->referral_code && ReferralCode::where('code', $this->referral_code)->exists()) {
-        $plan_price = Plan::find($this->plan)->price;
-        $user_id = ReferralCode::where('code', $this->referral_code)->first('user_id')->user_id;
-        User::where('id', $user_id)->increment('wallet', $plan_price * 0.25);
-        User::where('id', $user_id)->increment('referral_income', $plan_price * 0.25);
-    }
-
-    if (
-        Auth::attempt([
-            'email' => $this->email,
-            'password' => $this->password,
-        ])
-    ) {
-        $request->session()->regenerate();
-
-        $this->redirectRoute('dashboard', navigate: true);
+    if ($response->result) {
+        return redirect()->away($response->payment_url);
     } else {
-        $this->addError('email', 'Invalid Credentials');
+        dd('Somethong went');
     }
-
-    $this->dispatch('hide-modal');
-    $this->dispatch('reset-admin-panel-users');
 };
 
 mount(function ($referral_code) {
@@ -96,19 +91,23 @@ mount(function ($referral_code) {
         <div class="px-8 grid grid-cols-1 gap-3 mt-4 text-white">
             <div class="text-gray-400">Email Address</div>
             <div><input type="email" wire:model="email" class="rounded-lg w-full px-4 py-4 bg-transparent border border-gray-400" placeholder="example@gmail.com"></div>
-            @error('email')<div class="text-red-600">{{$message}}</div>@enderror
+            @error('email')<div wire:transition class="text-red-600">{{$message}}</div>@enderror
 
             <div class="text-gray-400">Name</div>
             <div><input type="email" wire:model="name" class="rounded-lg w-full px-4 py-4 bg-transparent border border-gray-400" placeholder="Name"></div>
-            @error('name')<div class="text-red-600">{{$message}}</div>@enderror
+            @error('name')<div wire:transition class="text-red-600">{{$message}}</div>@enderror
+
+            <div class="text-gray-400">Phone No</div>
+            <div><input x-mask="9999999999" wire:model="phone_no" class="rounded-lg w-full px-4 py-4 bg-transparent border border-gray-400" placeholder="Phone No"></div>
+            @error('phone_no')<div wire:transition class="text-red-600">{{$message}}</div>@enderror
 
             <div class="text-gray-400">Password</div>
             <div><input type="password" wire:model="password" class="rounded-lg w-full px-4 py-4 bg-transparent border border-gray-400"></div>
-            @error('password')<div class="text-red-600">{{$message}}</div>@enderror
+            @error('password')<div wire:transition class="text-red-600">{{$message}}</div>@enderror
 
             <div class="text-gray-400">Confirm Password</div>
             <div><input type="password" wire:model="password_confirmation" class="rounded-lg w-full px-4 py-4 bg-transparent border border-gray-400"></div>
-            @error('password_confirmation')<div class="text-red-600">{{$message}}</div>@enderror
+            @error('password_confirmation')<div wire:transition class="text-red-600">{{$message}}</div>@enderror
         </div>
     </div>
 
@@ -166,11 +165,11 @@ mount(function ($referral_code) {
             </div>
             @endforeach
         </div>
-        @error('plan')<div class="text-red-600">{{$message}}</div>@enderror
+        @error('plan')<div wire:transition class="text-red-600">{{$message}}</div>@enderror
     </div>
     <div class="mt-12">
         <div class="flex items-start mb-4">
-            <input type="checkbox" class="w-5 h-5 outline-none  accent-[#f6aa23] bg-gray-100 border-gray-300 rounded">
+            <input wire:model="termsAndConditions" type="checkbox" class="w-5 h-5 outline-none  accent-[#f6aa23] bg-gray-100 border-gray-300 rounded">
             <label for="default-checkbox" class="ms-2 font-medium text-[#f6aa23]">I've read and accept the <span wire:click="redirectTo('terms-and-conditions')" class="hover:underline cursor-pointer">
                     Terms & Conditions
                 </span>
@@ -179,6 +178,7 @@ mount(function ($referral_code) {
                 </span>
             </label>
         </div>
+        @error('termsAndConditions')<div wire:transition class="text-red-600">{{$message}}</div>@enderror
     </div>
     <div class="mt-12 grid grid-cols-1 gap-6">
         <div wire:click="submit" wire:loading.class="pointer-events-none" wire:target="submit"
