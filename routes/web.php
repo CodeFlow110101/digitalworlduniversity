@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\FileUploads;
+use App\Http\Controllers\PaymentController;
 use Illuminate\Support\Facades\Route;
 use Livewire\Volt\Volt;
 
@@ -31,6 +32,13 @@ Volt::route('/admin-panel-find-jobs', 'logged-in-landing-page')->name('admin-pan
 Volt::route('/admin-panel-channel', 'logged-in-landing-page')->name('admin-panel-channel');
 Volt::route('/admin-panel-group', 'logged-in-landing-page')->name('admin-panel-group');
 
+
 Route::post('/upload-file', [FileUploads::class, 'storeFile']);
 Route::post('/upload-video', [FileUploads::class, 'storeVideo']);
 Route::post('/upload-thumbnail', [FileUploads::class, 'storeThumbnail']);
+
+// Aamar Pay
+Route::post('/payment-fail', [PaymentController::class, 'fail']);
+Route::post('/payment-success', [PaymentController::class, 'success']);
+Volt::route('/join-success', 'main-landing-page')->name('join-success');
+Volt::route('/join-failure', 'main-landing-page')->name('join-failure');
