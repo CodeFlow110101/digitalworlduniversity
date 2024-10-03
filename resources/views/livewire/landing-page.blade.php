@@ -375,6 +375,7 @@ $redirectTo = function ($path) {
     <div class="grid grid-cols-1 gap-4 text-white text-center">
         <div wire:click="redirectTo('terms-and-conditions')" class="sm:text-xl text-base underline hover:text-[#f6aa23] cursor-pointer">Terms & Conditions</div>
         <div wire:click="redirectTo('privacy-policy')" class="sm:text-xl text-base underline hover:text-[#f6aa23] cursor-pointer">Privacy Policy</div>
+        <div wire:click="redirectTo('refund-and-cancellation-policy')" class="sm:text-xl text-base underline hover:text-[#f6aa23] cursor-pointer">Refund and Cancellation Policy</div>
         <div class="sm:text-lg text-sm font-bold">Support: support@digitalworldsuniversity.com</div>
     </div>
     <div class="flex justify-center">

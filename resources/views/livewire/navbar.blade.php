@@ -69,7 +69,7 @@ $redirectTo = function ($path) {
             </div>
         </div>
 
-        <div x-cloak :class="showMobileHeader ? 'scale-y-100' : 'scale-y-0 pointer-events-none'" class="transition-transform origin-top absolute top-16 bg-[#050e14] w-full py-3 px-2 lg:hidden">
+        <div x-cloak :class="showMobileHeader ? 'scale-y-100' : 'scale-y-0 pointer-events-none'" class="transition-transform origin-top absolute z-10 top-16 bg-[#050e14] w-full py-3 px-2 lg:hidden">
             <div class="grid grid-cols-1 w-full gap-3">
                 <div @click="$dispatch('scroll-features');showMobileHeader = false" class="text-white hover:text-[#f6aa23] cursor-pointer text-lg">Features</div>
                 <div @click="$dispatch('scroll-review');showMobileHeader = false" class="text-white hover:text-[#f6aa23] cursor-pointer text-lg">Reviews</div>

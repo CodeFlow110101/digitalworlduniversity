@@ -45,7 +45,7 @@ mount(function ($transaction) {
     LkUserPlan::create([
         'user_id' => $user->id,
         'plan_id' => $transaction['opt_c'],
-        'expiry_date' => $currentDate->addMonths(3),
+        'expiry_date' => $currentDate->addMonths(Plan::find($transaction['opt_c'])->period),
     ]);
 
     ReferralCode::create([
