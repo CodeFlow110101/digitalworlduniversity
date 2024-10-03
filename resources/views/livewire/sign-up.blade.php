@@ -129,7 +129,6 @@ mount(function ($referral_code) {
                         <img width="30" height="30" src="https://img.icons8.com/external-ios-line-2px-amoghdesign/30/FFFFFF/external-bangladesh-currency-minima-30px-ios-line-2px-amoghdesign.png" alt="external-bangladesh-currency-minima-30px-ios-line-2px-amoghdesign" />
                     </div>
                     <div>{{$plan_option->price}}</div>
-                    <div class="text-xl text-gray-300 font-normal">/monthly</div>
                 </div>
                 <input type="radio" x-ref="plan{{$plan_option->id}}" value="{{$plan_option->id}}" wire:model.live="plan" class="hidden">
                 <div class="text-2xl text-left text-white">{{$plan_option->name}}</div>
@@ -154,6 +153,16 @@ mount(function ($referral_code) {
                             Connect your self with same minded people direct advice and guide from the mentor
                         </div>
                     </div>
+                    <div class="inline-flex gap-2">
+                        <div>
+                            <svg class="w-6 h-6 text-[#f6aa23]" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none" viewBox="0 0 24 24">
+                                <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 11.917 9.724 16.5 19 7.5" />
+                            </svg>
+                        </div>
+                        <div class="text-gray-300">
+                            Subscription period {{$plan_option->period}} month{{$plan_option->period != 1 ? 's' : ''}}.
+                        </div>
+                    </div>
                 </div>
                 <div class="w-full mt-8 md:mt-20 text-center align-middle font-semibold uppercase py-2 rounded-lg @if($plan_option->id == $plan) bg-[#f6aa23] font-bold @else bg-gray-500 text-white @endif">
                     @if($plan_option->id == $plan)
@@ -170,10 +179,13 @@ mount(function ($referral_code) {
     <div class="mt-12">
         <div class="flex items-start mb-4">
             <input wire:model="termsAndConditions" type="checkbox" class="w-5 h-5 outline-none  accent-[#f6aa23] bg-gray-100 border-gray-300 rounded">
-            <label for="default-checkbox" class="ms-2 font-medium text-[#f6aa23]">I've read and accept the <span wire:click="redirectTo('terms-and-conditions')" class="hover:underline cursor-pointer">
+            <label for="default-checkbox" class="ms-2 font-medium text-[#f6aa23]">I've read and accept the <span wire:click="redirectTo('terms-and-conditions')" class="underline cursor-pointer">
                     Terms & Conditions
+                </span>,
+                <span wire:click="redirectTo('refund-and-cancellation-policy')" class="underline cursor-pointer">
+                    Refund and Cancellation Policy
                 </span>
-                &<span wire:click="redirectTo('privacy-policy')" class="hover:underline cursor-pointer">
+                &<span wire:click="redirectTo('privacy-policy')" class="underline cursor-pointer">
                     Privacy Policy
                 </span>
             </label>

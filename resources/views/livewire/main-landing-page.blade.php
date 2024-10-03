@@ -40,7 +40,7 @@ mount(function (Request $request) {
 <div class="bg-[#050e14] select-none">
     <livewire:style.landing-page-style />
     <livewire:modals.modal-landing-page-list />
-    @if (in_array($path,['/','terms-and-conditions','privacy-policy','join-success','join-failure']))
+    @if (in_array($path,['/','terms-and-conditions','privacy-policy','join-success','join-failure','refund-and-cancellation-policy']))
     <div>
         @if($path == '/')
         <livewire:navbar />
@@ -50,6 +50,8 @@ mount(function (Request $request) {
         <livewire:terms-and-conditions />
         @elseif($path == 'privacy-policy')
         <livewire:privacy-policy />
+        @elseif($path == 'refund-and-cancellation-policy')
+        <livewire:refund-and-cancellation-policy />
         @elseif($path == 'join-success')
         <livewire:payment.join-success :transaction="$transaction" />
         @elseif($path == 'join-failure')
