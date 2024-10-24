@@ -12,6 +12,7 @@ Volt::route('/log-in', 'main-landing-page')->name('log-in');
 Volt::route('/terms-and-conditions', 'main-landing-page')->name('terms-and-conditions');
 Volt::route('/privacy-policy', 'main-landing-page')->name('privacy-policy');
 Volt::route('/refund-and-cancellation-policy', 'main-landing-page')->name('refund-and-cancellation-policy');
+Volt::route('/contact', 'main-landing-page')->name('contact');
 
 Volt::route('/dashboard', 'logged-in-landing-page')->name('dashboard');
 Volt::route('/live-chat', 'logged-in-landing-page')->name('live-chat');
