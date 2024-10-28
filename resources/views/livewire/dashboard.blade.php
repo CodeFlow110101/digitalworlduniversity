@@ -19,7 +19,7 @@ mount(function ($url) {
     $this->id = $this->user->id;
     $this->url = $url;
     $this->expiry_date = LkUserPlan::where('user_id', $this->id)->first()->expiry_date;
-    $this->days_remaining = (int)Carbon::now()->diffInDays($this->expiry_date);
+    $this->days_remaining = (int)Carbon::now()->diffInDays($this->expiry_date) <= 0 ? 'Subscription Expired' : ((int)Carbon::now()->diffInDays($this->expiry_date) . " Days Till Expiry");
     $this->referral_code = ReferralCode::where('user_id', $this->id)->first()->code;
 });
 ?>
@@ -27,7 +27,7 @@ mount(function ($url) {
 <div class="text-[#131e30] grid grid-cols-1 gap-8 sm:gap-10 dark:text-[#DDE6ED]">
     <div class="grid grid-cols-1 gap-8 lg:grid-cols-3 lg:gap-10 text-center font-bold text-xl lg:text-2xl">
         <div class="bg-[#d6dcde] dark:bg-gray-800 rounded-3xl py-4 lg:py-6">Student ID: {{$id}}</div>
-        <div class="bg-[#d6dcde] dark:bg-gray-800 rounded-3xl py-4 lg:py-6">{{$days_remaining}} Days Till Expiry</div>
+        <div class="bg-[#d6dcde] dark:bg-gray-800 rounded-3xl py-4 lg:py-6">{{Gate::check('is_Admin') ? 'NA' : $days_remaining}}</div>
         <div class="bg-[#d6dcde] dark:bg-gray-800 rounded-3xl py-4 lg:py-6">Total Income: ${{$user->referral_income + $user->task_income}}</div>
     </div>
     <div class="grid grid-cols-1 gap-8 lg:grid-cols-2 lg:gap-10 text-center font-bold text-xl lg:text-2xl">

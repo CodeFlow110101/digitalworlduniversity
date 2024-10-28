@@ -5,6 +5,7 @@ use function Livewire\Volt\{state, layout, mount, on, updated};
 use App\Models\Program;
 use App\Models\User;
 use App\Models\Video;
+use Carbon\Carbon;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Gate;
@@ -46,6 +47,10 @@ mount(function (Request $request) {
     }
 
     if (Gate::check('is_Student') && str_contains($this->path, 'admin-panel')) {
+        $this->redirectRoute('dashboard', navigate: true);
+    }
+
+    if (Gate::check('is_subscription_Expired') && in_array($this->path, ['live-chat', 'find-jobs', 'programs', 'videos', 'video-player', 'store', 'earn-money'])) {
         $this->redirectRoute('dashboard', navigate: true);
     }
 
