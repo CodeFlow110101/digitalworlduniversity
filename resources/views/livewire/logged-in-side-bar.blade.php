@@ -52,6 +52,7 @@ mount(function ($path, $user) {
                     Admin Panel</div>
             </div>
             @endif
+            @if(Gate::check('is_subscription_Active'))
             <div>
                 <div wire:click="redirectTo('programs')"
                     class="lg:mx-4 mx-4 xl:mx-8 text-center xl:text-left py-2 lg:px-2 xl:px-4 @if($path == 'programs' || $path == 'videos' || $path == 'video-player') bg-[#131e30] text-[#fafbfb] dark:text-[#27374D] dark:bg-[#DDE6ED] @else dark:text-[#fafbfb] hover:dark:bg-[#DDE6ED] dark:hover:text-[#27374D] hover:bg-[#131e30] hover:text-[#fafbfb] bg-transparent text-[#131e30]  @endif lg:text-md xl:text-lg cursor-pointer tracking-wider transition-opacity duration-300 rounded-full font-noramal transition-colors duration-500">
@@ -77,6 +78,7 @@ mount(function ($path, $user) {
                     class="lg:mx-4 mx-4 xl:mx-8 text-center xl:text-left py-2 lg:px-2 xl:px-4 @if($path == 'earn-money') bg-[#131e30] text-[#fafbfb] dark:text-[#27374D] dark:bg-[#DDE6ED] @else dark:text-[#fafbfb] hover:dark:bg-[#DDE6ED] dark:hover:text-[#27374D] hover:bg-[#131e30] hover:text-[#fafbfb] bg-transparent text-[#131e30]  @endif lg:text-md xl:text-lg cursor-pointer tracking-wider transition-opacity duration-300 rounded-full font-noramal transition-colors duration-500">
                     Earn Money</div>
             </div>
+            @endif
         </div>
         <div class="flex justify-center">
             <div class="w-full grid grid-cols-1 gap-1">
