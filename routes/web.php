@@ -6,13 +6,13 @@ use Illuminate\Support\Facades\Route;
 use Livewire\Volt\Volt;
 
 
-Volt::route('/', 'main-landing-page')->name('landing-page');
-Volt::route('/sign-up', 'main-landing-page')->name('sign-up');
-Volt::route('/log-in', 'main-landing-page')->name('log-in');
-Volt::route('/terms-and-conditions', 'main-landing-page')->name('terms-and-conditions');
-Volt::route('/privacy-policy', 'main-landing-page')->name('privacy-policy');
-Volt::route('/refund-and-cancellation-policy', 'main-landing-page')->name('refund-and-cancellation-policy');
-Volt::route('/contact', 'main-landing-page')->name('contact');
+Volt::route('/', 'landing-page')->name('landing-page');
+Volt::route('/sign-up', 'landing-page')->name('sign-up');
+Volt::route('/log-in', 'landing-page')->name('log-in');
+Volt::route('/terms-and-conditions', 'landing-page')->name('terms-and-conditions');
+Volt::route('/privacy-policy', 'landing-page')->name('privacy-policy');
+Volt::route('/refund-and-cancellation-policy', 'landing-page')->name('refund-and-cancellation-policy');
+Volt::route('/contact', 'landing-page')->name('contact');
 
 Volt::route('/dashboard', 'logged-in-landing-page')->name('dashboard');
 Volt::route('/live-chat', 'logged-in-landing-page')->name('live-chat');
@@ -42,5 +42,5 @@ Route::post('/upload-thumbnail', [FileUploads::class, 'storeThumbnail']);
 // Aamar Pay
 Route::post('/payment-fail', [PaymentController::class, 'fail']);
 Route::post('/payment-success', [PaymentController::class, 'success']);
-Volt::route('/join-success', 'main-landing-page')->name('join-success');
-Volt::route('/join-failure', 'main-landing-page')->name('join-failure');
+Volt::route('/join-success', 'landing-page')->name('join-success');
+Volt::route('/join-failure', 'landing-page')->name('join-failure');

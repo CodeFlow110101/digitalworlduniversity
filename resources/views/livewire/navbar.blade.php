@@ -15,7 +15,7 @@ $redirectTo = function ($path) {
 <div class="flex justify-center py-8">
     <div x-data="{ showDropdown: false ,showMobileHeader: false}" class="lg:w-4/5 w-11/12 flex justify-between items-center max-sm:gap-2 relative">
         <div class="text-white font-bold sm:text-xl text-base flex justify-between items-center gap-4">
-            <div>Digital Worlds University</div>
+            <div class="artemisia">D<span class="didot">igital</span> W<span class="didot">orld</span> U<span class="didot">niversity</span></div>
             <div>
                 <img class="w-10 h-10 sm:w-14 sm:h-14 rounded-full" src="{{ asset('images/logo.jpg') }}" alt="Example Image">
             </div>

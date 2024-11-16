@@ -2,3 +2,59 @@
 .no-scrollbar::-webkit-scrollbar {
   display: none;  /* Webkit browsers */
 }
+
+@font-face {
+  font-family: 'GFSArtemisia';
+  src: url('/fonts/GFSArtemisia.ttf') format('truetype');
+  font-weight: normal;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'GFSArtemisiaBold';
+  src: url('/fonts/GFSArtemisiaBold.ttf') format('truetype');
+  font-weight: normal;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'GFSArtemisiaBoldIt';
+  src: url('/fonts/GFSArtemisiaBoldIt.ttf') format('truetype');
+  font-weight: normal;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'GFSArtemisiaItalic';
+  src: url('/fonts/GFSArtemisiaItalic.ttf') format('truetype');
+  font-weight: normal;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'GFSDidot';
+  src: url('/fonts/GFSDidot-Regular.ttf') format('truetype');
+  font-weight: normal;
+  font-style: normal;
+}
+
+.artemisia {
+  font-family: 'GFSArtemisia', sans-serif;
+}
+
+.artemisia-bold {
+  font-family: 'GFSArtemisiaBold', sans-serif;
+}
+
+.artemisia-italic {
+  font-family: 'GFSArtemisiaItalic', sans-serif;
+}
+
+.artemisia-bold-italic {
+  font-family: 'GFSArtemisiaBoldIt', sans-serif;
+}
+
+.didot {
+  font-family: 'GFSDidot', sans-serif;
+}
+
