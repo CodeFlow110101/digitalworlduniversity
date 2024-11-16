@@ -488,7 +488,7 @@ $redirectTo = function ($path) {
                     join Digital Worlds University</div>
             </div>
             <div class="flex justify-center">
-                <div class="text-gray-400">Join 113,000+ like-minded students</div>
+                <div class="text-gray-400">Join Over 5000+ Students with Growth Ambition</div>
             </div>
         </div>
 
