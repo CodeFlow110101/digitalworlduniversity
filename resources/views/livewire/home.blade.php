@@ -2,9 +2,12 @@
 
 use App\Models\Program;
 use App\Models\Video;
-use function Livewire\Volt\{with};
+use function Livewire\Volt\{with, mount};
 
-with(fn() => ['programs' => Program::get()]);
+with(fn() => [
+    'programs' => Program::get(),
+    'studentsSuccessImage' => config('constants.students-success-images'),
+]);
 
 $redirectTo = function ($path) {
     $this->redirectRoute($path, navigate: true);
@@ -553,40 +556,36 @@ $redirectTo = function ($path) {
 
         <div class="flex justify-center px-2 md:px-12 lg:px-20">
             <div class="grid grid-cols-4 gap-2 md:gap-6 lg:gap-6 w-full">
-                @for($i=1;$i<=4;$i++)
-                    <div class="flex items-center justify-center w-full h-36 sm:h-80 bg-gray-800 rounded-lg">
-                    <svg class="w-10 h-10 text-gray-200 dark:text-gray-600" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 20 18">
-                        <path d="M18 0H2a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h16a2 2 0 0 0 2-2V2a2 2 0 0 0-2-2Zm-5.5 4a1.5 1.5 0 1 1 0 3 1.5 1.5 0 0 1 0-3Zm4.376 10.481A1 1 0 0 1 16 15H4a1 1 0 0 1-.895-1.447l3.5-7A1 1 0 0 1 7.468 6a.965.965 0 0 1 .9.5l2.775 4.757 1.546-1.887a1 1 0 0 1 1.618.1l2.541 4a1 1 0 0 1 .028 1.011Z" />
-                    </svg>
+                @foreach($studentsSuccessImage as $image)
+                <img src="{{asset('images/'.$image)}}" class="m-auto">
+                @endforeach
             </div>
-            @endfor
         </div>
     </div>
-</div>
 
-<!-- Section -->
+    <!-- Section -->
 
-<div x-ref="scrollDoubt" x-on:scroll-doubt.window="$refs.scrollDoubt.scrollIntoView({ behavior: 'smooth' });"></div>
-<div class="flex justify-center py-20">
-    <div class="grid grid-cols-1 gap-8 sm:gap-12 w-3/4 text-white text-center">
-        <div class="text-xl sm:text-2xl lg:text-3xl font-semibold uppercase">What you get to listen</div>
-        <div class="text-2xl sm:text-3xl lg:text-4xl font-semibold">YOU HAVE A CHOICE TO MAKE</div>
-    </div>
-</div>
-
-<!-- Footer -->
-<div class="sm:pt-20 pt-8 pb-14 grid grid-cols-1 gap-12 bg-slate-900">
-    <div class="grid grid-cols-1 gap-4 text-white text-center">
-        <div wire:click="redirectTo('terms-and-conditions')" class="sm:text-xl text-base underline hover:text-[#f6aa23] cursor-pointer">Terms & Conditions</div>
-        <div wire:click="redirectTo('privacy-policy')" class="sm:text-xl text-base underline hover:text-[#f6aa23] cursor-pointer">Privacy Policy</div>
-        <div wire:click="redirectTo('refund-and-cancellation-policy')" class="sm:text-xl text-base underline hover:text-[#f6aa23] cursor-pointer">Refund and Cancellation Policy</div>
-        <div wire:click="redirectTo('contact')" class="sm:text-xl text-base underline hover:text-[#f6aa23] cursor-pointer">Contact Us</div>
-        <div class="sm:text-lg text-sm font-bold">Support: support@digitalworldsuniversity.com</div>
-    </div>
-    <div class="flex justify-center">
-        <div class="w-4/5 grid grid-cols-1 gap-4">
-            <div class="text-gray-400 sm:text-xl text-sm font-normal text-center">The Digital World University provides educational content only. Each student is responsible for implementing the material and completing the work. The Digital World University team does not guarantee any profits or financial success.</div>
+    <div x-ref="scrollDoubt" x-on:scroll-doubt.window="$refs.scrollDoubt.scrollIntoView({ behavior: 'smooth' });"></div>
+    <div class="flex justify-center py-20">
+        <div class="grid grid-cols-1 gap-8 sm:gap-12 w-3/4 text-white text-center">
+            <div class="text-xl sm:text-2xl lg:text-3xl font-semibold uppercase">What you get to listen</div>
+            <div class="text-2xl sm:text-3xl lg:text-4xl font-semibold">YOU HAVE A CHOICE TO MAKE</div>
         </div>
     </div>
-</div>
+
+    <!-- Footer -->
+    <div class="sm:pt-20 pt-8 pb-14 grid grid-cols-1 gap-12 bg-slate-900">
+        <div class="grid grid-cols-1 gap-4 text-white text-center">
+            <div wire:click="redirectTo('terms-and-conditions')" class="sm:text-xl text-base underline hover:text-[#f6aa23] cursor-pointer">Terms & Conditions</div>
+            <div wire:click="redirectTo('privacy-policy')" class="sm:text-xl text-base underline hover:text-[#f6aa23] cursor-pointer">Privacy Policy</div>
+            <div wire:click="redirectTo('refund-and-cancellation-policy')" class="sm:text-xl text-base underline hover:text-[#f6aa23] cursor-pointer">Refund and Cancellation Policy</div>
+            <div wire:click="redirectTo('contact')" class="sm:text-xl text-base underline hover:text-[#f6aa23] cursor-pointer">Contact Us</div>
+            <div class="sm:text-lg text-sm font-bold">Support: support@digitalworldsuniversity.com</div>
+        </div>
+        <div class="flex justify-center">
+            <div class="w-4/5 grid grid-cols-1 gap-4">
+                <div class="text-gray-400 sm:text-xl text-sm font-normal text-center">The Digital World University provides educational content only. Each student is responsible for implementing the material and completing the work. The Digital World University team does not guarantee any profits or financial success.</div>
+            </div>
+        </div>
+    </div>
 </div>
