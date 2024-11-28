@@ -78,8 +78,8 @@ $redirectTo = function ($path) {
             </div>
             <div class="xl:flex xl:justify-between w-full gap-14">
                 <div role="status"
-                    class="flex lg:mt-24 mb-24 mt-8 items-center justify-center h-56 w-full bg-gray-600 rounded-lg">
-                    <img src="{{asset('images/home1.png')}}" class="rounded-lg w-full h-full">
+                    class="flex lg:mt-24 mb-24 mt-8 items-center justify-center w-full bg-gray-600 rounded-xl overflow-hidden">
+                    <img src="{{asset('images/home1.jpg')}}" class="w-full h-full">
                 </div>
 
                 <div class="w-min h-auto max-xl:hidden">
@@ -89,111 +89,47 @@ $redirectTo = function ($path) {
                     </div>
                 </div>
 
-                <div class="w-full">
-                    <div class="md:text-4xl text-2xl text-white uppercase text-center font-thin">Multiple Skills &
-                        <span class="font-extrabold">
-                            Life Lesson Courses
-                        </span>
-                    </div>
-                    <div class="grid grid-cols-1 gap-8 mt-12 text-white">
-                        <div class="flex justify-between max-w-max gap-4 items-center">
-                            <svg class="md:w-12 md:h-12 w-8 h-8 text-[#f6aa23]" aria-hidden="true" xmlns="http://www.w3.org/2000/svg"
-                                width="24" height="24" fill="none" viewBox="0 0 24 24">
-                                <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="3"
-                                    d="M5 11.917 9.724 16.5 19 7.5" />
-                            </svg>
-                            <div class="md:text-2xl text-lg text-gray-300">Top Custom <span class="text-white font-bold">E-Learning Platform</span>
-                            </div>
+                <div class="size-full flex flex-col">
+                    <div class="xl:m-auto">
+                        <div class="md:text-4xl text-2xl text-white uppercase text-center font-thin">Multiple Skills &
+                            <span class="font-extrabold">
+                                Life Lesson Courses
+                            </span>
                         </div>
-                        <div class="flex justify-between gap-4 items-center">
+                        <div class="grid grid-cols-1 gap-8 mt-12 text-white">
                             <div class="flex justify-between max-w-max gap-4 items-center">
                                 <svg class="md:w-12 md:h-12 w-8 h-8 text-[#f6aa23]" aria-hidden="true" xmlns="http://www.w3.org/2000/svg"
                                     width="24" height="24" fill="none" viewBox="0 0 24 24">
                                     <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="3"
                                         d="M5 11.917 9.724 16.5 19 7.5" />
                                 </svg>
-                                <div class="md:text-2xl text-lg text-gray-300">Grow from <span class="text-white font-bold">Zero
-                                        to
-                                        $10k/month</span>
+                                <div class="md:text-2xl text-lg text-gray-300">Top Custom <span class="text-white font-bold">E-Learning Platform</span>
                                 </div>
                             </div>
-                        </div>
-                        <div class="flex justify-between gap-4 items-center">
-                            <div class="flex justify-between max-w-max gap-4 items-center">
-                                <svg class="md:w-12 md:h-12 w-8 h-8 text-[#f6aa23]" aria-hidden="true" xmlns="http://www.w3.org/2000/svg"
-                                    width="24" height="24" fill="none" viewBox="0 0 24 24">
-                                    <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="3"
-                                        d="M5 11.917 9.724 16.5 19 7.5" />
-                                </svg>
-                                <div class="md:text-2xl text-lg text-gray-300">Develop the essential <span
-                                        class="text-white font-bold">
-                                        skills for success</span>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-        <div class="flex justify-between sm:gap-8">
-            <div class="h-full xl:hidden">
-                <div class="w-min h-full xl:hidden">
-                    <div class="h-4 w-4 rounded-full bg-gray-100"></div>
-                    <div class="my-2 flex h-full justify-center">
-                        <div class="h-auto w-0.5 bg-gray-800 rounded"></div>
-                    </div>
-                </div>
-            </div>
-            <div class="xl:flex xl:justify-between w-full gap-14">
-                <div role="status"
-                    class="flex lg:mt-24 mb-24 mt-8 items-center justify-center h-56 w-full bg-gray-600 rounded-lg ">
-                    <img src="{{asset('images/home2.png')}}" class="rounded-lg w-full h-full">
-                </div>
-
-                <div class="w-min h-auto max-xl:hidden">
-                    <div class="h-4 w-4 rounded-full bg-gray-100"></div>
-                    <div class="my-2 flex h-full justify-center">
-                        <div class="h-auto w-0.5 bg-gray-800 rounded"></div>
-                    </div>
-                </div>
-
-                <div class="w-full">
-                    <div class="md:text-4xl text-2xl text-white uppercase text-center font-thin">Join a Private <span
-                            class="font-extrabold">Group Chat for each program</span>
-                    </div>
-                    <div class="grid grid-cols-1 gap-8 mt-12 text-white">
-                        <div class="flex justify-between max-w-max gap-4 items-center">
                             <div class="flex justify-between gap-4 items-center">
-                                <svg class="md:w-12 md:h-12 w-8 h-8 text-[#f6aa23]" aria-hidden="true" xmlns="http://www.w3.org/2000/svg"
-                                    width="24" height="24" fill="none" viewBox="0 0 24 24">
-                                    <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"
-                                        stroke-width="3" d="M5 11.917 9.724 16.5 19 7.5" />
-                                </svg>
-                                <div class="md:text-2xl text-lg text-gray-300"><span class="text-white font-bold">Show your success</span> with people
+                                <div class="flex justify-between max-w-max gap-4 items-center">
+                                    <svg class="md:w-12 md:h-12 w-8 h-8 text-[#f6aa23]" aria-hidden="true" xmlns="http://www.w3.org/2000/svg"
+                                        width="24" height="24" fill="none" viewBox="0 0 24 24">
+                                        <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="3"
+                                            d="M5 11.917 9.724 16.5 19 7.5" />
+                                    </svg>
+                                    <div class="md:text-2xl text-lg text-gray-300">Grow from <span class="text-white font-bold">Zero
+                                            to
+                                            $10k/month</span>
+                                    </div>
                                 </div>
                             </div>
-                        </div>
-                        <div class="flex justify-between gap-4 items-center">
-                            <div class="flex justify-between max-w-max gap-4 items-center">
-                                <svg class="md:w-12 md:h-12 w-8 h-8 text-[#f6aa23]" aria-hidden="true" xmlns="http://www.w3.org/2000/svg"
-                                    width="24" height="24" fill="none" viewBox="0 0 24 24">
-                                    <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"
-                                        stroke-width="3" d="M5 11.917 9.724 16.5 19 7.5" />
-                                </svg>
-                                <div class="md:text-2xl text-lg text-gray-300"><span class="text-white font-bold">Surround yourself</span>
-                                    with like-minded individuals
-                                </div>
-                            </div>
-                        </div>
-                        <div class="flex justify-between gap-4 items-center">
-                            <div class="flex justify-between max-w-max gap-4 items-center">
-                                <svg class="md:w-12 md:h-12 w-8 h-8 text-[#f6aa23]" aria-hidden="true" xmlns="http://www.w3.org/2000/svg"
-                                    width="24" height="24" fill="none" viewBox="0 0 24 24">
-                                    <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"
-                                        stroke-width="3" d="M5 11.917 9.724 16.5 19 7.5" />
-                                </svg>
-                                <div class="md:text-2xl text-lg text-gray-300"><span class="text-white font-bold">
-                                        Network with 15000+ people</span>
+                            <div class="flex justify-between gap-4 items-center">
+                                <div class="flex justify-between max-w-max gap-4 items-center">
+                                    <svg class="md:w-12 md:h-12 w-8 h-8 text-[#f6aa23]" aria-hidden="true" xmlns="http://www.w3.org/2000/svg"
+                                        width="24" height="24" fill="none" viewBox="0 0 24 24">
+                                        <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="3"
+                                            d="M5 11.917 9.724 16.5 19 7.5" />
+                                    </svg>
+                                    <div class="md:text-2xl text-lg text-gray-300">Develop the essential <span
+                                            class="text-white font-bold">
+                                            skills for success</span>
+                                    </div>
                                 </div>
                             </div>
                         </div>
@@ -212,8 +148,8 @@ $redirectTo = function ($path) {
             </div>
             <div class="xl:flex xl:justify-between w-full gap-14">
                 <div role="status"
-                    class="flex lg:mt-24 mb-24 mt-8 items-center justify-center h-56 w-full bg-gray-600 rounded-lg ">
-                    <img src="{{asset('images/home3.png')}}" class="rounded-lg w-full h-full">
+                    class="flex lg:mt-24 mb-24 mt-8 items-center justify-center w-full bg-gray-600 rounded-xl overflow-hidden ">
+                    <img src="{{asset('images/home2.jpg')}}" class="w-full h-full">
                 </div>
 
                 <div class="w-min h-auto max-xl:hidden">
@@ -223,44 +159,45 @@ $redirectTo = function ($path) {
                     </div>
                 </div>
 
-                <div class="w-full">
-                    <div class="md:text-4xl text-2xl text-white uppercase text-center font-thin">EARN MONEY <span
-                            class="font-extrabold">ANSWERING SURVEYS</span>
-                    </div>
-                    <div class="grid grid-cols-1 gap-8 mt-12 text-white">
-                        <div class="flex justify-between gap-4 items-center">
+                <div class="size-full flex flex-col">
+                    <div class="xl:m-auto">
+                        <div class="md:text-4xl text-2xl text-white uppercase text-center font-thin">Join a Private <span
+                                class="font-extrabold">Group Chat for each program</span>
+                        </div>
+                        <div class="grid grid-cols-1 gap-8 mt-12 text-white">
                             <div class="flex justify-between max-w-max gap-4 items-center">
-                                <svg class="md:w-12 md:h-12 w-8 h-8 text-[#f6aa23]" aria-hidden="true" xmlns="http://www.w3.org/2000/svg"
-                                    width="24" height="24" fill="none" viewBox="0 0 24 24">
-                                    <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"
-                                        stroke-width="3" d="M5 11.917 9.724 16.5 19 7.5" />
-                                </svg>
-                                <div class="md:text-2xl text-lg text-gray-300"><span class="text-white font-bold">Answer some easy question
-                                    </span> and make money
+                                <div class="flex justify-between gap-4 items-center">
+                                    <svg class="md:w-12 md:h-12 w-8 h-8 text-[#f6aa23]" aria-hidden="true" xmlns="http://www.w3.org/2000/svg"
+                                        width="24" height="24" fill="none" viewBox="0 0 24 24">
+                                        <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"
+                                            stroke-width="3" d="M5 11.917 9.724 16.5 19 7.5" />
+                                    </svg>
+                                    <div class="md:text-2xl text-lg text-gray-300"><span class="text-white font-bold">Show your success</span> with people
+                                    </div>
                                 </div>
                             </div>
-                        </div>
-                        <div class="flex justify-between gap-4 items-center">
-                            <div class="flex justify-between max-w-max gap-4 items-center">
-                                <svg class="md:w-12 md:h-12 w-8 h-8 text-[#f6aa23]" aria-hidden="true" xmlns="http://www.w3.org/2000/svg"
-                                    width="24" height="24" fill="none" viewBox="0 0 24 24">
-                                    <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"
-                                        stroke-width="3" d="M5 11.917 9.724 16.5 19 7.5" />
-                                </svg>
-                                <div class="md:text-2xl text-lg text-gray-300">Get <span class="text-white font-bold">You can earn upto</span>
-                                    $10 USD per day
+                            <div class="flex justify-between gap-4 items-center">
+                                <div class="flex justify-between max-w-max gap-4 items-center">
+                                    <svg class="md:w-12 md:h-12 w-8 h-8 text-[#f6aa23]" aria-hidden="true" xmlns="http://www.w3.org/2000/svg"
+                                        width="24" height="24" fill="none" viewBox="0 0 24 24">
+                                        <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"
+                                            stroke-width="3" d="M5 11.917 9.724 16.5 19 7.5" />
+                                    </svg>
+                                    <div class="md:text-2xl text-lg text-gray-300"><span class="text-white font-bold">Surround yourself</span>
+                                        with like-minded individuals
+                                    </div>
                                 </div>
                             </div>
-                        </div>
-                        <div class="flex justify-between gap-4 items-center">
-                            <div class="flex justify-between max-w-max gap-4 items-center">
-                                <svg class="md:w-12 md:h-12 w-8 h-8 text-[#f6aa23]" aria-hidden="true" xmlns="http://www.w3.org/2000/svg"
-                                    width="24" height="24" fill="none" viewBox="0 0 24 24">
-                                    <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"
-                                        stroke-width="3" d="M5 11.917 9.724 16.5 19 7.5" />
-                                </svg>
-                                <div class="md:text-2xl text-lg text-gray-300"><span class="text-white font-bold">
-                                        Knowledgeable Survey question </span>in multiple of topic
+                            <div class="flex justify-between gap-4 items-center">
+                                <div class="flex justify-between max-w-max gap-4 items-center">
+                                    <svg class="md:w-12 md:h-12 w-8 h-8 text-[#f6aa23]" aria-hidden="true" xmlns="http://www.w3.org/2000/svg"
+                                        width="24" height="24" fill="none" viewBox="0 0 24 24">
+                                        <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"
+                                            stroke-width="3" d="M5 11.917 9.724 16.5 19 7.5" />
+                                    </svg>
+                                    <div class="md:text-2xl text-lg text-gray-300"><span class="text-white font-bold">
+                                            Network with 15000+ people</span>
+                                    </div>
                                 </div>
                             </div>
                         </div>
@@ -279,8 +216,8 @@ $redirectTo = function ($path) {
             </div>
             <div class="xl:flex xl:justify-between w-full gap-14">
                 <div role="status"
-                    class="flex lg:mt-24 mb-24 mt-8 items-center justify-center h-56 w-full bg-gray-600 rounded-lg ">
-                    <img src="{{asset('images/home3.png')}}" class="rounded-lg w-full h-full">
+                    class="flex lg:mt-24 mb-24 mt-8 items-center justify-center w-full bg-gray-600 rounded-xl overflow-hidden ">
+                    <img src="{{asset('images/home3.jpg')}}" class="w-full h-full">
                 </div>
 
                 <div class="w-min h-auto max-xl:hidden">
@@ -290,48 +227,46 @@ $redirectTo = function ($path) {
                     </div>
                 </div>
 
-                <div class="w-full">
-                    <div class="md:text-4xl text-2xl text-white uppercase text-center font-thin">Apply for <span
-                            class="font-extrabold">Job or Post a Job</span>
-                    </div>
-                    <div class="grid grid-cols-1 gap-8 mt-12 text-white">
-                        <div class="flex justify-between gap-4 items-center">
-                            <div class="flex justify-between max-w-max gap-4 items-center">
-                                <svg class="md:w-12 md:h-12 w-8 h-8 text-[#f6aa23]" aria-hidden="true" xmlns="http://www.w3.org/2000/svg"
-                                    width="24" height="24" fill="none" viewBox="0 0 24 24">
-                                    <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"
-                                        stroke-width="3" d="M5 11.917 9.724 16.5 19 7.5" />
-                                </svg>
-                                <div class="md:text-2xl text-lg text-gray-300"><span class="text-white font-bold">You can apply for job at
-                                    </span>your choiceable skill
-                                </div>
-                            </div>
+                <div class="size-full flex flex-col">
+                    <div class="xl:m-auto">
+                        <div class="md:text-4xl text-2xl text-white uppercase text-center font-thin">EARN MONEY <span
+                                class="font-extrabold">ANSWERING SURVEYS</span>
                         </div>
-                        <div class="flex justify-between gap-4 items-center">
-                            <div class="flex justify-between max-w-max gap-4 items-center">
-                                <div>
+                        <div class="grid grid-cols-1 gap-8 mt-12 text-white">
+                            <div class="flex justify-between gap-4 items-center">
+                                <div class="flex justify-between max-w-max gap-4 items-center">
                                     <svg class="md:w-12 md:h-12 w-8 h-8 text-[#f6aa23]" aria-hidden="true" xmlns="http://www.w3.org/2000/svg"
                                         width="24" height="24" fill="none" viewBox="0 0 24 24">
                                         <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"
                                             stroke-width="3" d="M5 11.917 9.724 16.5 19 7.5" />
                                     </svg>
-                                </div>
-                                <div class="md:text-2xl text-lg text-gray-300">We are partnered <span class="text-white font-bold">with over 100 companies</span>
-                                    to offer employment opportunities
+                                    <div class="md:text-2xl text-lg text-gray-300"><span class="text-white font-bold">Answer some easy question
+                                        </span> and make money
+                                    </div>
                                 </div>
                             </div>
-                        </div>
-                        <div class="flex justify-between gap-4 items-center">
-                            <div class="flex justify-between max-w-max gap-4 items-center">
-                                <div>
+                            <div class="flex justify-between gap-4 items-center">
+                                <div class="flex justify-between max-w-max gap-4 items-center">
                                     <svg class="md:w-12 md:h-12 w-8 h-8 text-[#f6aa23]" aria-hidden="true" xmlns="http://www.w3.org/2000/svg"
-                                        fill="none" viewBox="0 0 24 24">
+                                        width="24" height="24" fill="none" viewBox="0 0 24 24">
                                         <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"
                                             stroke-width="3" d="M5 11.917 9.724 16.5 19 7.5" />
                                     </svg>
+                                    <div class="md:text-2xl text-lg text-gray-300">Get <span class="text-white font-bold">You can earn upto</span>
+                                        $10 USD per day
+                                    </div>
                                 </div>
-                                <div class="md:text-2xl text-lg text-gray-300"><span class="text-white font-bold">
-                                        If you're a business owner, </span>you can post job opportunities to match your business needs
+                            </div>
+                            <div class="flex justify-between gap-4 items-center">
+                                <div class="flex justify-between max-w-max gap-4 items-center">
+                                    <svg class="md:w-12 md:h-12 w-8 h-8 text-[#f6aa23]" aria-hidden="true" xmlns="http://www.w3.org/2000/svg"
+                                        width="24" height="24" fill="none" viewBox="0 0 24 24">
+                                        <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"
+                                            stroke-width="3" d="M5 11.917 9.724 16.5 19 7.5" />
+                                    </svg>
+                                    <div class="md:text-2xl text-lg text-gray-300"><span class="text-white font-bold">
+                                            Knowledgeable Survey question </span>in multiple of topic
+                                    </div>
                                 </div>
                             </div>
                         </div>
@@ -350,8 +285,8 @@ $redirectTo = function ($path) {
             </div>
             <div class="xl:flex xl:justify-between w-full gap-14">
                 <div role="status"
-                    class="flex lg:mt-24 mb-24 mt-8 items-center justify-center h-56 w-full bg-gray-600 rounded-lg ">
-                    <img src="{{asset('images/home3.png')}}" class="rounded-lg w-full h-full">
+                    class="flex lg:mt-24 mb-24 mt-8 items-center justify-center w-full bg-gray-600 rounded-xl overflow-hidden ">
+                    <img src="{{asset('images/home4.jpg')}}" class="w-full h-full">
                 </div>
 
                 <div class="w-min h-auto max-xl:hidden">
@@ -361,49 +296,50 @@ $redirectTo = function ($path) {
                     </div>
                 </div>
 
-                <div class="w-full">
-                    <div class="md:text-4xl text-2xl text-white uppercase text-center font-thin">Become certified <span
-                            class="font-extrabold">by our university</span>
-                    </div>
-                    <div class="grid grid-cols-1 gap-8 mt-12 text-white">
-                        <div class="flex justify-between gap-4 items-center">
-                            <div class="flex justify-between max-w-max gap-4 items-center">
-                                <div>
+                <div class="size-full flex flex-col">
+                    <div class="xl:m-auto">
+                        <div class="md:text-4xl text-2xl text-white uppercase text-center font-thin">Apply for <span
+                                class="font-extrabold">Job or Post a Job</span>
+                        </div>
+                        <div class="grid grid-cols-1 gap-8 mt-12 text-white">
+                            <div class="flex justify-between gap-4 items-center">
+                                <div class="flex justify-between max-w-max gap-4 items-center">
                                     <svg class="md:w-12 md:h-12 w-8 h-8 text-[#f6aa23]" aria-hidden="true" xmlns="http://www.w3.org/2000/svg"
                                         width="24" height="24" fill="none" viewBox="0 0 24 24">
                                         <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"
                                             stroke-width="3" d="M5 11.917 9.724 16.5 19 7.5" />
                                     </svg>
-                                </div>
-                                <div class="md:text-2xl text-lg text-gray-300"><span class="text-white font-bold">You will receive a certificate
-                                    </span>for each program you complete
-                                </div>
-                            </div>
-                        </div>
-                        <div class="flex justify-between gap-4 items-center">
-                            <div class="flex justify-between max-w-max gap-4 items-center">
-                                <div>
-                                    <svg class="md:w-12 md:h-12 w-8 h-8 text-[#f6aa23]" aria-hidden="true" xmlns="http://www.w3.org/2000/svg"
-                                        width="24" height="24" fill="none" viewBox="0 0 24 24">
-                                        <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"
-                                            stroke-width="3" d="M5 11.917 9.724 16.5 19 7.5" />
-                                    </svg>
-                                </div>
-                                <div class="md:text-2xl text-lg text-gray-300">Use this certificate <span class="text-white font-bold">for job applications or other opportunities</span>
+                                    <div class="md:text-2xl text-lg text-gray-300"><span class="text-white font-bold">You can apply for job at
+                                        </span>your choiceable skill
+                                    </div>
                                 </div>
                             </div>
-                        </div>
-                        <div class="flex justify-between gap-4 items-center">
-                            <div class="flex justify-between max-w-max gap-4 items-center">
-                                <div>
-                                    <svg class="md:w-12 md:h-12 w-8 h-8 text-[#f6aa23]" aria-hidden="true" xmlns="http://www.w3.org/2000/svg"
-                                        fill="none" viewBox="0 0 24 24">
-                                        <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"
-                                            stroke-width="3" d="M5 11.917 9.724 16.5 19 7.5" />
-                                    </svg>
+                            <div class="flex justify-between gap-4 items-center">
+                                <div class="flex justify-between max-w-max gap-4 items-center">
+                                    <div>
+                                        <svg class="md:w-12 md:h-12 w-8 h-8 text-[#f6aa23]" aria-hidden="true" xmlns="http://www.w3.org/2000/svg"
+                                            width="24" height="24" fill="none" viewBox="0 0 24 24">
+                                            <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"
+                                                stroke-width="3" d="M5 11.917 9.724 16.5 19 7.5" />
+                                        </svg>
+                                    </div>
+                                    <div class="md:text-2xl text-lg text-gray-300">We are partnered <span class="text-white font-bold">with over 100 companies</span>
+                                        to offer employment opportunities
+                                    </div>
                                 </div>
-                                <div class="md:text-2xl text-lg text-gray-300"><span class="text-white font-bold">
-                                        This certificate </span>officially confirms your proficiency in the specific skill
+                            </div>
+                            <div class="flex justify-between gap-4 items-center">
+                                <div class="flex justify-between max-w-max gap-4 items-center">
+                                    <div>
+                                        <svg class="md:w-12 md:h-12 w-8 h-8 text-[#f6aa23]" aria-hidden="true" xmlns="http://www.w3.org/2000/svg"
+                                            fill="none" viewBox="0 0 24 24">
+                                            <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"
+                                                stroke-width="3" d="M5 11.917 9.724 16.5 19 7.5" />
+                                        </svg>
+                                    </div>
+                                    <div class="md:text-2xl text-lg text-gray-300"><span class="text-white font-bold">
+                                            If you're a business owner, </span>you can post job opportunities to match your business needs
+                                    </div>
                                 </div>
                             </div>
                         </div>
@@ -422,8 +358,8 @@ $redirectTo = function ($path) {
             </div>
             <div class="xl:flex xl:justify-between w-full gap-14">
                 <div role="status"
-                    class="flex lg:mt-24 mb-24 mt-8 items-center justify-center h-56 w-full bg-gray-600 rounded-lg ">
-                    <img src="{{asset('images/home3.png')}}" class="rounded-lg w-full h-full">
+                    class="flex lg:mt-24 mb-24 mt-8 items-center justify-center w-full bg-gray-600 rounded-xl overflow-hidden">
+                    <img src="{{asset('images/home5.jpg')}}" class="w-full h-full">
                 </div>
 
                 <div class="w-min h-auto max-xl:hidden">
@@ -433,47 +369,123 @@ $redirectTo = function ($path) {
                     </div>
                 </div>
 
-                <div class="w-full">
-                    <div class="md:text-4xl text-2xl text-white uppercase text-center font-thin">ACCESS TO AI TUTOR</div>
-                    <div class="grid grid-cols-1 gap-8 mt-12 text-white">
-                        <div class="flex justify-between gap-4 items-center">
-                            <div class="flex justify-between max-w-max gap-4 items-center">
-                                <div>
-                                    <svg class="md:w-12 md:h-12 w-8 h-8 text-[#f6aa23]" aria-hidden="true" xmlns="http://www.w3.org/2000/svg"
-                                        width="24" height="24" fill="none" viewBox="0 0 24 24">
-                                        <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"
-                                            stroke-width="3" d="M5 11.917 9.724 16.5 19 7.5" />
-                                    </svg>
+                <div class="size-full flex flex-col">
+                    <div class="xl:m-auto">
+                        <div class="md:text-4xl text-2xl text-white uppercase text-center font-thin">Become certified <span
+                                class="font-extrabold">by our university</span>
+                        </div>
+                        <div class="grid grid-cols-1 gap-8 mt-12 text-white">
+                            <div class="flex justify-between gap-4 items-center">
+                                <div class="flex justify-between max-w-max gap-4 items-center">
+                                    <div>
+                                        <svg class="md:w-12 md:h-12 w-8 h-8 text-[#f6aa23]" aria-hidden="true" xmlns="http://www.w3.org/2000/svg"
+                                            width="24" height="24" fill="none" viewBox="0 0 24 24">
+                                            <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"
+                                                stroke-width="3" d="M5 11.917 9.724 16.5 19 7.5" />
+                                        </svg>
+                                    </div>
+                                    <div class="md:text-2xl text-lg text-gray-300"><span class="text-white font-bold">You will receive a certificate
+                                        </span>for each program you complete
+                                    </div>
                                 </div>
-                                <div class="md:text-2xl text-lg text-gray-300"><span class="text-white font-bold">Get personalized guidance from an
-                                    </span>Artificial Intelligence mentor
+                            </div>
+                            <div class="flex justify-between gap-4 items-center">
+                                <div class="flex justify-between max-w-max gap-4 items-center">
+                                    <div>
+                                        <svg class="md:w-12 md:h-12 w-8 h-8 text-[#f6aa23]" aria-hidden="true" xmlns="http://www.w3.org/2000/svg"
+                                            width="24" height="24" fill="none" viewBox="0 0 24 24">
+                                            <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"
+                                                stroke-width="3" d="M5 11.917 9.724 16.5 19 7.5" />
+                                        </svg>
+                                    </div>
+                                    <div class="md:text-2xl text-lg text-gray-300">Use this certificate <span class="text-white font-bold">for job applications or other opportunities</span>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="flex justify-between gap-4 items-center">
+                                <div class="flex justify-between max-w-max gap-4 items-center">
+                                    <div>
+                                        <svg class="md:w-12 md:h-12 w-8 h-8 text-[#f6aa23]" aria-hidden="true" xmlns="http://www.w3.org/2000/svg"
+                                            fill="none" viewBox="0 0 24 24">
+                                            <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"
+                                                stroke-width="3" d="M5 11.917 9.724 16.5 19 7.5" />
+                                        </svg>
+                                    </div>
+                                    <div class="md:text-2xl text-lg text-gray-300"><span class="text-white font-bold">
+                                            This certificate </span>officially confirms your proficiency in the specific skill
+                                    </div>
                                 </div>
                             </div>
                         </div>
-                        <div class="flex justify-between gap-4 items-center">
-                            <div class="flex justify-between max-w-max gap-4 items-center">
-                                <div>
-                                    <svg class="md:w-12 md:h-12 w-8 h-8 text-[#f6aa23]" aria-hidden="true" xmlns="http://www.w3.org/2000/svg"
-                                        width="24" height="24" fill="none" viewBox="0 0 24 24">
-                                        <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"
-                                            stroke-width="3" d="M5 11.917 9.724 16.5 19 7.5" />
-                                    </svg>
-                                </div>
-                                <div class="md:text-2xl text-lg text-gray-300">AI Tutor will provide <span class="text-white font-bold">personalized 1-on-1 advice based on your programe</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="flex justify-between sm:gap-8">
+            <div class="h-full xl:hidden">
+                <div class="w-min h-full xl:hidden">
+                    <div class="h-4 w-4 rounded-full bg-gray-100"></div>
+                    <div class="my-2 flex h-full justify-center">
+                        <div class="h-auto w-0.5 bg-gray-800 rounded"></div>
+                    </div>
+                </div>
+            </div>
+            <div class="xl:flex xl:justify-between w-full gap-14">
+                <div role="status"
+                    class="flex lg:mt-24 mb-24 mt-8 items-center justify-center w-full bg-gray-600 rounded-xl overflow-hidden">
+                    <img src="{{asset('images/home6.jpg')}}" class="w-full h-full">
+                </div>
+
+                <div class="w-min h-auto max-xl:hidden">
+                    <div class="h-4 w-4 rounded-full bg-gray-100"></div>
+                    <div class="my-2 flex h-full justify-center">
+                        <div class="h-auto w-0.5 bg-gray-800 rounded"></div>
+                    </div>
+                </div>
+
+                <div class="size-full flex flex-col">
+                    <div class="xl:m-auto">
+                        <div class="md:text-4xl text-2xl text-white uppercase text-center font-thin">ACCESS TO AI TUTOR</div>
+                        <div class="grid grid-cols-1 gap-8 mt-12 text-white">
+                            <div class="flex justify-between gap-4 items-center">
+                                <div class="flex justify-between max-w-max gap-4 items-center">
+                                    <div>
+                                        <svg class="md:w-12 md:h-12 w-8 h-8 text-[#f6aa23]" aria-hidden="true" xmlns="http://www.w3.org/2000/svg"
+                                            width="24" height="24" fill="none" viewBox="0 0 24 24">
+                                            <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"
+                                                stroke-width="3" d="M5 11.917 9.724 16.5 19 7.5" />
+                                        </svg>
+                                    </div>
+                                    <div class="md:text-2xl text-lg text-gray-300"><span class="text-white font-bold">Get personalized guidance from an
+                                        </span>Artificial Intelligence mentor
+                                    </div>
                                 </div>
                             </div>
-                        </div>
-                        <div class="flex justify-between gap-4 items-center">
-                            <div class="flex justify-between max-w-max gap-4 items-center">
-                                <div>
-                                    <svg class="md:w-12 md:h-12 w-8 h-8 text-[#f6aa23]" aria-hidden="true" xmlns="http://www.w3.org/2000/svg"
-                                        fill="none" viewBox="0 0 24 24">
-                                        <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"
-                                            stroke-width="3" d="M5 11.917 9.724 16.5 19 7.5" />
-                                    </svg>
+                            <div class="flex justify-between gap-4 items-center">
+                                <div class="flex justify-between max-w-max gap-4 items-center">
+                                    <div>
+                                        <svg class="md:w-12 md:h-12 w-8 h-8 text-[#f6aa23]" aria-hidden="true" xmlns="http://www.w3.org/2000/svg"
+                                            width="24" height="24" fill="none" viewBox="0 0 24 24">
+                                            <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"
+                                                stroke-width="3" d="M5 11.917 9.724 16.5 19 7.5" />
+                                        </svg>
+                                    </div>
+                                    <div class="md:text-2xl text-lg text-gray-300">AI Tutor will provide <span class="text-white font-bold">personalized 1-on-1 advice based on your programe</span>
+                                    </div>
                                 </div>
-                                <div class="md:text-2xl text-lg text-gray-300"><span class="text-white font-bold">
-                                        AI Tutor will assist you in </span>improving your skills
+                            </div>
+                            <div class="flex justify-between gap-4 items-center">
+                                <div class="flex justify-between max-w-max gap-4 items-center">
+                                    <div>
+                                        <svg class="md:w-12 md:h-12 w-8 h-8 text-[#f6aa23]" aria-hidden="true" xmlns="http://www.w3.org/2000/svg"
+                                            fill="none" viewBox="0 0 24 24">
+                                            <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"
+                                                stroke-width="3" d="M5 11.917 9.724 16.5 19 7.5" />
+                                        </svg>
+                                    </div>
+                                    <div class="md:text-2xl text-lg text-gray-300"><span class="text-white font-bold">
+                                            AI Tutor will assist you in </span>improving your skills
+                                    </div>
                                 </div>
                             </div>
                         </div>
