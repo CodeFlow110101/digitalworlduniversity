@@ -17,7 +17,7 @@ $redirectTo = function ($path) {
         <div class="text-white font-bold sm:text-xl text-base flex justify-between items-center gap-4">
             <div class="artemisia">D<span class="didot">igital</span> W<span class="didot">orld</span> U<span class="didot">niversity</span></div>
             <div>
-                <img class="w-10 h-10 sm:w-14 sm:h-14 rounded-full" src="{{ asset('images/logo.jpg') }}" alt="Example Image">
+                <img class="w-10 h-10 sm:w-14 sm:h-14 rounded-full" src="{{ asset('images/logo.jpeg') }}" alt="Example Image">
             </div>
         </div>
         <div class="flex justify-between gap-5 max-lg:hidden">
