@@ -8,10 +8,6 @@ state(['email', 'password']);
 
 rules(['password' => 'required', 'email' => 'required|email']);
 
-$redirectTo = function () {
-    $this->redirectRoute('landing-page', navigate: true);
-};
-
 $submit = function (Request $request) {
     $this->validate();
 
@@ -31,9 +27,9 @@ $submit = function (Request $request) {
 
 ?>
 
-<div class="lg:w-3/5 w-full h-dvh bg-black py-10 sm:px-10 px-8">
+<div class="h-dvh bg-black py-10 sm:px-10 px-8">
     <div class="grid grid-cols-1 gap-2 max-sm:text-center">
-        <div class="text-white sm:text-3xl text-2xl font-bold uppercase">Digital Worlds University</div>
+        <div class="text-white sm:text-3xl text-2xl font-bold uppercase">Digital World University</div>
         <div class="text-white sm:text-2xl text-xl font-normal uppercase">Login</div>
     </div>
 
@@ -61,9 +57,9 @@ $submit = function (Request $request) {
                 </div>
             </div>
         </div>
-        <div class="grid grid-cols-1 gap-4">
+        <div class="flex justify-around">
             <div wire:click="submit" wire:loading.class="pointer-events-none" wire:target="submit"
-                class="sm:mx-8 py-4 text-center text-xl px-4 cursor-pointer tracking-wider border border-[#f6aa23] transition-opacity duration-300 rounded-lg text-white font-bold transition-colors duration-500 bg-[#f6aa23]">
+                class="w-full sm:mx-8 py-4 text-center text-xl px-4 cursor-pointer tracking-wider border border-[#f6aa23] transition-opacity duration-300 rounded-lg text-white font-bold transition-colors duration-500 bg-[#f6aa23]">
                 <div wire:loading.class="hidden" wire:target="submit">Login</div>
                 <div wire:loading.class.remove="hidden" wire:target="submit" class="flex justify-center hidden">
                     <svg aria-hidden="true" class="w-8 h-8 text-[#131e30] animate-spin fill-white" viewBox="0 0 100 101" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -72,10 +68,10 @@ $submit = function (Request $request) {
                     </svg>
                 </div>
             </div>
-            <div wire:click="redirectTo"
+            <a href="/" wire:navigate
                 class="sm:mx-8 py-4 text-center text-xl px-4 cursor-pointer tracking-wider border border-[#f6aa23] hover:text-white hover:bg-[#f6aa23] transition-opacity duration-300 rounded-lg text-[#f6aa23] font-bold transition-colors duration-500">
                 Back
-            </div>
+            </a>
         </div>
     </div>
 </div>

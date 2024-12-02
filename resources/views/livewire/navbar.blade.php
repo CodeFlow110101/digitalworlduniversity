@@ -5,11 +5,6 @@ use App\Models\Program;
 use function Livewire\Volt\{state, with};
 
 with(fn() => ['programs' => Program::get()]);
-
-$redirectTo = function ($path) {
-    $this->redirectRoute($path, navigate: true);
-};
-
 ?>
 
 <div class="flex justify-center py-8">
@@ -21,8 +16,8 @@ $redirectTo = function ($path) {
             </div>
         </div>
         <div class="flex justify-between gap-5 max-lg:hidden">
-            <div @click="$dispatch('scroll-features')" class="text-white hover:text-[#f6aa23] cursor-pointer text-lg">Features</div>
-            <div @click="$dispatch('scroll-review')" class="text-white hover:text-[#f6aa23] cursor-pointer text-lg">Reviews</div>
+            <div @click="$dispatch('scroll-features')" class="text-white hover:text-amber-500 cursor-pointer text-lg">Features</div>
+            <div @click="$dispatch('scroll-review')" class="text-white hover:text-amber-500 cursor-pointer text-lg">Reviews</div>
             <div @mouseenter="showDropdown = true" @mouseleave="showDropdown = false" class="text-white cursor-pointer">
                 <div class="flex justify-between items-center gap-2">
                     <div class="text-lg">Courses</div>
@@ -37,33 +32,32 @@ $redirectTo = function ($path) {
                     </div>
                 </div>
             </div>
-            <div @click="$dispatch('scroll-doubt')" class="text-white hover:text-[#f6aa23] cursor-pointer text-lg">Doubt?</div>
+            <div @click="$dispatch('scroll-doubt')" class="text-white hover:text-amber-500 cursor-pointer text-lg">Doubt?</div>
         </div>
         <div class="max-lg:hidden">
             <div class="flex justify-between items-center gap-2 max-sm:text-sm">
-                <div wire:click="redirectTo('log-in')"
-                    class="py-1.5 sm:px-4 px-2 whitespace-nowrap cursor-pointer tracking-wider border border-[#f6aa23] rounded-lg text-[#f6aa23] hover:text-[#050e14] transition-colors duration-500 hover:bg-[#f6aa23]">
+                <a href="/log-in" wire:navigate class="py-1.5 sm:px-4 px-2 whitespace-nowrap cursor-pointer tracking-wider border border-amber-500 rounded-lg text-amber-500 hover:bg-black transition-colors duration-500 hover:bg-amber-500">
                     @if(Auth::check())
                     Dashboard
                     @else
                     Log
                     in
                     @endif
-                </div>
+                </a>
                 @if(!Auth::check())
-                <div wire:click="redirectTo('sign-up')"
-                    class="py-1.5 sm:px-4 px-2 whitespace-nowrap cursor-pointer tracking-wider border border-[#f6aa23] transition-opacity duration-300 hover:opacity-80 rounded-lg text-[#050e14] transition-colors duration-500 bg-[#f6aa23]">
+                <a href="/sign-up" wire:navigate class="py-1.5 sm:px-4 px-2 whitespace-nowrap cursor-pointer tracking-wider border border-amber-500 transition-opacity duration-300 hover:opacity-80 rounded-lg bg-black transition-colors duration-500 bg-amber-500">
                     Join
-                    Now</div>
+                    Now
+                </a>
                 @endif
             </div>
         </div>
         <div class="lg:hidden">
-            <div @click="showMobileHeader=!showMobileHeader" class="w-min border border-[#f6aa23] text-[#f6aa23] p-1 lg:hidden rounded-lg">
-                <svg x-show="!showMobileHeader" class="sm:w-8 sm:h-8 w-5 h-5 text-[#f6aa23]" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none" viewBox="0 0 24 24">
+            <div @click="showMobileHeader=!showMobileHeader" class="w-min border border-amber-500 text-amber-500 p-1 lg:hidden rounded-lg">
+                <svg x-show="!showMobileHeader" class="sm:w-8 sm:h-8 w-5 h-5 text-amber-500" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none" viewBox="0 0 24 24">
                     <path stroke="currentColor" stroke-linecap="round" stroke-width="2" d="M5 7h14M5 12h14M5 17h14" />
                 </svg>
-                <svg x-show="showMobileHeader" class="sm:w-8 sm:h-8 w-5 h-5 text-[#f6aa23]" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none" viewBox="0 0 24 24">
+                <svg x-show="showMobileHeader" class="sm:w-8 sm:h-8 w-5 h-5 text-amber-500" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none" viewBox="0 0 24 24">
                     <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18 17.94 6M18 18 6.06 6" />
                 </svg>
             </div>
@@ -71,29 +65,28 @@ $redirectTo = function ($path) {
 
         <div x-cloak :class="showMobileHeader ? 'scale-y-100' : 'scale-y-0 pointer-events-none'" class="transition-transform origin-top absolute z-10 top-16 bg-[#050e14] w-full py-3 px-2 lg:hidden">
             <div class="grid grid-cols-1 w-full gap-3">
-                <div @click="$dispatch('scroll-features');showMobileHeader = false" class="text-white hover:text-[#f6aa23] cursor-pointer text-lg">Features</div>
-                <div @click="$dispatch('scroll-review');showMobileHeader = false" class="text-white hover:text-[#f6aa23] cursor-pointer text-lg">Reviews</div>
-                <div @click="$dispatch('scroll-doubt');showMobileHeader = false" class="text-white hover:text-[#f6aa23] cursor-pointer text-lg">Doubt?</div>
-                <div class="text-white hover:text-[#f6aa23] cursor-pointer text-lg">Courses</div>
+                <div @click="$dispatch('scroll-features');showMobileHeader = false" class="text-white hover:text-amber-500 cursor-pointer text-lg">Features</div>
+                <div @click="$dispatch('scroll-review');showMobileHeader = false" class="text-white hover:text-amber-500 cursor-pointer text-lg">Reviews</div>
+                <div @click="$dispatch('scroll-doubt');showMobileHeader = false" class="text-white hover:text-amber-500 cursor-pointer text-lg">Doubt?</div>
+                <div class="text-white hover:text-amber-500 cursor-pointer text-lg">Courses</div>
                 @foreach($programs as $program)
-                <div class="text-gray-400 hover:text-[#f6aa23] cursor-pointer text-lg">
+                <div class="text-gray-400 hover:text-amber-500 cursor-pointer text-lg">
                     {{$program->title}}
                 </div>
                 @endforeach
-                <div wire:click="redirectTo('log-in')"
-                    class="py-1.5 sm:px-4 px-2 whitespace-nowrap cursor-pointer tracking-wider border border-[#f6aa23] rounded-lg text-[#f6aa23] hover:text-[#050e14] transition-colors duration-500 hover:bg-[#f6aa23]">
+                <a href="/log-in" wire:navigate class="py-1.5 sm:px-4 px-2 whitespace-nowrap cursor-pointer tracking-wider border border-amber-500 rounded-lg text-amber-500 hover:bg-black transition-colors duration-500 hover:bg-amber-500">
                     @if(Auth::check())
                     Dashboard
                     @else
                     Log
                     in
                     @endif
-                </div>
+                </a>
                 @if(!Auth::check())
-                <div wire:click="redirectTo('sign-up')"
-                    class="py-1.5 sm:px-4 px-2 whitespace-nowrap cursor-pointer tracking-wider border border-[#f6aa23] transition-opacity duration-300 hover:opacity-80 rounded-lg text-[#050e14] transition-colors duration-500 bg-[#f6aa23]">
+                <a href="/sign-up" wire:navigate class="py-1.5 sm:px-4 px-2 whitespace-nowrap cursor-pointer tracking-wider border border-amber-500 transition-opacity duration-300 hover:opacity-80 rounded-lg bg-black transition-colors duration-500 bg-amber-500">
                     Join
-                    Now</div>
+                    Now
+                </a>
                 @endif
             </div>
         </div>

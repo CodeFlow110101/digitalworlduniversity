@@ -95,11 +95,14 @@ mount(function (Request $request) {
 
 ?>
 
-<div x-data="{showSidebar:false}" class="lg:flex lg:justify-between relative bg-[#b5c1c9] dark:bg-black select-none">
-    <livewire:style.logged-in-landing-page-style>
-        <div class="w-3/12 p-6 max-lg:hidden"><livewire:logged-in-side-bar :path="$path" :user="$user"></div>
+<div x-data="{showSidebar:false}" class="h-dvh flex flex-col">
+    <div class="grow lg:flex lg:justify-between relative bg-white dark:bg-black select-none">
+        <livewire:style.logged-in-landing-page-style />
+        <div class="w-1/5 max-lg:hidden">
+            <livewire:logged-in-side-bar :path="$path" :user="$user" />
+        </div>
         <div :class="showSidebar ? 'translate-x-0' : '-translate-x-64'" class="w-64 py-6 px-4 transition-transform duration-200 absolute lg:hidden z-50"><livewire:logged-in-side-bar :path="$path" :user="$user"></div>
-        <div class="lg:w-9/12 w-full py-6 px-4 lg:px-8 grid grid-cols-1 gap-8 h-min">
+        <div class="lg:w-4/5 w-full py-6 px-4 lg:px-8 grid grid-cols-1 gap-8 h-min">
             <div class="flex justify-end">
                 <label class="inline-flex items-center cursor-pointer">
                     <input wire:click="$toggle('darkmode')" wire:model="darkmode" type="checkbox" value="{{$darkmode}}" class="sr-only peer">
@@ -108,13 +111,13 @@ mount(function (Request $request) {
                 </label>
             </div>
             <div class="flex justify-center">
-                <div class="py-8 px-4 lg:px-8 items-center w-full flex justify-between rounded-2xl bg-[#d6dcde] dark:bg-gray-800 text-3xl text-center font-bold">
-                    <div class="w-full text-[#131e30] dark:text-[#DDE6ED] capitalize">@if($path == 'video-player' || $path == 'admin-panel-video-player') {{Program::find(Video::find($this->data['video-player-id'])->program_id)->title}} @else {{str_replace("-"," ",$path)}} @endif</div>
-                    <div @click="showSidebar=!showSidebar" class="w-min border border-[#131e30] dark:border-[#DDE6ED] text-[#131e30] p-1 lg:hidden rounded-lg">
-                        <svg x-show="!showSidebar" class="sm:w-8 sm:h-8 w-5 h-5 text-[#131e30] dark:text-[#DDE6ED]" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none" viewBox="0 0 24 24">
+                <div class="py-8 px-4 lg:px-8 items-center w-full flex justify-between rounded-2xl bg-white dark:bg-gray-800 text-3xl text-center font-bold">
+                    <div class="w-full text-black dark:text-white capitalize">@if($path == 'video-player' || $path == 'admin-panel-video-player') {{Program::find(Video::find($this->data['video-player-id'])->program_id)->title}} @else {{str_replace("-"," ",$path)}} @endif</div>
+                    <div @click="showSidebar=!showSidebar" class="w-min border border-black dark:border-white text-black p-1 lg:hidden rounded-lg">
+                        <svg x-show="!showSidebar" class="sm:w-8 sm:h-8 w-5 h-5 text-black dark:text-white" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none" viewBox="0 0 24 24">
                             <path stroke="currentColor" stroke-linecap="round" stroke-width="2" d="M5 7h14M5 12h14M5 17h14" />
                         </svg>
-                        <svg x-show="showSidebar" class="sm:w-8 sm:h-8 w-5 h-5 text-[#131e30] dark:text-[#DDE6ED]" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none" viewBox="0 0 24 24">
+                        <svg x-show="showSidebar" class="sm:w-8 sm:h-8 w-5 h-5 text-black dark:text-white" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none" viewBox="0 0 24 24">
                             <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18 17.94 6M18 18 6.06 6" />
                         </svg>
                     </div>
@@ -163,4 +166,5 @@ mount(function (Request $request) {
             </div>
         </div>
         <livewire:modals.modal-list />
+    </div>
 </div>
