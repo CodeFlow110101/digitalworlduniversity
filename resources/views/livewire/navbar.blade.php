@@ -45,7 +45,7 @@ with(fn() => ['programs' => Program::get()]);
                     @endif
                 </a>
                 @if(!Auth::check())
-                <a href="/sign-up" wire:navigate class="py-1.5 sm:px-4 px-2 whitespace-nowrap cursor-pointer tracking-wider border border-amber-500 transition-opacity duration-300 hover:opacity-80 rounded-lg bg-black transition-colors duration-500 bg-amber-500">
+                <a href="/sign-up" wire:navigate class="py-1.5 sm:px-4 px-2 whitespace-nowrap cursor-pointer tracking-wider border border-amber-500 rounded-lg hover:text-amber-500 hover:bg-black transition-colors duration-500 bg-amber-500">
                     Join
                     Now
                 </a>
@@ -83,7 +83,7 @@ with(fn() => ['programs' => Program::get()]);
                     @endif
                 </a>
                 @if(!Auth::check())
-                <a href="/sign-up" wire:navigate class="py-1.5 sm:px-4 px-2 whitespace-nowrap cursor-pointer tracking-wider border border-amber-500 transition-opacity duration-300 hover:opacity-80 rounded-lg bg-black transition-colors duration-500 bg-amber-500">
+                <a href="/sign-up" wire:navigate class="py-1.5 sm:px-4 px-2 whitespace-nowrap cursor-pointer tracking-wider border border-amber-500 transition-all hover:opacity-80 rounded-lg hover:bg-black duration-500 bg-amber-500">
                     Join
                     Now
                 </a>
