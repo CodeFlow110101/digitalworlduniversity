@@ -30,7 +30,7 @@ mount(function ($path, $user) {
 ?>
 
 <div class="h-full flex flex-col py-6 dark:bg-black bg-white rounded-2xl select-none">
-    <div class="h-full flex flex-col justify-around">
+    <div class="h-full flex flex-col gap-2 justify-around">
         <div>
             <div class="flex justify-center">
                 <img class="w-16 h-16 rounded-full" src="{{ asset('images/logo.jpeg') }}" alt="Example Image">
@@ -42,41 +42,43 @@ mount(function ($path, $user) {
 
         <div class="my-auto border border-[#b5c1c9] rounded-full h-0 lg:mx-4 mx-4 xl:mx-8"></div>
 
-        <div class="my-auto overflow-y-auto max-h-[40vh]">
-            <div class="grid grid-cols-1 gap-3">
-                <div>
-                    <a href="/dashboard" wire:navigate class="flex justify-start items-center gap-2 lg:mx-4 mx-4 xl:mx-8 text-center xl:text-left py-2 lg:px-2 xl:px-4 @if($path == 'dashboard') bg-black text-white dark:text-black dark:bg-white @else dark:text-white hover:dark:bg-white dark:hover:text-black hover:bg-black hover:text-white bg-transparent text-black  @endif lg:text-base xl:text-md cursor-pointer tracking-wider transition-opacity duration-300 rounded-lg font-noramal transition-colors duration-500">
-                        Dashboard
+        <div class="grow relative" x-data="{ height: 0 }" x-resize="height = $height">
+            <div class="overflow-y-auto inset-x-0 absolute" :style="'height: ' + height + 'px;'"> 
+                <div class="grid grid-cols-1 gap-3">
+                    <div>
+                        <a href="/dashboard" wire:navigate class="flex justify-start items-center gap-2 lg:mx-4 mx-4 xl:mx-8 text-center xl:text-left py-2 lg:px-2 xl:px-4 @if($path == 'dashboard') bg-black text-white dark:text-black dark:bg-white @else dark:text-white hover:dark:bg-white dark:hover:text-black hover:bg-black hover:text-white bg-transparent text-black  @endif lg:text-base xl:text-md cursor-pointer tracking-wider transition-opacity duration-300 rounded-lg font-noramal transition-colors duration-500">
+                            Dashboard
+                        </a>
+                    </div>
+                    @if(Gate::allows('is_Admin'))
+                    <a href="/admin-panel" wire:navigate class="lg:mx-4 mx-4 xl:mx-8 text-center xl:text-left py-2 lg:px-2 xl:px-4 @if(str_contains($path, 'admin-panel')) bg-black text-white dark:text-black dark:bg-white @else dark:text-white hover:dark:bg-white dark:hover:text-black hover:bg-black hover:text-white bg-transparent text-black  @endif lg:text-base xl:text-md cursor-pointer tracking-wider transition-opacity duration-300 rounded-lg font-noramal transition-colors duration-500">
+                        Admin Panel
                     </a>
+                    @endif
+                    @if(Gate::check('is_subscription_Active'))
+                    <a href="/programs" wire:navigate class="lg:mx-4 mx-4 xl:mx-8 text-center xl:text-left py-2 lg:px-2 xl:px-4 @if($path == 'programs' || $path == 'videos' || $path == 'video-player') bg-black text-white dark:text-black dark:bg-white @else dark:text-white hover:dark:bg-white dark:hover:text-black hover:bg-black hover:text-white bg-transparent text-black  @endif lg:text-base xl:text-md cursor-pointer tracking-wider transition-opacity duration-300 rounded-lg font-noramal transition-colors duration-500">
+                        Programs
+                    </a>
+                    <a href="/live-chat" wire:navigate class="lg:mx-4 mx-4 xl:mx-8 text-center xl:text-left py-2 lg:px-2 xl:px-4 @if($path == 'live-chat') bg-black text-white dark:text-black dark:bg-white @else dark:text-white hover:dark:bg-white dark:hover:text-black hover:bg-black hover:text-white bg-transparent text-black  @endif lg:text-base xl:text-md cursor-pointer tracking-wider transition-opacity duration-300 rounded-lg font-noramal transition-colors duration-500">
+                        Support Live Chat
+                    </a>
+                    <a href="/earn-money" wire:navigate class="lg:mx-4 mx-4 xl:mx-8 text-center xl:text-left py-2 lg:px-2 xl:px-4 @if($path == 'earn-money') bg-black text-white dark:text-black dark:bg-white @else dark:text-white hover:dark:bg-white dark:hover:text-black hover:bg-black hover:text-white bg-transparent text-black  @endif lg:text-base xl:text-md cursor-pointer tracking-wider transition-opacity duration-300 rounded-lg font-noramal transition-colors duration-500">
+                        Earn Money Survey
+                    </a>
+                    <a href="/find-jobs" wire:navigate class="lg:mx-4 mx-4 xl:mx-8 text-center xl:text-left py-2 lg:px-2 xl:px-4 @if($path == 'find-jobs') bg-black text-white dark:text-black dark:bg-white @else dark:text-white hover:dark:bg-white dark:hover:text-black hover:bg-black hover:text-white bg-transparent text-black  @endif lg:text-base xl:text-md cursor-pointer tracking-wider transition-opacity duration-300 rounded-lg font-noramal transition-colors duration-500">
+                        Apply for Jobs
+                    </a>
+                    <a href="/ai-tutor" wire:navigate class="lg:mx-4 mx-4 xl:mx-8 text-center xl:text-left py-2 lg:px-2 xl:px-4 @if($path == 'ai-tutor') bg-black text-white dark:text-black dark:bg-white @else dark:text-white hover:dark:bg-white dark:hover:text-black hover:bg-black hover:text-white bg-transparent text-black  @endif lg:text-base xl:text-md cursor-pointer tracking-wider transition-opacity duration-300 rounded-lg font-noramal transition-colors duration-500">
+                        AI Tutor
+                    </a>
+                    <a href="/exam" wire:navigate class="lg:mx-4 mx-4 xl:mx-8 text-center xl:text-left py-2 lg:px-2 xl:px-4 @if($path == 'exam') bg-black text-white dark:text-black dark:bg-white @else dark:text-white hover:dark:bg-white dark:hover:text-black hover:bg-black hover:text-white bg-transparent text-black  @endif lg:text-base xl:text-md cursor-pointer tracking-wider transition-opacity duration-300 rounded-lg font-noramal transition-colors duration-500">
+                        Exam
+                    </a>
+                    <a href="/store" wire:navigate class="lg:mx-4 mx-4 xl:mx-8 text-center xl:text-left py-2 lg:px-2 xl:px-4 @if($path == 'store') bg-black text-white dark:text-black dark:bg-white @else dark:text-white hover:dark:bg-white dark:hover:text-black hover:bg-black hover:text-white bg-transparent text-black  @endif lg:text-base xl:text-md cursor-pointer tracking-wider transition-opacity duration-300 rounded-lg font-noramal transition-colors duration-500">
+                        Store
+                    </a>
+                    @endif
                 </div>
-                @if(Gate::allows('is_Admin'))
-                <a href="/admin-panel" wire:navigate class="lg:mx-4 mx-4 xl:mx-8 text-center xl:text-left py-2 lg:px-2 xl:px-4 @if(str_contains($path, 'admin-panel')) bg-black text-white dark:text-black dark:bg-white @else dark:text-white hover:dark:bg-white dark:hover:text-black hover:bg-black hover:text-white bg-transparent text-black  @endif lg:text-base xl:text-md cursor-pointer tracking-wider transition-opacity duration-300 rounded-lg font-noramal transition-colors duration-500">
-                    Admin Panel
-                </a>
-                @endif
-                @if(Gate::check('is_subscription_Active'))
-                <a href="/programs" wire:navigate class="lg:mx-4 mx-4 xl:mx-8 text-center xl:text-left py-2 lg:px-2 xl:px-4 @if($path == 'programs' || $path == 'videos' || $path == 'video-player') bg-black text-white dark:text-black dark:bg-white @else dark:text-white hover:dark:bg-white dark:hover:text-black hover:bg-black hover:text-white bg-transparent text-black  @endif lg:text-base xl:text-md cursor-pointer tracking-wider transition-opacity duration-300 rounded-lg font-noramal transition-colors duration-500">
-                    Programs
-                </a>
-                <a href="/live-chat" wire:navigate class="lg:mx-4 mx-4 xl:mx-8 text-center xl:text-left py-2 lg:px-2 xl:px-4 @if($path == 'live-chat') bg-black text-white dark:text-black dark:bg-white @else dark:text-white hover:dark:bg-white dark:hover:text-black hover:bg-black hover:text-white bg-transparent text-black  @endif lg:text-base xl:text-md cursor-pointer tracking-wider transition-opacity duration-300 rounded-lg font-noramal transition-colors duration-500">
-                    Support Live Chat
-                </a>
-                <a href="/earn-money" wire:navigate class="lg:mx-4 mx-4 xl:mx-8 text-center xl:text-left py-2 lg:px-2 xl:px-4 @if($path == 'earn-money') bg-black text-white dark:text-black dark:bg-white @else dark:text-white hover:dark:bg-white dark:hover:text-black hover:bg-black hover:text-white bg-transparent text-black  @endif lg:text-base xl:text-md cursor-pointer tracking-wider transition-opacity duration-300 rounded-lg font-noramal transition-colors duration-500">
-                    Earn Money Survey
-                </a>
-                <a href="/find-jobs" wire:navigate class="lg:mx-4 mx-4 xl:mx-8 text-center xl:text-left py-2 lg:px-2 xl:px-4 @if($path == 'find-jobs') bg-black text-white dark:text-black dark:bg-white @else dark:text-white hover:dark:bg-white dark:hover:text-black hover:bg-black hover:text-white bg-transparent text-black  @endif lg:text-base xl:text-md cursor-pointer tracking-wider transition-opacity duration-300 rounded-lg font-noramal transition-colors duration-500">
-                    Apply for Jobs
-                </a>
-                <a href="/ai-tutor" wire:navigate class="lg:mx-4 mx-4 xl:mx-8 text-center xl:text-left py-2 lg:px-2 xl:px-4 @if($path == 'ai-tutor') bg-black text-white dark:text-black dark:bg-white @else dark:text-white hover:dark:bg-white dark:hover:text-black hover:bg-black hover:text-white bg-transparent text-black  @endif lg:text-base xl:text-md cursor-pointer tracking-wider transition-opacity duration-300 rounded-lg font-noramal transition-colors duration-500">
-                    AI Tutor
-                </a>
-                <a href="/exam" wire:navigate class="lg:mx-4 mx-4 xl:mx-8 text-center xl:text-left py-2 lg:px-2 xl:px-4 @if($path == 'exam') bg-black text-white dark:text-black dark:bg-white @else dark:text-white hover:dark:bg-white dark:hover:text-black hover:bg-black hover:text-white bg-transparent text-black  @endif lg:text-base xl:text-md cursor-pointer tracking-wider transition-opacity duration-300 rounded-lg font-noramal transition-colors duration-500">
-                    Exam
-                </a>
-                <a href="/store" wire:navigate class="lg:mx-4 mx-4 xl:mx-8 text-center xl:text-left py-2 lg:px-2 xl:px-4 @if($path == 'store') bg-black text-white dark:text-black dark:bg-white @else dark:text-white hover:dark:bg-white dark:hover:text-black hover:bg-black hover:text-white bg-transparent text-black  @endif lg:text-base xl:text-md cursor-pointer tracking-wider transition-opacity duration-300 rounded-lg font-noramal transition-colors duration-500">
-                    Store
-                </a>
-                @endif
             </div>
         </div>
         <div class="mt-auto flex justify-center">

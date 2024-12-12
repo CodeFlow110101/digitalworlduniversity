@@ -15,24 +15,26 @@ $redirectTo = function ($path, $id) {
 
 ?>
 
-<div>
-    <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-12">
+<div class="h-dvh">
+    <div class="h-full gap-6 p-6 grid grid-cols-4">
         @foreach($programs as $program)
-        <div class="bg-[#d6dcde] dark:bg-gray-800 rounded-2xl flex flex-col h-full">
-            <div wire:click="$dispatch('show-modal', { modal:'modal-program-preview', args:{{$program->id}}, data:null, callback_event:null })" class="cursor-pointer">
-                <div class="flex items-center justify-center w-full h-48 bg-gray-500 rounded-t-2xl">
-                    <img src="{{asset('storage/'.$program->image)}}" class="w-full h-full rounded-t-2xl">
+        <div class="grow h-1/2 flex flex-col gap-2">
+            <div class="relative grow rounded-3xl overflow-hidden">
+                <div class="size-full flex flex-col">
+                    <div class="grow flex justify-stretch">
+                        <div class="bg-gradient-to-br from-white via-transparent via-35% size-full"></div>
+                        <div class="bg-gradient-to-bl from-white via-transparent via-35% size-full"></div>
+                    </div>
+                    <div class="grow flex justify-stretch">
+                        <div class="bg-gradient-to-tr from-white via-transparent via-35% size-full"></div>
+                        <div class="bg-gradient-to-tl from-white via-transparent via-35% size-full"></div>
+                    </div>
                 </div>
-                <div class="p-4 text-[#131e30] dark:text-[#DDE6ED] grid grid-cols-1 gap-4">
-                    <div class="font-semibold text-2xl">{{$program->title}}</div>
-                    <div class="font-semibold text-md capitalize">{{$program->description}}</div>
+                <div class="absolute inset-1 p-2 bg-black rounded-3xl overflow-hidden">
+                    <img wire:click="$dispatch('show-modal', { modal:'modal-program-preview', args:{{$program->id}}, data:null, callback_event:null })" src="{{asset('storage/'.$program->image)}}" class="size-full rounded-3xl">
                 </div>
             </div>
-            <div wire:click="redirectTo('videos',{{$program->id}})" class="text-[#d6dcde] mt-auto rounded-b-2xl bg-[#131e30] text-center p-3 grid grid-cols-1 gap-1 text-lg font-bold cursor-pointer">
-                <div class="w-full rounded-b-2xl text-center py-2 h-1/2">
-                    Start Course
-                </div>
-            </div>
+            <button wire:click="redirectTo('video',{{$program->id}})" class="bg-black bg-gradient-to-bl font-semibold from-transparent via-white rounded-full py-2 px-4 text-sm mx-auto">Start Now</button>
         </div>
         @endforeach
     </div>

@@ -31,7 +31,6 @@ updated(['darkmode' => function () {
 }]);
 
 mount(function (Request $request) {
-
     if (!Auth::check()) {
         return $this->redirectRoute('landing-page', navigate: true);
     }
@@ -50,7 +49,7 @@ mount(function (Request $request) {
         $this->redirectRoute('dashboard', navigate: true);
     }
 
-    if (Gate::check('is_subscription_Expired') && in_array($this->path, ['live-chat', 'find-jobs', 'programs', 'videos', 'video-player', 'store', 'earn-money'])) {
+    if (Gate::check('is_subscription_Expired') && in_array($this->path, ['live-chat', 'find-jobs', 'programs', 'video', 'video-player', 'store', 'earn-money'])) {
         $this->redirectRoute('dashboard', navigate: true);
     }
 
@@ -102,15 +101,15 @@ mount(function (Request $request) {
             <livewire:logged-in-side-bar :path="$path" :user="$user" />
         </div>
         <div :class="showSidebar ? 'translate-x-0' : '-translate-x-64'" class="w-64 py-6 px-4 transition-transform duration-200 absolute lg:hidden z-50"><livewire:logged-in-side-bar :path="$path" :user="$user"></div>
-        <div class="lg:w-4/5 w-full py-6 px-4 lg:px-8 grid grid-cols-1 gap-8 h-min">
-            <div class="flex justify-end">
+        <div class="lg:w-4/5 w-full grid grid-cols-1 gap-8 h-full">
+            <div class="flex justify-end hidden">
                 <label class="inline-flex items-center cursor-pointer">
                     <input wire:click="$toggle('darkmode')" wire:model="darkmode" type="checkbox" value="{{$darkmode}}" class="sr-only peer">
                     <div class="relative w-11 h-6 bg-gray-200  peer-focus:outline-none rounded-full peer dark:bg-gray-700 peer-checked:after:translate-x-full rtl:peer-checked:after:-translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-[2px] after:start-[2px] after:bg-white after:border-gray-300 after:border after:rounded-full after:h-5 after:w-5 after:transition-all dark:border-gray-600 peer-checked:bg-blue-600"></div>
                     <span class="ms-3 text-sm font-medium text-gray-900 dark:text-gray-300">Dark Mode</span>
                 </label>
             </div>
-            <div class="flex justify-center">
+            <div class="flex justify-center hidden">
                 <div class="py-8 px-4 lg:px-8 items-center w-full flex justify-between rounded-2xl bg-white dark:bg-gray-800 text-3xl text-center font-bold">
                     <div class="w-full text-black dark:text-white capitalize">@if($path == 'video-player' || $path == 'admin-panel-video-player') {{Program::find(Video::find($this->data['video-player-id'])->program_id)->title}} @else {{str_replace("-"," ",$path)}} @endif</div>
                     <div @click="showSidebar=!showSidebar" class="w-min border border-black dark:border-white text-black p-1 lg:hidden rounded-lg">
@@ -123,45 +122,45 @@ mount(function (Request $request) {
                     </div>
                 </div>
             </div>
-            <div>
+            <div class="h-full flex flex-col">
                 @if($path == 'dashboard')
-                <livewire:dashboard :url="$url" lazy />
+                <livewire:dashboard :url="$url" />
                 @elseif($path == 'live-chat')
-                <livewire:live-chat lazy />
+                <livewire:chat-new />
                 @elseif($path == 'find-jobs')
-                <livewire:find-jobs lazy />
+                <livewire:find-jobs />
                 @elseif($path == 'programs')
-                <livewire:programs lazy />
-                @elseif($path == 'videos')
-                <livewire:videos :id="$id" lazy />
+                <livewire:programs />
+                @elseif($path == 'video')
+                <livewire:videos :id="$id" />
                 @elseif($path == 'video-player')
                 <livewire:video-player :data="$data" />
                 @elseif($path == 'store')
-                <livewire:store lazy />
+                <livewire:store />
                 @elseif($path == 'earn-money')
-                <livewire:earn-money lazy />
+                <livewire:earn-money />
                 @elseif($path == 'settings')
-                <livewire:settings :user="$user" lazy />
+                <livewire:settings :user="$user" />
                 @elseif($path == 'admin-panel-video-player')
                 <livewire:admin-panel.admin-panel-video-player :data="$data" />
                 @elseif($path == 'admin-panel')
-                <livewire:admin-panel.admin-panel lazy />
+                <livewire:admin-panel.admin-panel />
                 @elseif($path == 'admin-panel-find-jobs')
-                <livewire:admin-panel.admin-panel-find-jobs lazy />
+                <livewire:admin-panel.admin-panel-find-jobs />
                 @elseif($path == 'admin-panel-users')
-                <livewire:admin-panel.admin-panel-users lazy />
+                <livewire:admin-panel.admin-panel-users />
                 @elseif($path == 'admin-panel-programs')
-                <livewire:admin-panel.admin-panel-programs lazy />
+                <livewire:admin-panel.admin-panel-programs />
                 @elseif($path == 'admin-panel-store')
-                <livewire:admin-panel.admin-panel-store lazy />
+                <livewire:admin-panel.admin-panel-store />
                 @elseif($path == 'admin-panel-earn-money')
-                <livewire:admin-panel.admin-panel-earn-money lazy />
+                <livewire:admin-panel.admin-panel-earn-money />
                 @elseif($path == 'admin-panel-channel')
-                <livewire:admin-panel.admin-panel-channel lazy />
+                <livewire:admin-panel.admin-panel-channel />
                 @elseif($path == 'admin-panel-group')
-                <livewire:admin-panel.admin-panel-group :id="$id" lazy />
+                <livewire:admin-panel.admin-panel-group :id="$id" />
                 @elseif($path == 'admin-panel-videos')
-                <livewire:admin-panel.admin-panel-videos :id="$id" lazy />
+                <livewire:admin-panel.admin-panel-videos :id="$id" />
                 @endif
             </div>
         </div>

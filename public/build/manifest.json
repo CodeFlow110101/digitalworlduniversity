@@ -1,17 +1,17 @@
 {
   "resources/css/app.css": {
-    "file": "assets/app-D-j9BHtS.css",
+    "file": "assets/app-DaV7wzBW.css",
     "src": "resources/css/app.css",
     "isEntry": true
   },
   "resources/js/alpine-plugins/plugins.js": {
-    "file": "assets/plugins-CDxZeRKy.js",
+    "file": "assets/plugins-CHbSDliD.js",
     "name": "plugins",
     "src": "resources/js/alpine-plugins/plugins.js",
     "isEntry": true
   },
   "resources/js/app.js": {
-    "file": "assets/app-C1-XIpUa.js",
+    "file": "assets/app-SuKnnJ9w.js",
     "name": "app",
     "src": "resources/js/app.js",
     "isEntry": true
