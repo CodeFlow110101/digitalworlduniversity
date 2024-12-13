@@ -42,6 +42,7 @@ $send = action(function () {
 })->renderless();
 
 mount(function () {
+    dd(env('REVERB_APP_ID'),env('REVERB_APP_KEY'),env('REVERB_APP_SECRET'),env('REVERB_HOST'),env('REVERB_PORT'),env('REVERB_SCHEME'));
     $this->channel = Channel::count() != 0 ? Channel::first() : null;
     $this->group = $this->channel && Group::where('channel_id', $this->channel->id)->count() != 0 ? Group::where('channel_id', $this->channel->id)->first() : null;
 });
