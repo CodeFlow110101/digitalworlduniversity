@@ -42,6 +42,8 @@ $send = action(function () {
 })->renderless();
 
 mount(function () {
+    dd(env('PUSHER_APP_KEY'), env('PUSHER_APP_SECRET'), env('PUSHER_APP_ID'));
+
     $this->channel = Channel::count() != 0 ? Channel::first() : null;
     $this->group = $this->channel && Group::where('channel_id', $this->channel->id)->count() != 0 ? Group::where('channel_id', $this->channel->id)->first() : null;
 });
