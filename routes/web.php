@@ -19,6 +19,9 @@ Volt::route('/live-chat', 'logged-in-landing-page')->name('live-chat');
 Volt::route('/find-jobs', 'logged-in-landing-page')->name('find-jobs');
 Volt::route('/programs', 'logged-in-landing-page')->name('programs');
 Volt::route('/video', 'logged-in-landing-page')->name('video');
+Volt::route('/exam', 'logged-in-landing-page')->name('exam');
+Volt::route('/withdraw', 'logged-in-landing-page')->name('withdraw');
+Volt::route('/ai-tutor', 'logged-in-landing-page')->name('ai-tutor');
 Volt::route('/store', 'logged-in-landing-page')->name('store');
 Volt::route('/settings', 'logged-in-landing-page')->name('settings');
 Volt::route('/earn-money', 'logged-in-landing-page')->name('earn-money');
@@ -33,9 +36,11 @@ Volt::route('/admin-panel-store', 'logged-in-landing-page')->name('admin-panel-s
 Volt::route('/admin-panel-find-jobs', 'logged-in-landing-page')->name('admin-panel-find-jobs');
 Volt::route('/admin-panel-channel', 'logged-in-landing-page')->name('admin-panel-channel');
 Volt::route('/admin-panel-group', 'logged-in-landing-page')->name('admin-panel-group');
+Volt::route('/admin-panel-withdrawal', 'logged-in-landing-page')->name('admin-panel-withdrawal');
 
 
 Route::post('/upload-file', [FileUploads::class, 'storeFile']);
+Route::post('/upload-chat-file', [FileUploads::class, 'storeChatFile']);
 Route::post('/upload-video', [FileUploads::class, 'storeVideo']);
 Route::post('/upload-thumbnail', [FileUploads::class, 'storeThumbnail']);
 

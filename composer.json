@@ -11,7 +11,8 @@
         "league/flysystem-aws-s3-v3": "^3.0",
         "livewire/livewire": "^3.5",
         "livewire/volt": "^1.6",
-        "pusher/pusher-php-server": "^7.2"
+        "pusher/pusher-php-server": "^7.2",
+        "vimeo/laravel": "*"
     },
     "require-dev": {
         "fakerphp/faker": "^1.23",

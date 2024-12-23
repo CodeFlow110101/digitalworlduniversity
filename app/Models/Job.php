@@ -11,5 +11,5 @@ class Job extends Model
 
     protected $table = "find_jobs";
 
-    protected $fillable = ['title', 'description', 'created_by', 'url', 'image', 'is_approved'];
+    protected $fillable = ['title', 'description', 'created_by', 'url', 'image', 'is_approved', 'image_url'];
 }

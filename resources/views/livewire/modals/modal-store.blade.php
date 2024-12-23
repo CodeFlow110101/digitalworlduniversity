@@ -5,12 +5,12 @@ use Illuminate\Support\Facades\Storage;
 
 use function Livewire\Volt\{state, rules, mount, on};
 
-state(['id', 'title', 'description', 'price']);
+state(['id', 'title', 'description', 'price', 'link']);
 
-rules(['title' => 'required|min:3', 'description' => 'required|min:6']);
+rules(['title' => 'required|min:3', 'description' => 'required|min:6', 'link' => 'required']);
 
 on([
-    'admin-panel-store-handle-file' => function ($validationKey, $validationMessage, $thumbnailName, $thumbnailPath) {
+    'admin-panel-store-handle-file' => function ($validationKey, $validationMessage, $thumbnailName, $thumbnailPath, $thumbnailUrl) {
 
         $this->resetValidation();
 
@@ -40,6 +40,8 @@ on([
                 'description' => $this->description,
                 'thumbmail' => $thumbnailPath,
                 'price' => $this->price,
+                'thumbnail_url' => $thumbnailUrl,
+                'link' => $this->link,
             ]);
 
             $this->dispatch('hide-modal');
@@ -73,6 +75,14 @@ on([
                 <label for="floating_outlined" class="absolute text-sm text-[#131e30] dark:text-[#DDE6ED] duration-300 transform -translate-y-4 scale-75 top-2 z-10 origin-[0] bg-[#d6dcde] dark:bg-gray-800 px-2 peer-focus:px-2 peer-placeholder-shown:scale-100 peer-placeholder-shown:-translate-y-1/2 peer-placeholder-shown:top-1/2 peer-focus:top-2 peer-focus:scale-75 peer-focus:-translate-y-4 rtl:peer-focus:translate-x-1/4 rtl:peer-focus:left-auto start-1">Price</label>
             </div>
             @error('price')<div class="text-red-600">{{$message}}</div>@enderror
+        </div>
+
+        <div>
+            <div class="relative">
+                <input wire:model="link" class="block px-2.5 pb-2.5 pt-4 w-full text-sm text-[#131e30] dark:text-[#DDE6ED] bg-transparent rounded-lg border-2 border-[#131e30] dark:border-[#DDE6ED] appearance-none focus:outline-none focus:ring-0 peer" placeholder=" " />
+                <label for="floating_outlined" class="absolute text-sm text-[#131e30] dark:text-[#DDE6ED] duration-300 transform -translate-y-4 scale-75 top-2 z-10 origin-[0] bg-[#d6dcde] dark:bg-gray-800 px-2 peer-focus:px-2 peer-placeholder-shown:scale-100 peer-placeholder-shown:-translate-y-1/2 peer-placeholder-shown:top-1/2 peer-focus:top-2 peer-focus:scale-75 peer-focus:-translate-y-4 rtl:peer-focus:translate-x-1/4 rtl:peer-focus:left-auto start-1">Link</label>
+            </div>
+            @error('link')<div class="text-red-600">{{$message}}</div>@enderror
         </div>
 
         <div>

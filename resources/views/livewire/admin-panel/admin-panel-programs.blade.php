@@ -7,9 +7,7 @@ use Illuminate\Support\Facades\Storage;
 
 use function Livewire\Volt\{state, with, on, placeholder};
 
-
-
-with(['programs' => Program::paginate(0)]);
+with(['programs' => Program::with(['status'])->get()]);
 
 on([
     'reset-admin-panel-programs' => function () {
@@ -20,6 +18,15 @@ on([
 $redirectTo = function ($path, $id) {
     session()->flash('admin-panel-video-id', $id);
     $this->redirectRoute($path, navigate: true);
+};
+
+$toggleStatus = function ($id) {
+    $program = Program::find($id);
+    if ($program->status_id == 1) {
+        $program->update(['status_id' => 2]);
+    } else {
+        $program->update(['status_id' => 1]);
+    }
 };
 
 $deleteProgram = function ($id) {
@@ -52,7 +59,7 @@ $deleteProgram = function ($id) {
         @foreach($programs as $program)
         <div class="bg-[#d6dcde] dark:bg-gray-800 rounded-2xl grid grid-cols-1 gap-4">
             <div class="flex items-center justify-center w-full h-48 bg-gray-500 rounded-t-2xl">
-                <img src="{{asset('storage/'.$program->image)}}" class="w-full h-full rounded-t-2xl">
+                <img src="{{$program->image_url}}" class="w-full h-full rounded-t-2xl">
             </div>
             <div class="p-4 text-[#131e30] dark:text-[#DDE6ED] grid grid-cols-1 gap-4">
                 <div class="font-semibold text-2xl">{{$program->title}}</div>
@@ -60,7 +67,7 @@ $deleteProgram = function ($id) {
             </div>
             <div class="text-[#d6dcde] rounded-b-2xl bg-[#131e30] text-center p-3 grid grid-cols-1 gap-1 text-lg font-bold cursor-pointer">
                 <div class="flex justify-between items py-2 center">
-                    <div wire:click="$dispatch('show-modal', { modal:'modal-programs', args:{{$program->id}}, data:null, callback_event:null })" class="w-full pointer-events-none">Edit</div>
+                    <div wire:click="toggleStatus({{ $program->id }})" class="w-full capitalize">{{$program->status->name}}</div>
                     <div class="w-0 h-full border border-[#d6dcde]"></div>
                     <div wire:click="deleteProgram({{$program->id}})" class="w-full">Delete</div>
                 </div>

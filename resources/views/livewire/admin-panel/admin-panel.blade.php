@@ -103,5 +103,17 @@ mount(function () {
                 </div>
             </div>
         </div>
+        <div wire:click="redirectTo('admin-panel-withdrawal')" class="bg-[#d6dcde] dark:bg-gray-800 cursor-pointer rounded-2xl grid grid-cols-1 gap-4">
+            <div class="flex items-center justify-center w-full h-48 rounded-t-2xl ">
+                <div class="w-min flex justify-between gap-5">
+                    <div>
+                        <svg class="w-14 h-14 text-[#131e30] dark:text-[#DDE6ED]" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none" viewBox="0 0 24 24">
+                            <path stroke="currentColor" stroke-linecap="round" stroke-width="2" d="M8 7V6a1 1 0 0 1 1-1h11a1 1 0 0 1 1 1v7a1 1 0 0 1-1 1h-1M3 18v-7a1 1 0 0 1 1-1h11a1 1 0 0 1 1 1v7a1 1 0 0 1-1 1H4a1 1 0 0 1-1-1Zm8-3.5a1.5 1.5 0 1 1-3 0 1.5 1.5 0 0 1 3 0Z" />
+                        </svg>
+                    </div>
+                    <div class="text-[#131e30] text-5xl dark:text-[#DDE6ED]">{{$channels}}</div>
+                </div>
+            </div>
+        </div>
     </div>
 </div>

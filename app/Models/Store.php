@@ -11,5 +11,5 @@ class Store extends Model
 
     protected $table = "store";
 
-    protected $fillable = ['title', 'description', 'thumbmail', 'price'];
+    protected $fillable = ['title', 'description', 'thumbmail', 'price', 'thumbnail_url', 'link'];
 }

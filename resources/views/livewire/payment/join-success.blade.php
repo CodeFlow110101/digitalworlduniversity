@@ -50,7 +50,7 @@ mount(function ($transaction) {
 
     ReferralCode::create([
         'user_id' => $user->id,
-        'code' => (string) Str::uuid() . $user->id . $user->name,
+        'code' => $user->id . $user->name,
     ]);
 
     if ($transaction['opt_b'] && ReferralCode::where('code', $transaction['opt_b'])->exists()) {

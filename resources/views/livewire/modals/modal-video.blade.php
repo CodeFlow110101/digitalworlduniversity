@@ -7,7 +7,7 @@ use function Livewire\Volt\{state, on, mount, rules};
 state(['program_id', 'name', 'video']);
 
 on([
-    'modal-video-set-validation' => function ($validationKey, $validationMessage, $videoName, $videoPath, $thumbnailName, $thumbnailPath) {
+    'modal-video-set-validation' => function ($validationKey, $validationMessage, $videoName, $videoPath, $thumbnailName, $thumbnailPath, $thumbnailUrl) {
 
         $this->resetValidation();
 
@@ -32,6 +32,7 @@ on([
                 'video' => $videoPath,
                 'thumbnail' => $thumbnailPath,
                 'program_id' => $this->program_id,
+                'thumbnail_url' => $thumbnailUrl,
             ]);
 
             session()->flash('admin-panel-video-id', $this->program_id);
@@ -39,6 +40,10 @@ on([
         }
     }
 ]);
+
+$submit = function () {
+    dd('hello');
+};
 
 mount(function ($modal, $args, $data, $callback_event) {
     $this->program_id = $args;

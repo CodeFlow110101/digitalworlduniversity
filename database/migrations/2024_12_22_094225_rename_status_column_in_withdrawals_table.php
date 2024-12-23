@@ -3,8 +3,6 @@
 use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
-use App\Models\ReferralCode;
-use Illuminate\Support\Str;
 
 return new class extends Migration
 {
@@ -13,7 +11,9 @@ return new class extends Migration
      */
     public function up(): void
     {
-        ReferralCode::create(['user_id' => 1, 'code' => '1' . 'test']);
+        Schema::table('withdrawals', function (Blueprint $table) {
+            $table->renameColumn('status', 'status_id');
+        });
     }
 
     /**
@@ -21,6 +21,8 @@ return new class extends Migration
      */
     public function down(): void
     {
-        //
+        Schema::table('withdrawals', function (Blueprint $table) {
+            //
+        });
     }
 };

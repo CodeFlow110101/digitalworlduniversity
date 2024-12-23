@@ -11,7 +11,7 @@ rules(['title' => 'required|min:6', 'description' => 'required|min:6', 'thumbnai
 
 
 on([
-    'modal-job-handle-file' => function ($validationKey, $validationMessage, $thumbnailName, $thumbnailPath) {
+    'modal-job-handle-file' => function ($validationKey, $validationMessage, $thumbnailName, $thumbnailPath, $thumbnailUrl) {
 
         $this->resetValidation();
 
@@ -42,6 +42,7 @@ on([
                 'url' => $this->url,
                 'created_by' => Auth::user()->id,
                 'is_approved' => Gate::check('is_Admin'),
+                'image_url' => $thumbnailUrl,
             ]);
 
             $this->dispatch('hide-modal');

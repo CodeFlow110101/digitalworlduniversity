@@ -4,6 +4,7 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Relations\BelongsTo;
 
 class Program extends Model
 {
@@ -11,5 +12,10 @@ class Program extends Model
 
     protected $table = "programs";
 
-    protected $fillable = ['title', 'description', 'image'];
+    protected $fillable = ['title', 'description', 'image', 'status_id', 'image_url'];
+
+    public function status(): BelongsTo
+    {
+        return $this->belongsTo(ProgramStatus::class, 'status_id', 'id');
+    }
 }

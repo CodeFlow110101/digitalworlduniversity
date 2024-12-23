@@ -12,7 +12,7 @@ class Chat extends Model
 
     protected $table = "chats";
 
-    protected $fillable = ['user_id', 'message', 'group_id', 'is_archive', 'reply_to', 'file_name', 'file_path'];
+    protected $fillable = ['user_id', 'message', 'group_id', 'is_archive', 'reply_to', 'file_name', 'file_path', 'file_url'];
 
     public function group(): BelongsTo
     {

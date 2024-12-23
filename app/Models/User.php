@@ -57,4 +57,9 @@ class User extends Authenticatable
     {
         return $this->hasMany(Chat::class, 'user_id', 'id');
     }
+
+    public function withdrawals(): HasMany
+    {
+        return $this->hasMany(Withdrawal::class, 'user_id', 'id');
+    }
 }
