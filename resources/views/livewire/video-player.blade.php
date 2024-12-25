@@ -11,7 +11,6 @@ state(['id', 'url', 'name', 'program_id', 'allowedVideoIds', 'nextVideoId']);
 
 on([
     'video-completed' => function () {
-
         VideoProgress::updateOrCreate(
             ['user_id' => Auth::user()->id, 'video_id' => $this->id, 'program_id' => $this->program_id],
             []
@@ -72,7 +71,7 @@ mount(function ($data) {
 
 <div class="bg-white dark:bg-black h-full p-6 rounded-2xl grid grid-cols-1 gap-8">
     <div class="text-center text-blcak dark:text-white text-3xl font-semibold">{{$name}}</div>
-    <iframe x-data="vimeoPlayer" x-ref="vimeoplayer" id="vimeo-player" src="{{ 'https://player.vimeo.com/video/' . $url }}" class="w-full" width="848" height="478" frameborder="0" allow="autoplay; fullscreen; picture-in-picture; clipboard-write" title="Untitled"></iframe>
+    <iframe x-data="vimeoPlayer" x-ref="vimeoplayer" src="{{ 'https://player.vimeo.com/video/' . $url }}" class="w-full" width="848" height="478" frameborder="0" allow="autoplay; fullscreen; picture-in-picture; clipboard-write" title="Untitled"></iframe>
     <div class="w-full flex justify-center">
         <div class="flex justify-between gap-4 h-min">
             <div wire:click="redirectTo('video',{{$program_id}})" class="bg-[#131e30] dark:bg-[#DDE6ED] w-min px-8 cursor-pointer py-4 text-lg font-semibold rounded-lg text-[#d6dcde] dark:text-[#131e30]">Back</div>

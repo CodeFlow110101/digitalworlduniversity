@@ -50,7 +50,7 @@ $deleteStoreItem = function ($id) {
         @foreach($channels as $channel)
         <div class="bg-[#d6dcde] dark:bg-gray-800 rounded-2xl grid grid-cols-1 gap-4">
             <div class="flex items-center justify-center w-full h-48 bg-gray-500 rounded-t-2xl">
-                <img src="{{asset('storage/'.$channel->thumbmail)}}" class="w-full h-full rounded-t-2xl">
+                <img src="{{ $channel->thumbnail_url }}" class="w-full h-full rounded-t-2xl">
             </div>
             <div class="p-4 text-[#131e30] dark:text-[#DDE6ED] grid grid-cols-1 gap-4">
                 <div class="font-semibold text-2xl">{{$channel->name}}</div>

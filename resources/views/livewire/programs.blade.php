@@ -16,7 +16,7 @@ $redirectTo = function ($path, $id) {
 ?>
 
 <div class="h-dvh relative" x-data="{ height: 0 , tabHeight: 0}" x-resize="height = $height">
-    <div class="gap-6 p-6 grid grid-cols-2 sm:grid-cols-4 overflow-y-auto" :style="'height: ' + height + 'px;'">
+    <div class="gap-2 lg:gap-6 p-2 lg:p-6 grid grid-cols-2 sm:grid-cols-4 overflow-y-auto" :style="'height: ' + height + 'px;'">
         @foreach($programs as $program)
         <div class="flex flex-col gap-2" :style="'height: ' + tabHeight + 'px;'">
             <div class="relative grow rounded-3xl overflow-hidden">
@@ -49,7 +49,7 @@ $redirectTo = function ($path, $id) {
         </div>
         @endforeach
     </div>
-    <div class="text-white bg-white absolute inset-0 p-6 flex flex-col gap-6 opacity-0 pointer-events-none -z-50">
+    <div class="text-white bg-white absolute inset-0 p-2 lg:p-6 flex flex-col gap-2 lg:gap-6 opacity-0 pointer-events-none -z-50">
         <div class="bg-red-500 grow" x-resize="tabHeight = $height"></div>
         <div class="bg-red-500 grow"></div>
     </div>

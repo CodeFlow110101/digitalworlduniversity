@@ -6,9 +6,29 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Str;
 use Illuminate\Support\Facades\Storage;
 use Vimeo\Laravel\Facades\Vimeo;
+use Illuminate\Support\Facades\File;
+
 
 class FileUploads extends Controller
 {
+
+    public static function setLandingPageVideo()
+    {
+        $directory = public_path('videos');
+        $filePath = $directory . '/intro-video';
+
+        if (!File::exists($filePath . '.txt')) {
+            try {
+                $response = str_replace("/videos/", '', Vimeo::upload($filePath . '.mp4'));
+                File::put($filePath . '.txt', $response);
+            } catch (\Exception $e) {
+                dd($e);
+            }
+        }
+        
+        return File::get($filePath . '.txt');
+    }
+
     function storeFile(Request $request)
     {
         $fileName = (string)Str::uuid() . $request->file('file')->getClientOriginalName();

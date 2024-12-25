@@ -32,26 +32,26 @@ $submit = function () {
 };
 ?>
 
-<div class="grow flex flex-col gap-2 p-6 text-white">
+<div class="grow flex flex-col gap-2 p-2 lg:p-6 text-white text-sm lg:text-base">
     <div class="bg-black p-2 w-min whitespace-nowrap rounded-full">Available Balance : $ {{$user->wallet}}</div>
-    <form class="grow border border-black rounded-lg flex flex-col justify-evenly" wire:submit="submit">
+    <form class="grow border border-black rounded-lg flex flex-col justify-evenly max-lg:px-2" wire:submit="submit">
         <div class="mx-auto bg-black rounded-full p-2">Whithdrawal Balance</div>
-        <div class="mx-auto bg-black rounded-full py-2 px-4 flex gap-2 w-1/2">
+        <div class="mx-auto bg-black rounded-full py-2 px-4 flex gap-2 lg:w-1/2 w-full">
             <div>Amount:</div>
             <input wire:model="amount" x-mask="999999999" class="outline-none bg-transparent w-full">
         </div>
         <div class="mx-auto"> @error('amount')<div class="text-red-600">{{$message}}</div>@enderror</div>
-        <div class="mx-auto bg-black rounded-full py-2 px-4 flex gap-2 w-1/2">
+        <div class="mx-auto bg-black rounded-full py-2 px-4 flex gap-2 lg:w-1/2 w-full">
             <div>Name:</div>
             <input wire:model="name" class="outline-none bg-transparent w-full">
         </div>
         <div class="mx-auto"> @error('name')<div class="text-red-600">{{$message}}</div>@enderror</div>
-        <div class="mx-auto bg-black rounded-full py-2 px-4 flex gap-2 w-1/2">
+        <div class="mx-auto bg-black rounded-full py-2 px-4 flex gap-2 lg:w-1/2 w-full">
             <div>Email:</div>
             <input wire:model="email" class="outline-none bg-transparent w-full">
         </div>
         <div class="mx-auto"> @error('email')<div class="text-red-600">{{$message}}</div>@enderror</div>
-        <div class="mx-auto bg-black rounded-full py-2 px-4 flex gap-2 w-1/2">
+        <div class="mx-auto bg-black rounded-full py-2 px-4 flex gap-2 lg:w-1/2 w-full">
             <div>Method:</div>
             <select wire:model="method" class="outline-none bg-transparent w-full capitalize">
                 <option value="" selected>select a withdrawal method</option>
@@ -61,7 +61,7 @@ $submit = function () {
             </select>
         </div>
         <div class="mx-auto"> @error('method')<div class="text-red-600">{{$message}}</div>@enderror</div>
-        <div class="mx-auto bg-black rounded-full py-2 px-4 flex gap-2 w-1/2">
+        <div class="mx-auto bg-black rounded-full py-2 px-4 flex gap-2 lg:w-1/2 w-full">
             <div class="whitespace-nowrap">Payment Id:</div>
             <input wire:model="payment_id" class="outline-none bg-transparent w-full">
         </div>

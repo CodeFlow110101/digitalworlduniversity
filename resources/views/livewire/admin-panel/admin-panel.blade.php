@@ -29,8 +29,8 @@ mount(function () {
 
 ?>
 
-<div>
-    <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-12">
+<div class="grow" x-data="{ height: 0 , tabHeight: 0}" x-resize="height = $height">
+    <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-12 overflow-y-auto p-6" :style="'height: ' + height + 'px;'">
         <div wire:click="redirectTo('admin-panel-users')" class="bg-[#d6dcde] dark:bg-gray-800 cursor-pointer rounded-2xl grid grid-cols-1 gap-4">
             <div class="flex items-center justify-center w-full h-48 rounded-t-2xl ">
                 <div class="w-min flex justify-between gap-5">

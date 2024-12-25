@@ -10,7 +10,7 @@ state(['id', 'name']);
 rules(['name' => 'required|min:3']);
 
 on([
-    'admin-panel-store-handle-file' => function ($validationKey, $validationMessage, $thumbnailName, $thumbnailPath) {
+    'admin-panel-store-handle-file' => function ($validationKey, $validationMessage, $thumbnailName, $thumbnailPath, $thumbnailUrl) {
 
         $this->resetValidation();
 
@@ -30,6 +30,7 @@ on([
             Channel::create([
                 'name' => $this->name,
                 'thumbmail' => $thumbnailPath,
+                'thumbnail_url' => $thumbnailUrl,
             ]);
 
             $this->dispatch('hide-modal');

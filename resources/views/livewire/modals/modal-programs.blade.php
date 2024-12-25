@@ -1,5 +1,6 @@
 <?php
 
+use App\Models\Channel;
 use App\Models\Program;
 use App\Models\ProgramStatus;
 use Illuminate\Support\Facades\Storage;
@@ -40,12 +41,19 @@ on([
                     'status_id' => $this->status,
                 ]);
             } else {
-                Program::create([
+                $program = Program::create([
                     'title' => $this->title,
                     'description' => $this->description,
                     'image' => $thumbnailPath,
                     'image_url' => $thumbnailUrl,
                     'status_id' => $this->status,
+                ]);
+
+                Channel::create([
+                    'name' => $this->title,
+                    'thumbmail' => $thumbnailPath,
+                    'thumbnail_url' => $thumbnailUrl,
+                    'program_id' => $program->id,
                 ]);
             }
 

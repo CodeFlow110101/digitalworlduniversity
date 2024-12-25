@@ -12,7 +12,7 @@ class Channel extends Model
 
     protected $table = "channels";
 
-    protected $fillable = ['name', 'thumbmail'];
+    protected $fillable = ['name', 'thumbmail', 'thumbnail_url', 'program_id'];
 
     public function groups(): HasMany
     {

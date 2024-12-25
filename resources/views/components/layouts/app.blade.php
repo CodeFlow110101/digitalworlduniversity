@@ -12,7 +12,7 @@
     <script src="{{asset('livewire-events/events.js')}}"></script>
     <script src="{{asset('js/alpine.js')}}"></script>
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
-    <!-- <script src="https://player.vimeo.com/api/player.js"></script> -->
+    <script src="https://player.vimeo.com/api/player.js"></script>
 </head>
 
 <body class="bg-white dark:bg-black">

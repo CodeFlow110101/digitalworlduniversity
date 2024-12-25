@@ -45,25 +45,8 @@ mount(function ($id) {
 ?>
 
 <div class="h-dvh relative" x-data="{ height: 0 , tabHeight: 0}" x-resize="height = $height">
-    <div class="gap-6 p-6 grid grid-cols-2 sm:grid-cols-4 overflow-y-auto" :style="'height: ' + height + 'px;'">
+    <div x-data class="gap-2 lg:gap-6 p-2 lg:p-6 grid grid-cols-2 sm:grid-cols-4 overflow-y-auto" :style="'height: ' + height + 'px;'">
         @foreach($videos as $video)
-        <div class="bg-[#d6dcde] dark:bg-gray-800 rounded-2xl grid grid-cols-1 gap-4 hidden">
-            <div class="flex items-center justify-center w-full h-48 bg-gray-500 rounded-t-2xl">
-                <img src="{{ $video->thumbnail_url }}" class="w-full h-full rounded-t-2xl">
-            </div>
-            <div class="p-4 text-[#131e30] dark:text-[#DDE6ED] grid grid-cols-1 gap-4">
-                <div class="font-semibold text-2xl">{{$video->name}}</div>
-            </div>
-            @if($loop->first || in_array($video->id, $allowedVideoIds))
-            <div wire:click="redirectTo('video-player',{{$video->id}})" class="text-[#d6dcde] bg-[#131e30] cursor-pointer rounded-b-2xl text-center py-3 text-lg font-bold">Watch</div>
-            @else
-            <div class="text-[#d6dcde] bg-[#131e30] rounded-b-2xl text-center py-3 text-lg font-bold flex justify-center cursor-not-allowed">
-                <svg class="w-6 h-6 text-[#d6dcde]" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="currentColor" viewBox="0 0 24 24">
-                    <path fill-rule="evenodd" d="M8 10V7a4 4 0 1 1 8 0v3h1a2 2 0 0 1 2 2v7a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2v-7a2 2 0 0 1 2-2h1Zm2-3a2 2 0 1 1 4 0v3h-4V7Zm2 6a1 1 0 0 1 1 1v3a1 1 0 1 1-2 0v-3a1 1 0 0 1 1-1Z" clip-rule="evenodd" />
-                </svg>
-            </div>
-            @endif
-        </div>
         <div class="flex flex-col gap-2" :style="'height: ' + tabHeight + 'px;'">
             <div class="relative grow rounded-3xl overflow-hidden">
                 <div class="size-full flex flex-col">
@@ -98,8 +81,9 @@ mount(function ($id) {
         </div>
         @endforeach
     </div>
-    <div class="text-white bg-white absolute inset-0 p-6 flex flex-col gap-6 opacity-0 pointer-events-none -z-50">
+    <div class="text-white bg-white absolute inset-0 gap-2 lg:gap-6 p-2 lg:p-6 flex flex-col opacity-0 pointer-events-none -z-50">
         <div class="bg-red-500 grow" x-resize="tabHeight = $height"></div>
+        <div class="bg-red-500 grow"></div>
         <div class="bg-red-500 grow"></div>
     </div>
 </div>

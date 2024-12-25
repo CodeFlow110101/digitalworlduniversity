@@ -95,7 +95,7 @@ mount(function ($user) {
         </div>
         <div class="grid grid-cols-1 gap-8 lg:grid-cols-3 lg:gap-16 text-center font-bold text-xl lg:text-2xl">
             <div class="bg-[#d6dcde] dark:bg-gray-800 rounded-2xl py-8 lg:py-12">Student ID: {{$user->id}}</div>
-            <div class="bg-[#d6dcde] dark:bg-gray-800 rounded-2xl py-8 lg:py-12">{{$days_remaining}} Days</div>
+            <div class="bg-[#d6dcde] dark:bg-gray-800 rounded-2xl py-8 lg:py-12">{{Gate::check('is_Admin') ? 'NA' : $days_remaining}}</div>
             <div class="bg-[#d6dcde] dark:bg-gray-800 rounded-2xl py-8 lg:py-12">Total Income: ${{$user->referral_income + $user->task_income}}</div>
         </div>
         <div class="bg-[#d6dcde] dark:bg-gray-800 rounded-2xl py-12 px-2 text-center font-bold">Name: {{$user->name}}</div>

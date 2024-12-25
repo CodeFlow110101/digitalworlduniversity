@@ -5,6 +5,7 @@ function chat() {
     groupId: null,
     fileName: "",
     preview: "",
+    showChats: false,
     init() {
       Echo.channel("group." + this.groupId).listen(".chat", e => {
         this.chats.unshift(e.message);
@@ -75,17 +76,19 @@ function chat() {
           );
         }
       });
-    },
+    }
   };
 }
 
 function vimeoPlayer() {
   return {
     init() {
-      const iframe = document.getElementById("vimeo-player");
-      const player = new Vimeo.Player(iframe);
-      player.on("ended", function() {
-        Livewire.dispatch("video-completed");
+      const iframe = this.$refs.vimeoplayer;
+      iframe.addEventListener("load", () => {
+        const player = new Vimeo.Player(iframe);
+        player.on("ended", function() {
+          Livewire.dispatch("video-completed");
+        });
       });
     }
   };

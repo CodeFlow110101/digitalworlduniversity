@@ -2,7 +2,9 @@
 
 use App\Models\Program;
 use App\Models\Video;
-use function Livewire\Volt\{with, mount};
+use function Livewire\Volt\{with, mount, state};
+
+state(['video']);
 
 with(fn() => [
     'programs' => Program::get(),
@@ -12,6 +14,10 @@ with(fn() => [
 $redirectTo = function ($path) {
     $this->redirectRoute($path, navigate: true);
 };
+
+mount(function ($video) {
+    $this->video = $video;
+});
 ?>
 
 <div class="bg-black">
@@ -31,10 +37,7 @@ $redirectTo = function ($path) {
             </div>
             <div class="flex justify-center">
                 <div class="border border-amber-500 bg-gray-800 rounded-lg p-2 lg:w-3/5 w-11/12">
-                    <video class="w-full h-full rounded-lg" controls autoplay muted loop>
-                        <source src="{{asset('videos/IMG_5884.mp4')}}" type="video/mp4">
-                        Your browser does not support the video tag.
-                    </video>
+                    <iframe src="{{ 'https://player.vimeo.com/video/' . $video . '?dnt=1&title=0&byline=0&portrait=0&transparent=0&autoplay=1&muted=1' }}" class="w-full h-auto lg:h-96 rounded-md" frameborder="0" allow="autoplay; fullscreen; picture-in-picture; clipboard-write" title="Untitled"></iframe>
                 </div>
             </div>
             <div class="flex justify-center pt-8">

@@ -3,14 +3,19 @@
 use function Livewire\Volt\{state, layout, mount};
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use App\Http\Controllers\FileUploads;
+use Illuminate\Support\Facades\App;
 
 
-state(['path', 'query_param', 'transaction']);
+state(['path', 'query_param', 'transaction', 'video']);
+
 state(['referral_code'])->url();
 
 layout('components.layouts.app');
 
 mount(function (Request $request) {
+
+    $this->video = App::call([FileUploads::class, 'setLandingPageVideo']);
 
     $this->path = $request->path();
 
@@ -45,7 +50,7 @@ mount(function (Request $request) {
         @if($path == '/')
         <livewire:navbar />
         <livewire:landing-page-chat-option />
-        <livewire:home />
+        <livewire:home :video="$video" />
         @elseif($path == 'terms-and-conditions')
         <livewire:terms-and-conditions />
         @elseif($path == 'privacy-policy')

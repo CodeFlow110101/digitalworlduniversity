@@ -3,12 +3,14 @@
 use function Livewire\Volt\{state, layout, mount, on, updated};
 
 use App\Models\Program;
+use Illuminate\Support\Facades\App;
 use App\Models\User;
 use App\Models\Video;
 use Carbon\Carbon;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Gate;
+use App\Http\Controllers\FileUploads;
 
 layout('components.layouts.app');
 
@@ -21,6 +23,7 @@ on([
 ]);
 
 mount(function (Request $request) {
+
     if (!Auth::check()) {
         return $this->redirectRoute('landing-page', navigate: true);
     }
@@ -79,12 +82,11 @@ mount(function (Request $request) {
 ?>
 
 <div x-data="{showSidebar:false}" class="h-dvh flex flex-col">
-    <div class="grow lg:flex lg:justify-between relative bg-white dark:bg-black select-none">
+    <div class="grow flex justify-between relative bg-white dark:bg-black select-none">
         <livewire:style.logged-in-landing-page-style />
-        <div class="w-1/5 max-lg:hidden">
-            <livewire:logged-in-side-bar :path="$path" :user="$user" />
+        <div class="w-1/5">
+            <livewire:side-bar :path="$path" :user="$user" />
         </div>
-        <div :class="showSidebar ? 'translate-x-0' : '-translate-x-64'" class="w-64 py-6 px-4 transition-transform duration-200 absolute lg:hidden z-50"><livewire:logged-in-side-bar :path="$path" :user="$user"></div>
         <div class="lg:w-4/5 w-full flex flex-col gap-8">
             <div class="flex justify-center hidden">
                 <div class="py-8 px-4 lg:px-8 items-center w-full flex justify-between rounded-2xl bg-white dark:bg-gray-800 text-3xl text-center font-bold">
@@ -103,7 +105,7 @@ mount(function (Request $request) {
                 @if($path == 'dashboard')
                 <livewire:dashboard :url="$url" />
                 @elseif($path == 'live-chat')
-                <livewire:chat-new />
+                <livewire:chat />
                 @elseif($path == 'find-jobs')
                 <livewire:find-jobs />
                 @elseif($path == 'programs')
