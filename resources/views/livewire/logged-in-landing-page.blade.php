@@ -11,6 +11,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Gate;
 use App\Http\Controllers\FileUploads;
+use App\Models\EarnMoney;
 
 layout('components.layouts.app');
 
@@ -77,6 +78,20 @@ mount(function (Request $request) {
     if ($this->path == 'admin-panel-group' && session()->has('admin-panel-channel-id')) {
         $this->id = session()->get('admin-panel-channel-id');
     }
+
+    if (str_contains($this->path, 'admin-panel-earn-money-manage-question/') && EarnMoney::where('id', str_replace('admin-panel-earn-money-manage-question/', '', $this->path))->exists()) {
+        $this->id = str_replace('admin-panel-earn-money-manage-question/', '', $this->path);
+        $this->path = 'admin-panel-earn-money-manage-question';
+    } elseif (str_contains($this->path, 'admin-panel-earn-money-manage-question/') && EarnMoney::where('id', str_replace('admin-panel-earn-money-manage-question/', '', $this->path))->doesntExist()) {
+        $this->redirectRoute('admin-panel', navigate: true);
+    }
+
+    if (str_contains($this->path, 'earn-money-survey/') && EarnMoney::where('id', str_replace('earn-money-survey/', '', $this->path))->exists()) {
+        $this->id = str_replace('earn-money-survey/', '', $this->path);
+        $this->path = 'earn-money-survey';
+    } elseif (str_contains($this->path, 'earn-money-survey/') && EarnMoney::where('id', str_replace('earn-money-survey/', '', $this->path))->doesntExist()) {
+        $this->redirectRoute('admin-panel', navigate: true);
+    }
 });
 
 ?>
@@ -124,6 +139,8 @@ mount(function (Request $request) {
                 <livewire:earn-money />
                 @elseif($path == 'withdraw')
                 <livewire:withdraw />
+                @elseif($path == 'earn-money-survey')
+                <livewire:earn-money-survey :id="$id" :user="$user"/>
                 @elseif($path == 'settings')
                 <livewire:settings :user="$user" />
                 @elseif($path == 'admin-panel-video-player')
@@ -144,6 +161,8 @@ mount(function (Request $request) {
                 <livewire:admin-panel.admin-panel-channel />
                 @elseif($path == 'admin-panel-withdrawal')
                 <livewire:admin-panel.admin-panel-withdrawal />
+                @elseif($path == 'admin-panel-earn-money-manage-question')
+                <livewire:admin-panel.admin-panel-earn-money-manage-question :id="$id" />
                 @elseif($path == 'admin-panel-group')
                 <livewire:admin-panel.admin-panel-group :id="$id" />
                 @elseif($path == 'admin-panel-videos')

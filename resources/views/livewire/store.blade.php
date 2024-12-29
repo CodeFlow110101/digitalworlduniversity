@@ -2,9 +2,7 @@
 
 use App\Models\Store;
 
-use function Livewire\Volt\{state, placeholder, usesPagination, with};
-
-usesPagination();
+use function Livewire\Volt\{state, placeholder, with};
 
 with(fn() => ['storeItems' => Store::get()]);
 

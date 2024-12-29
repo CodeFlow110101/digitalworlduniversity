@@ -31,6 +31,8 @@ Volt::route('/admin-panel-users', 'logged-in-landing-page')->name('admin-panel-u
 Volt::route('/admin-panel-programs', 'logged-in-landing-page')->name('admin-panel-programs');
 Volt::route('/admin-panel-videos', 'logged-in-landing-page')->name('admin-panel-videos');
 Volt::route('/admin-panel-earn-money', 'logged-in-landing-page')->name('admin-panel-earn-money');
+Volt::route('/admin-panel-earn-money-manage-question/{surveyId}', 'logged-in-landing-page')->name('admin-panel-earn-money-manage-question');
+Volt::route('/earn-money-survey/{surveyId}', 'logged-in-landing-page')->name('earn-money-survey');
 Volt::route('/admin-panel-video-player', 'logged-in-landing-page')->name('admin-panel-video-player');
 Volt::route('/admin-panel-store', 'logged-in-landing-page')->name('admin-panel-store');
 Volt::route('/admin-panel-find-jobs', 'logged-in-landing-page')->name('admin-panel-find-jobs');

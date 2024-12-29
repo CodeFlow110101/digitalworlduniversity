@@ -10,7 +10,7 @@ state(['id', 'title', 'description', 'url']);
 rules(['title' => 'required|min:3', 'description' => 'required|min:6']);
 
 on([
-    'admin-panel-earn-money-handle-file' => function ($validationKey, $validationMessage, $thumbnailName, $thumbnailPath) {
+    'admin-panel-earn-money-handle-file' => function ($validationKey, $validationMessage, $thumbnailName, $thumbnailPath, $thumbnailUrl) {
 
         $this->resetValidation();
 
@@ -40,6 +40,7 @@ on([
                 'description' => $this->description,
                 'thumbmail' => $thumbnailPath,
                 'url' => $this->url,
+                'thumbnail_url' => $thumbnailUrl,
             ]);
 
             $this->dispatch('hide-modal');
