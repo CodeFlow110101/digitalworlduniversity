@@ -537,11 +537,7 @@ mount(function ($video) {
                     @php
                     $url = Video::where('program_id',$program->id)->first()->video;
                     @endphp
-                    <video x-ref=" myVideo" class="h-96 w-full rounded-b-2xl bg-black" controls controlsList="nodownload">
-                        <source src="{{asset('storage/'.$url)}}" type="video/mp4">
-                        <source src="{{asset('storage/'.$url)}}" type="video/webm">
-                        Your browser does not support the video tag.
-                    </video>
+                    <iframe src="{{ 'https://player.vimeo.com/video/' . $url . '?dnt=1&title=0&byline=0&portrait=0&transparent=0&autoplay=1&muted=1' }}" class="w-full h-auto lg:h-96 rounded-md" frameborder="0" allow="autoplay; fullscreen; picture-in-picture; clipboard-write" title="Untitled"></iframe>
                     @endif
                 </div>
             </div>

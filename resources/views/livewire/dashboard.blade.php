@@ -35,7 +35,7 @@ mount(function ($url) {
             <div class="bg-white dark:bg-black border border-white rounded-3xl py-4 lg:py-6">Referral Income: ${{$user->referral_income}}</div>
             <div class="bg-white dark:bg-black border border-white rounded-3xl py-4 lg:py-6">Task Income: ${{$user->task_income}}</div>
         </div>
-        <div x-data="copyToClipboard" x-init='text = `{{str_replace("dashboard","sign-up/?referral_code=",$url)}}{{$referral_code}}`;' class="bg-white dark:bg-black border border-white rounded-3xl py-6 px-2 text-center font-bold select-text flex items-center justify-center gap-2">
+        <div x-data="copyToClipboard" x-init='text = `{{str_replace("dashboard","sign-up/",$url)}}{{$referral_code}}`;' class="bg-white dark:bg-black border border-white rounded-3xl py-6 px-2 text-center font-bold select-text flex items-center justify-center gap-2">
             <div x-text="'Refer: ' + text"></div>
             <button @click="copy" class="rounded-full hover:bg-white/50 p-1 group">
                 <div x-show="!copied">

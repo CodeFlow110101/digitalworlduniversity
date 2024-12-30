@@ -113,7 +113,7 @@ mount(function ($path, $user) {
             <div class="w-full grid grid-cols-1 gap-1">
                 <div class="flex justify-center">
                     @if($user->image)
-                    <img wire:click="redirectTo('settings')" src="{{asset('storage/'.$user->image)}}" class="size-10 rounded-full cursor-pointer">
+                    <img wire:click="redirectTo('settings')" src="{{$user->image}}" class="size-10 rounded-full cursor-pointer">
                     @else
                     <svg wire:click="redirectTo('settings')" class="size-10 text-black dark:text-white cursor-pointer" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" width="24"
                         height="24" fill="currentColor" viewBox="0 0 24 24">

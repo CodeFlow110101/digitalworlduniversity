@@ -8,6 +8,7 @@ use Livewire\Volt\Volt;
 
 Volt::route('/', 'landing-page')->name('landing-page');
 Volt::route('/sign-up', 'landing-page')->name('sign-up');
+Volt::route('/sign-up/{referral_code}', 'landing-page');
 Volt::route('/log-in', 'landing-page')->name('log-in');
 Volt::route('/terms-and-conditions', 'landing-page')->name('terms-and-conditions');
 Volt::route('/privacy-policy', 'landing-page')->name('privacy-policy');

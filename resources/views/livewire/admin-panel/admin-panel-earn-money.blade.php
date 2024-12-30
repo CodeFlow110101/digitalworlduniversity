@@ -45,9 +45,6 @@ $deleteStoreItem = function ($id) {
                 <a href="/admin-panel-earn-money-manage-question/{{$item->id}}" wire:navigate class="w-full rounded-b-2xl text-center py-2 h-1/2">
                     Manage
                 </a>
-                <div wire:click="deleteStoreItem({{$item->id}})" class="w-full rounded-b-2xl text-center py-2 h-1/2">
-                    Delete
-                </div>
             </div>
         </div>
         @endforeach

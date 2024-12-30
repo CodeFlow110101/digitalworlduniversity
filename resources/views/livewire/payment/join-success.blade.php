@@ -54,10 +54,9 @@ mount(function ($transaction) {
     ]);
 
     if ($transaction['opt_b'] && ReferralCode::where('code', $transaction['opt_b'])->exists()) {
-        $plan_price = Plan::find($this->plan)->price;
         $user_id = ReferralCode::where('code', $transaction['opt_b'])->first('user_id')->user_id;
-        User::where('id', $user_id)->increment('wallet', $plan_price * 0.25);
-        User::where('id', $user_id)->increment('referral_income', $plan_price * 0.25);
+        User::where('id', $user_id)->increment('wallet', 5);
+        User::where('id', $user_id)->increment('referral_income', 5);
     }
 
     unset($transaction['opt_a']);
@@ -71,7 +70,7 @@ mount(function ($transaction) {
 ?>
 
 <div class="bg-black h-dvh w-full flex justify-center items-center">
-    <div class="h-min relative grid grid-cols-1 gap-2 text-[#f6aa23] border-4 border-[#f6aa23] rounded-xl p-6 pt-10">
+    <div class="h-min relative grid grid-cols-1 gap-2 text-amber-500 border-4 border-amber-500 rounded-xl p-6 pt-10">
         <div class="absolute -top-8 w-full flex justify-center">
             <div class="rounded-full p-4 bg-green-500  w-min">
                 <svg class="w-6 h-6 text-white" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none" viewBox="0 0 24 24">
@@ -88,7 +87,7 @@ mount(function ($transaction) {
             <div>Password: {{$password}}</div>
         </div>
         <div class="px-4 pt-4">
-            <div wire:click="login" class="text-white cursor-pointer font-semibold text-lg text-center bg-[#f6aa23] rounded-lg p-2">Login</div>
+            <div wire:click="login" class="text-white cursor-pointer font-semibold text-lg text-center bg-amber-500 rounded-lg p-2">Login</div>
         </div>
     </div>
 </div>

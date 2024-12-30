@@ -164,7 +164,7 @@ mount(function ($referral_code) {
                         </div>
                     </div>
                 </div>
-                <div class="w-full mt-8 md:mt-20 text-center align-middle font-semibold uppercase py-2 rounded-lg @if($plan_option->id == $plan) bg-[#f6aa23] font-bold @else bg-gray-500 text-white @endif">
+                <div class="w-full mt-8 md:mt-20 text-center align-middle font-semibold uppercase py-2 rounded-lg @if($plan_option->id == $plan) bg-amber-500 font-bold @else bg-gray-500 text-white @endif">
                     @if($plan_option->id == $plan)
                     Select
                     @else
@@ -178,7 +178,7 @@ mount(function ($referral_code) {
     </div>
     <div class="mt-12">
         <div class="flex items-start mb-4">
-            <input wire:model="termsAndConditions" type="checkbox" class="w-5 h-5 outline-none  accent-[#f6aa23] bg-gray-100 border-gray-300 rounded">
+            <input wire:model="termsAndConditions" type="checkbox" class="w-5 h-5 outline-none  accent-amber-500 bg-gray-100 border-gray-300 rounded">
             <label for="default-checkbox" class="ms-2 font-medium text-amber-500">I've read and accept the <span wire:click="redirectTo('terms-and-conditions')" class="underline cursor-pointer">
                     Terms & Conditions
                 </span>,
@@ -194,7 +194,7 @@ mount(function ($referral_code) {
     </div>
     <div class="mt-12 flex justify-around">
         <div wire:click="submit" wire:loading.class="pointer-events-none" wire:target="submit"
-            class="w-full sm:mx-8 py-4 text-center text-xl px-4 cursor-pointer tracking-wider border border-amber-500 transition-opacity duration-300 rounded-lg text-white font-bold transition-colors duration-500 bg-[#f6aa23]">
+            class="w-full sm:mx-8 py-4 text-center text-xl px-4 cursor-pointer tracking-wider border border-amber-500 transition-opacity duration-300 rounded-lg text-white font-bold transition-colors duration-500 bg-amber-500">
             <div wire:loading.class="hidden" wire:target="submit">Join</div>
             <div wire:loading.class.remove="hidden" wire:target="submit" class="flex justify-center hidden">
                 <svg aria-hidden="true" class="w-8 h-8 text-black animate-spin fill-white" viewBox="0 0 100 101" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -203,7 +203,7 @@ mount(function ($referral_code) {
                 </svg>
             </div>
         </div>
-        <a href="/" wire:navigate class="sm:mx-8 py-4 text-center text-xl px-4 cursor-pointer tracking-wider border border-amber-500 hover:text-white hover:bg-[#f6aa23] transition-opacity duration-300 rounded-lg text-amber-500 font-bold transition-colors duration-500">
+        <a href="/" wire:navigate class="sm:mx-8 py-4 text-center text-xl px-4 cursor-pointer tracking-wider border border-amber-500 hover:text-white hover:bg-amber-500 transition-opacity duration-300 rounded-lg text-amber-500 font-bold transition-colors duration-500">
             Back
         </a>
     </div>

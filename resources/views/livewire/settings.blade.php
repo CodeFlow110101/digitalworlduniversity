@@ -11,8 +11,7 @@ state(['balance', 'days_remaining', 'expiry_date',]);
 
 state(['user'])->reactive();
 
-on(['settings-handle-file' => function ($validationKey, $validationMessage, $thumbnailName, $thumbnailPath) {
-
+on(['settings-handle-file' => function ($validationKey, $validationMessage, $thumbnailName, $thumbnailPath, $thumbnailUrl) {
     if ($validationKey && $validationKey['thumbnail']) {
 
         if ($validationKey['thumbnail']) {
@@ -21,18 +20,12 @@ on(['settings-handle-file' => function ($validationKey, $validationMessage, $thu
 
         $this->dispatch('admin-panel-modal-store-loader', value: false);
     } else {
-        if ($this->user->image) {
-            Storage::disk('public')->delete($this->user->image);
-        }
-        User::where('id', $this->user->id)->update(['image' => $thumbnailPath]);
+        User::where('id', $this->user->id)->update(['image' => $thumbnailUrl]);
         $this->dispatch('reset-user-landing-page');
     }
 }]);
 
 $removePhoto = function () {
-    if ($this->user->image) {
-        Storage::disk('public')->delete($this->user->image);
-    }
     User::where('id', $this->user->id)->update(['image' => null]);
     $this->dispatch('reset-user-landing-page');
 };
@@ -74,7 +67,7 @@ mount(function ($user) {
             <div class="grid grid-cols-1 gap-4">
                 <div class="flex justify-center">
                     @if($user->image)
-                    <img src="{{asset('storage/'.$user->image)}}" class="w-24 h-24 lg:w-28 lg:h-28 rounded-full">
+                    <img src="{{$user->image}}" class="w-24 h-24 lg:w-28 lg:h-28 rounded-full">
                     @else
                     <svg class="w-24 h-24 lg:w-28 lg:h-28 text-[#131e30] dark:text-gray-800" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" width="24"
                         height="24" fill="currentColor" viewBox="0 0 24 24">

@@ -30,16 +30,24 @@ $submit = function () {
         $responses[] = ['question_id' => $question_id, 'option_id' => $option_id];
     }
     $this->user->responses()->createMany($responses);
-};
 
-$test = function () {
-    $surveys = EarnMoney::with(['questions.responses'])->get();
-
-    foreach ($surveys as $survey) {
-        $survey->questions->each(function ($question) {
-            $question->responses->count();
+    $survey = EarnMoney::where('id', $this->id)->withCount(['questions as correctly_answered_count' => function ($query) {
+        $query->whereHas('responses', function ($responseQuery) {
+            $responseQuery->where('user_id', $this->user->id)
+                ->whereHas('option', function ($optionQuery) {
+                    $optionQuery->where('is_correct', true);
+                });
         });
+    }])->value('correctly_answered_count');
+
+    if ($survey >= 12) {
+        User::find($this->user->id)->incrementEach([
+            'wallet' => 0.25,
+            'task_income' => 0.25,
+        ]);
     }
+
+    return $this->redirectRoute('earn-money');
 };
 
 mount(function ($id, $user) {
@@ -56,7 +64,6 @@ mount(function ($id, $user) {
         <div class="flex justify-end">
             <div class="bg-red-500 rounded-full text-white px-4 py-1">{{$questions->currentPage()}}/15 Questions</div>
         </div>
-        @dump($this->responses)
         <div class="grow w-3/4 mx-auto flex flex-col gap-4 justify-center items-center bg-gradient-to-r from-white/50 to-white rounded-xl p-4">
             @foreach($questions as $question)
             <div class="w-full h-3/4 grow flex flex-col gap-4" :key="{{$question->id}}">
@@ -81,7 +88,6 @@ mount(function ($id, $user) {
             @if(count($this->responses) == $total_questions)
             <button wire:click="submit" class="py-1 px-6 rounded-full bg-red-700 text-white border-8 border-red-500 shadow-inner">Submit</button>
             @endif
-            <button wire:click="test" class="py-1 px-6 rounded-full bg-red-700 text-white border-8 border-red-500 shadow-inner">Submit</button>
         </div>
     </div>
 </div>

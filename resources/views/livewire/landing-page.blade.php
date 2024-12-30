@@ -4,12 +4,11 @@ use function Livewire\Volt\{state, layout, mount};
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use App\Http\Controllers\FileUploads;
+use App\Models\ReferralCode;
 use Illuminate\Support\Facades\App;
 
 
-state(['path', 'query_param', 'transaction', 'video']);
-
-state(['referral_code'])->url();
+state(['path', 'query_param', 'transaction', 'video', 'referral_code']);
 
 layout('components.layouts.app');
 
@@ -37,6 +36,13 @@ mount(function (Request $request) {
 
     if ($this->path == 'join-failure' && !session()->has('transaction')) {
         return $this->redirectRoute('sign-up', navigate: true);
+    }
+
+    if (str_contains($this->path, 'sign-up/') && ReferralCode::where('code', str_replace('sign-up/', '', $this->path))->exists()) {
+        $this->referral_code = str_replace('sign-up/', '', $this->path);
+        $this->path = 'sign-up';
+    } elseif (str_contains($this->path, 'sign-up/') && ReferralCode::where('code', str_replace('sign-up/', '', $this->path))->doesntExist()) {
+        abort(404);
     }
 });
 

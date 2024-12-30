@@ -11,7 +11,9 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Gate;
 use App\Http\Controllers\FileUploads;
+use Illuminate\Database\Eloquent\Builder;
 use App\Models\EarnMoney;
+use App\Models\EarnMoneyResponse;
 
 layout('components.layouts.app');
 
@@ -22,6 +24,12 @@ on([
         $this->user = Auth::user();
     }
 ]);
+
+$surveyNotAttended = function ($id) {
+   return EarnMoneyResponse::where('user_id', $this->user->id)->whereHas('question', function (Builder $query) use ($id) {
+        $query->where('survey_id', $id);
+    })->doesntExist();
+};
 
 mount(function (Request $request) {
 
@@ -87,8 +95,13 @@ mount(function (Request $request) {
     }
 
     if (str_contains($this->path, 'earn-money-survey/') && EarnMoney::where('id', str_replace('earn-money-survey/', '', $this->path))->exists()) {
-        $this->id = str_replace('earn-money-survey/', '', $this->path);
-        $this->path = 'earn-money-survey';
+        if($this->surveyNotAttended(str_replace('earn-money-survey/', '', $this->path))){
+            $this->id = str_replace('earn-money-survey/', '', $this->path);
+            $this->path = 'earn-money-survey';
+        }else{
+        $this->redirectRoute('earn-money', navigate: true);
+
+        }
     } elseif (str_contains($this->path, 'earn-money-survey/') && EarnMoney::where('id', str_replace('earn-money-survey/', '', $this->path))->doesntExist()) {
         $this->redirectRoute('admin-panel', navigate: true);
     }
@@ -136,11 +149,11 @@ mount(function (Request $request) {
                 @elseif($path == 'ai-tutor')
                 <livewire:ai-tutor />
                 @elseif($path == 'earn-money')
-                <livewire:earn-money />
+                <livewire:earn-money :user="$user" />
                 @elseif($path == 'withdraw')
                 <livewire:withdraw />
                 @elseif($path == 'earn-money-survey')
-                <livewire:earn-money-survey :id="$id" :user="$user"/>
+                <livewire:earn-money-survey :id="$id" :user="$user" />
                 @elseif($path == 'settings')
                 <livewire:settings :user="$user" />
                 @elseif($path == 'admin-panel-video-player')

@@ -130,11 +130,11 @@ mount(function () {
                         <div class="p-4 overflow-y-auto flex flex-col-reverse gap-4 absolute inset-x-0 dark:text-white text-black" x-on:scroll="checkScroll" x-ref="scrollContainer" :style="'height: ' + height + 'px;'">
                             @if((Gate::check('is_Admin') || is_null($channel->program_id) || in_array($channel->program_id, $video_progression)))
                             <template x-for="chat in chats" :key="chat.id">
-                                <div :class="chat.user_id == user.id ? 'ml-auto' : 'mr-auto flex-row-reverse'" class="break-words text-wrap min-w-0 max-w-[70%] flex items-center gap-1">
+                                <div :class="chat.user_id == user.id ? 'ml-auto' : 'mr-auto flex-row-reverse'" class="break-words text-wrap min-w-0 max-w-full lg:max-w-[70%] flex items-center gap-1">
                                     <div class="flex flex-col">
                                         <div :class="chat.user_id == user.id ? 'justify-end' : 'flex-row-reverse'" class="flex gap-2 items-center">
                                             <div class="text-xs" x-text="getTimestamp(chat.created_at)"></div>
-                                            <div class="font-semibold text-xl" x-text="chat.user.name"></div>
+                                            <div class="font-semibold text-sm lg:text-xl" x-text="chat.user.name"></div>
                                         </div>
                                         <div :class="chat.user_id == user.id ? 'text-right' : 'text-left'" class="break-words text-wrap rounded-md p-2" x-text="chat.message"></div>
                                         <template x-if="chat.file_name">
@@ -153,10 +153,15 @@ mount(function () {
                                             </div>
                                         </template>
                                     </div>
-                                    <div class="h-full py-3">
-                                        <svg class="size-10 dark:text-white text-black" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none" viewBox="0 0 24 24">
-                                            <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1" d="M12 21a9 9 0 1 0 0-18 9 9 0 0 0 0 18Zm0 0a8.949 8.949 0 0 0 4.951-1.488A3.987 3.987 0 0 0 13 16h-2a3.987 3.987 0 0 0-3.951 3.512A8.948 8.948 0 0 0 12 21Zm3-11a3 3 0 1 1-6 0 3 3 0 0 1 6 0Z" />
-                                        </svg>
+                                    <div class="h-full py-3 *:lg:size-10 *:size-5 max-lg:flex max-lg:flex-col max-lg:justify-end">
+                                        <template x-if="chat.user.image">
+                                            <img class="rounded-full" :src="chat.user.image">
+                                        </template>
+                                        <template x-if="!chat.user.image">
+                                            <svg class="dark:text-white text-black" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none" viewBox="0 0 24 24">
+                                                <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1" d="M12 21a9 9 0 1 0 0-18 9 9 0 0 0 0 18Zm0 0a8.949 8.949 0 0 0 4.951-1.488A3.987 3.987 0 0 0 13 16h-2a3.987 3.987 0 0 0-3.951 3.512A8.948 8.948 0 0 0 12 21Zm3-11a3 3 0 1 1-6 0 3 3 0 0 1 6 0Z" />
+                                            </svg>
+                                        </template>
                                     </div>
                                 </div>
                             </template>
