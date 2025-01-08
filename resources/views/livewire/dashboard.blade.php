@@ -24,18 +24,18 @@ mount(function ($url) {
 });
 ?>
 
-<div class="grow flex flex-col justify-center">
+<div class="grow flex flex-col justify-center p-2 lg:p-4">
     <div class="text-black grid grid-cols-1 gap-8 sm:gap-10 dark:text-white">
         <div class="grid grid-cols-1 gap-8 lg:grid-cols-3 lg:gap-10 text-center font-bold text-xl lg:text-2xl">
-            <div class="bg-white dark:bg-black border border-white rounded-3xl py-4 lg:py-6">Student ID: {{$id}}</div>
-            <div class="bg-white dark:bg-black border border-white rounded-3xl py-4 lg:py-6">{{Gate::check('is_Admin') ? 'NA' : $days_remaining}}</div>
-            <div class="bg-white dark:bg-black border border-white rounded-3xl py-4 lg:py-6">Total Income: ${{$user->referral_income + $user->task_income}}</div>
+            <div class="bg-white dark:bg-black border border-black dark:border-white rounded-3xl py-4 lg:py-6">Student ID: {{$id}}</div>
+            <div class="bg-white dark:bg-black border border-black dark:border-white rounded-3xl py-4 lg:py-6">{{Gate::check('is_Admin') ? 'NA' : $days_remaining}}</div>
+            <div class="bg-white dark:bg-black border border-black dark:border-white rounded-3xl py-4 lg:py-6">Total Income: ${{$user->referral_income + $user->task_income}}</div>
         </div>
         <div class="grid grid-cols-1 gap-8 lg:grid-cols-2 lg:gap-10 text-center font-bold text-xl lg:text-2xl">
-            <div class="bg-white dark:bg-black border border-white rounded-3xl py-4 lg:py-6">Referral Income: ${{$user->referral_income}}</div>
-            <div class="bg-white dark:bg-black border border-white rounded-3xl py-4 lg:py-6">Task Income: ${{$user->task_income}}</div>
+            <div class="bg-white dark:bg-black border border-black dark:border-white rounded-3xl py-4 lg:py-6">Referral Income: ${{$user->referral_income}}</div>
+            <div class="bg-white dark:bg-black border border-black dark:border-white rounded-3xl py-4 lg:py-6">Task Income: ${{$user->task_income}}</div>
         </div>
-        <div x-data="copyToClipboard" x-init='text = `{{str_replace("dashboard","sign-up/",$url)}}{{$referral_code}}`;' class="bg-white dark:bg-black border border-white rounded-3xl py-6 px-2 text-center font-bold select-text flex items-center justify-center gap-2">
+        <div x-data="copyToClipboard" x-init='text = `{{str_replace("dashboard","sign-up/",$url)}}{{$referral_code}}`;' class="bg-white dark:bg-black border dark:border-white border-black rounded-3xl py-6 px-2 text-center font-bold select-text flex items-center justify-center gap-2">
             <div x-text="'Refer: ' + text"></div>
             <button @click="copy" class="rounded-full hover:bg-white/50 p-1 group">
                 <div x-show="!copied">
