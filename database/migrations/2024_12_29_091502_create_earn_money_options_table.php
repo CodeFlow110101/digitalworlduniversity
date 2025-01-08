@@ -14,7 +14,7 @@ return new class extends Migration
         Schema::create('earn_money_options', function (Blueprint $table) {
             $table->id();
             $table->integer('question_id');
-            $table->text('text');
+            $table->text('option');
             $table->boolean('is_correct');
             $table->timestamps();
         });
