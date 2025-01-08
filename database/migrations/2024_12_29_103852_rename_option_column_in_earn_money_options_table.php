@@ -22,7 +22,7 @@ return new class extends Migration
     public function down(): void
     {
         Schema::table('earn_money_options', function (Blueprint $table) {
-            //
+            $table->renameColumn('text', 'option');
         });
     }
 };
