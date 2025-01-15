@@ -439,7 +439,7 @@ mount(function ($video) {
             <div class="xl:flex xl:justify-between w-full gap-14">
                 <div role="status"
                     class="flex lg:mt-24 mb-24 mt-8 items-center justify-center w-full bg-gray-600 rounded-xl overflow-hidden">
-                    <img src="{{asset('images/home6.jpg')}}" class="w-full h-full">
+                    <img src="{{asset('images/ai_tutor_baner.jpg')}}" class="w-full h-full">
                 </div>
 
                 <div class="w-min h-auto max-xl:hidden">
